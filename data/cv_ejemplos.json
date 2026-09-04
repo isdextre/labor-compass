@@ -1,0 +1,64 @@
+{
+  "cv_parsed_examples": [
+    {
+      "user_id": "USER_001",
+      "nombre": "María García López",
+      "ocupacion_actual": "Retail Sales Associate",
+      "experiencia_años": 3,
+      "salario_actual_usd": 450,
+      "ubicacion": "Lima",
+      "skills_identificadas": ["Communication", "Sales", "Customer Service", "Cash Handling"],
+      "certificaciones": [],
+      "educacion": "High School Diploma",
+      "fecha_parsing": "2026-09-04"
+    },
+    {
+      "user_id": "USER_002",
+      "nombre": "Carlos Rodríguez Pérez",
+      "ocupacion_actual": "Finance Administrator",
+      "experiencia_años": 5,
+      "salario_actual_usd": 850,
+      "ubicacion": "Lima",
+      "skills_identificadas": ["Excel", "Accounting", "IT", "Communication", "Attention to Detail"],
+      "certificaciones": ["Comptroller Certification"],
+      "educacion": "Bachelor in Accounting",
+      "fecha_parsing": "2026-09-04"
+    },
+    {
+      "user_id": "USER_003",
+      "nombre": "Ana Martínez Flores",
+      "ocupacion_actual": "Administrative Assistant",
+      "experiencia_años": 4,
+      "salario_actual_usd": 620,
+      "ubicacion": "Arequipa",
+      "skills_identificadas": ["Organization", "Communication", "Excel", "IT", "Customer Service"],
+      "certificaciones": ["Office Management"],
+      "educacion": "Technical Diploma - Administration",
+      "fecha_parsing": "2026-09-04"
+    },
+    {
+      "user_id": "USER_004",
+      "nombre": "Juan Silva Morales",
+      "ocupacion_actual": "Logistics Coordinator",
+      "experiencia_años": 6,
+      "salario_actual_usd": 780,
+      "ubicacion": "Callao",
+      "skills_identificadas": ["Organization", "Supply Chain Management", "Excel", "Planning"],
+      "certificaciones": ["APICS CSCP"],
+      "educacion": "Technical Diploma - Logistics",
+      "fecha_parsing": "2026-09-04"
+    },
+    {
+      "user_id": "USER_005",
+      "nombre": "Patricia López Gutiérrez",
+      "ocupacion_actual": "Data Analyst",
+      "experiencia_años": 2,
+      "salario_actual_usd": 1200,
+      "ubicacion": "Lima",
+      "skills_identificadas": ["SQL", "Excel", "Data Visualization", "Python", "Statistical Analysis"],
+      "certificaciones": ["Google Analytics Certified"],
+      "educacion": "Bachelor in Statistics",
+      "fecha_parsing": "2026-09-04"
+    }
+  ]
+}

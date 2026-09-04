@@ -1,0 +1,100 @@
+{
+  "wellness_responses": [
+    {
+      "id": "WELLNESS_001",
+      "tipo": "high_stress",
+      "confianza": "low",
+      "respuesta": "It's completely normal to feel overwhelmed during a career transition. Many professionals experience this. Let's break down your transition into smaller, manageable weekly goals. You're not alone in this journey.",
+      "accion_sugerida": "Schedule a 15-min wellness session this week",
+      "recurso": "stress-management-guide"
+    },
+    {
+      "id": "WELLNESS_002",
+      "tipo": "high_stress",
+      "confianza": "medium",
+      "respuesta": "You're doing better than you think! The stress you're feeling shows you care about your career growth. Let's focus on one skill at a time. You've overcome challenges before.",
+      "accion_sugerida": "Complete one micro-course (< 1 hour) this week",
+      "recurso": "progress-celebration"
+    },
+    {
+      "id": "WELLNESS_003",
+      "tipo": "high_stress",
+      "confianza": "high",
+      "respuesta": "Your stress level is high, but remember: you have the capability to manage this. Your confidence shows you've overcome similar situations. Let's channel this energy into learning.",
+      "accion_sugerida": "Join a peer support group with similar career changers",
+      "recurso": "peer-cohort-connection"
+    },
+    {
+      "id": "WELLNESS_004",
+      "tipo": "medium_stress",
+      "confianza": "low",
+      "respuesta": "You're progressing, and that's what matters. Low confidence is common when learning new skills. Remember: every expert was once a beginner. One step at a time.",
+      "accion_sugerida": "Choose a 'quick win' course (easy certification)",
+      "recurso": "confidence-builder"
+    },
+    {
+      "id": "WELLNESS_005",
+      "tipo": "medium_stress",
+      "confianza": "medium",
+      "respuesta": "You're on a solid path! You're managing the transition well. Keep up the momentum. Your skills are growing every day, even if you don't notice it yet.",
+      "accion_sugerida": "Share your progress with a peer or mentor",
+      "recurso": "progress-sharing"
+    },
+    {
+      "id": "WELLNESS_006",
+      "tipo": "medium_stress",
+      "confianza": "high",
+      "respuesta": "You're balancing transition stress very well! Your confidence is your strength. You're ready for the next level of learning. Consider mentoring someone else in your current skills.",
+      "accion_sugerida": "Take an advanced course or earn a new certification",
+      "recurso": "advanced-learning"
+    },
+    {
+      "id": "WELLNESS_007",
+      "tipo": "low_stress",
+      "confianza": "low",
+      "respuesta": "You're in a great mindset for learning! Even with lower confidence, you're showing great composure. Trust the process. Small consistent steps lead to big changes.",
+      "accion_sugerida": "Revisit your transition roadmap and celebrate progress",
+      "recurso": "roadmap-review"
+    },
+    {
+      "id": "WELLNESS_008",
+      "tipo": "low_stress",
+      "confianza": "medium",
+      "respuesta": "Excellent state of mind! You're calm and building confidence steadily. This is the ideal mindset for successful career transition. Keep learning at your pace.",
+      "accion_sugerida": "Apply for an internship or freelance project in your target field",
+      "recurso": "real-world-application"
+    },
+    {
+      "id": "WELLNESS_009",
+      "tipo": "low_stress",
+      "confianza": "high",
+      "respuesta": "You're in the ideal state for career transformation! Calm, confident, and learning. This is exactly the mindset that leads to successful transitions. You're ready to make the leap.",
+      "accion_sugerida": "Start applying for positions in your target occupation",
+      "recurso": "job-market-entry"
+    },
+    {
+      "id": "WELLNESS_010",
+      "tipo": "milestone_achieved",
+      "confianza": "any",
+      "respuesta": "Congratulations! You've completed a major milestone in your transition. This achievement proves you're capable of transformation. Celebrate this moment—you've earned it!",
+      "accion_sugerida": "Share your achievement with your support network",
+      "recurso": "milestone-celebration"
+    },
+    {
+      "id": "WELLNESS_011",
+      "tipo": "dropout_risk",
+      "confianza": "low",
+      "respuesta": "We've noticed you haven't engaged recently. Career transitions are challenging, but you started for a reason. Remember: progress isn't always linear. Would you like to adjust your plan to be more manageable?",
+      "accion_sugerida": "Schedule a 1-on-1 mentor session",
+      "recurso": "mentor-matching"
+    },
+    {
+      "id": "WELLNESS_012",
+      "tipo": "family_support",
+      "confianza": "any",
+      "respuesta": "It's wonderful you have family support during this transition! Share your progress with them regularly. Their encouragement can be a powerful motivator for reaching your goals.",
+      "accion_sugerida": "Set weekly check-in with family members",
+      "recurso": "family-engagement"
+    }
+  ]
+}

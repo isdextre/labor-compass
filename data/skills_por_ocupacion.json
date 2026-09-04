@@ -1,0 +1,24 @@
+{
+  "skills_mapping": {
+    "Retail Sales Associate": ["Communication", "Sales", "Customer Service", "IT", "Cash Handling", "Product Knowledge"],
+    "Data Analyst": ["SQL", "Python", "Excel", "Data Visualization", "Statistical Analysis", "Business Analysis"],
+    "Logistics Coordinator": ["Organization", "Supply Chain Management", "Excel", "Communication", "IT", "Planning"],
+    "Finance Administrator": ["Excel", "Accounting", "Attention to Detail", "IT", "Communication", "Financial Analysis"],
+    "Administrative Assistant": ["Organization", "Communication", "Excel", "IT", "Customer Service", "Documentation"],
+    "Junior Software Engineer": ["Python", "JavaScript", "Problem Solving", "Git", "SQL", "Web Development"],
+    "Healthcare Technician": ["Patient Communication", "Medical Terminology", "Attention to Detail", "Healthcare IT", "Empathy"],
+    "Manufacturing Technician": ["Machine Operation", "Quality Control", "Safety Protocols", "Problem Solving", "Mechanical Knowledge"],
+    "Sales Manager": ["Leadership", "Sales Strategy", "Communication", "Excel", "Customer Relationship", "Negotiation"],
+    "HR Specialist": ["Recruitment", "Communication", "Excel", "HR Systems", "Employee Relations", "Compliance"],
+    "Marketing Coordinator": ["Digital Marketing", "Social Media", "Content Creation", "Excel", "Communication", "Creativity"],
+    "Accountant": ["Accounting", "Excel", "Financial Analysis", "Attention to Detail", "Taxation Knowledge", "Compliance"],
+    "Database Administrator": ["SQL", "System Administration", "Security", "Problem Solving", "IT Infrastructure", "Python"],
+    "Customer Service Representative": ["Communication", "Empathy", "Problem Solving", "IT", "Product Knowledge", "Patience"],
+    "Project Manager": ["Leadership", "Planning", "Communication", "Excel", "Time Management", "Risk Management"],
+    "Electrical Technician": ["Electrical Systems", "Safety Protocols", "Problem Solving", "Technical Knowledge", "Attention to Detail"],
+    "Quality Assurance Specialist": ["Attention to Detail", "Testing", "Documentation", "Excel", "Communication", "Problem Solving"],
+    "Supply Chain Analyst": ["Excel", "Supply Chain", "Data Analysis", "Communication", "Planning", "Problem Solving"],
+    "UX/UI Designer": ["Design Thinking", "Prototyping", "Communication", "Creativity", "User Research", "Problem Solving"],
+    "Business Analyst": ["Business Analysis", "Excel", "SQL", "Communication", "Problem Solving", "Documentation"]
+  }
+}

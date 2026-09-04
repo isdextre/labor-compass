@@ -1,0 +1,25 @@
+# Transition Radar - Python Dependencies
+# =========================================
+
+# Web Framework
+Flask==3.0.0
+flask-cors==4.0.0
+
+# Data Science & ML (preparado para embeddings futuros)
+numpy==1.24.3
+scikit-learn==1.3.0
+
+# API / AI (futuro: Gemini integration)
+google-generativeai==0.3.0
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Production
+gunicorn==21.2.0
+python-dateutil==2.8.2
+
+# Development (opcional)
+pytest==7.4.0
+pytest-flask==1.2.0
