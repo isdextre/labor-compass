@@ -1,0 +1,1014 @@
+{
+  "Other": {
+    "Management & Leadership": {
+      "skill_similarity": 100.0,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 65.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 100.0,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 97.1,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Healthcare": {
+      "skill_similarity": 80.0,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Sales": {
+      "skill_similarity": 88.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 94.3,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Human Resources": {
+      "skill_similarity": 71.4,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 85.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 54.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Management & Leadership": {
+    "Other": {
+      "skill_similarity": 100.0,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 65.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 100.0,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 97.1,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Healthcare": {
+      "skill_similarity": 80.0,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Sales": {
+      "skill_similarity": 88.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 94.3,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Human Resources": {
+      "skill_similarity": 71.4,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 85.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 54.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Finance & Accounting": {
+    "Other": {
+      "skill_similarity": 65.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Management & Leadership": {
+      "skill_similarity": 65.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 65.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 62.9,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Healthcare": {
+      "skill_similarity": 64.5,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Sales": {
+      "skill_similarity": 63.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 64.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Human Resources": {
+      "skill_similarity": 60.0,
+      "common_skills": [
+        "CUST",
+        "RSCH",
+        "HR"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 65.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 50.0,
+      "common_skills": [
+        "CUST",
+        "ACCT",
+        "ADM"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Administrative & Clerical": {
+    "Other": {
+      "skill_similarity": 100.0,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Management & Leadership": {
+      "skill_similarity": 100.0,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 65.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 97.1,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Healthcare": {
+      "skill_similarity": 80.0,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Sales": {
+      "skill_similarity": 88.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 94.3,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Human Resources": {
+      "skill_similarity": 71.4,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 85.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 54.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Engineering & Development": {
+    "Other": {
+      "skill_similarity": 97.1,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Management & Leadership": {
+      "skill_similarity": 97.1,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 62.9,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 97.1,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Healthcare": {
+      "skill_similarity": 82.4,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Sales": {
+      "skill_similarity": 85.7,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 91.4,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Human Resources": {
+      "skill_similarity": 73.5,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 82.9,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 55.9,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Healthcare": {
+    "Other": {
+      "skill_similarity": 80.0,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Management & Leadership": {
+      "skill_similarity": 80.0,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 64.5,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 80.0,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 82.4,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Sales": {
+      "skill_similarity": 73.5,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 74.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Human Resources": {
+      "skill_similarity": 71.0,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 81.2,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 62.1,
+      "common_skills": [
+        "ENG",
+        "CUST",
+        "ACCT"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Sales": {
+    "Other": {
+      "skill_similarity": 88.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Management & Leadership": {
+      "skill_similarity": 88.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 63.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 88.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 85.7,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Healthcare": {
+      "skill_similarity": 73.5,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 82.9,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Human Resources": {
+      "skill_similarity": 69.7,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 90.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 61.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Data & Analytics": {
+    "Other": {
+      "skill_similarity": 94.3,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Management & Leadership": {
+      "skill_similarity": 94.3,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 64.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 94.3,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 91.4,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Healthcare": {
+      "skill_similarity": 74.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Sales": {
+      "skill_similarity": 82.9,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Human Resources": {
+      "skill_similarity": 65.7,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 80.0,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 52.9,
+      "common_skills": [
+        "ENG",
+        "CUST",
+        "ACCT"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Human Resources": {
+    "Other": {
+      "skill_similarity": 71.4,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Management & Leadership": {
+      "skill_similarity": 71.4,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 60.0,
+      "common_skills": [
+        "CUST",
+        "RSCH",
+        "HR"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 71.4,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 73.5,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Healthcare": {
+      "skill_similarity": 71.0,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Sales": {
+      "skill_similarity": 69.7,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 65.7,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 71.9,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 57.1,
+      "common_skills": [
+        "ENG",
+        "CUST",
+        "ADM"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Marketing & Communications": {
+    "Other": {
+      "skill_similarity": 85.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Management & Leadership": {
+      "skill_similarity": 85.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 65.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "MGMT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 85.7,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 82.9,
+      "common_skills": [
+        "ACCT",
+        "SUPL",
+        "MGMT"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Healthcare": {
+      "skill_similarity": 81.2,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Sales": {
+      "skill_similarity": 90.6,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 80.0,
+      "common_skills": [
+        "ADVR",
+        "ACCT",
+        "SUPL"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Human Resources": {
+      "skill_similarity": 71.9,
+      "common_skills": [
+        "MGMT",
+        "MNFC",
+        "DSGN"
+      ],
+      "transition_difficulty": "Easy"
+    },
+    "Retail & Customer Service": {
+      "skill_similarity": 58.1,
+      "common_skills": [
+        "ENG",
+        "CUST",
+        "ACCT"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  },
+  "Retail & Customer Service": {
+    "Other": {
+      "skill_similarity": 54.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Management & Leadership": {
+      "skill_similarity": 54.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Finance & Accounting": {
+      "skill_similarity": 50.0,
+      "common_skills": [
+        "CUST",
+        "ACCT",
+        "ADM"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Administrative & Clerical": {
+      "skill_similarity": 54.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Engineering & Development": {
+      "skill_similarity": 55.9,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Healthcare": {
+      "skill_similarity": 62.1,
+      "common_skills": [
+        "ENG",
+        "CUST",
+        "ACCT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Sales": {
+      "skill_similarity": 61.3,
+      "common_skills": [
+        "ACCT",
+        "MGMT",
+        "EDU"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Data & Analytics": {
+      "skill_similarity": 52.9,
+      "common_skills": [
+        "ENG",
+        "CUST",
+        "ACCT"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Human Resources": {
+      "skill_similarity": 57.1,
+      "common_skills": [
+        "ENG",
+        "CUST",
+        "ADM"
+      ],
+      "transition_difficulty": "Moderate"
+    },
+    "Marketing & Communications": {
+      "skill_similarity": 58.1,
+      "common_skills": [
+        "ENG",
+        "CUST",
+        "ACCT"
+      ],
+      "transition_difficulty": "Moderate"
+    }
+  }
+}

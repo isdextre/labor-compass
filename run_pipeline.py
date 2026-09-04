@@ -1,61 +1,50 @@
 #!/usr/bin/env python3
 """
-Script maestro para ejecutar el pipeline completo de extracción INEI
-Uso: python3 run_pipeline.py [--download] [--force]
+Script maestro para ejecutar pipelines completos de extracción
+Uso:
+    python3 run_pipeline.py              # Solo INEI
+    python3 run_pipeline.py --future-of-work    # Solo Future of Work
+    python3 run_pipeline.py --all         # INEI + Future of Work
 """
 
 import sys
 import argparse
 from pathlib import Path
 from parse_all_inei import INEIPipeline
-from download_inei import INEIDownloader
+from extract_future_of_work import FutureOfWorkExtractor
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description='Pipeline de extracción de datos INEI'
-    )
-    parser.add_argument(
-        '--force',
-        action='store_true',
-        help='Forzar re-procesamiento incluso si archivos procesados existen'
-    )
-    parser.add_argument(
-        '--skip-download',
-        action='store_true',
-        help='Saltar descarga y usar archivos locales existentes'
-    )
-    args = parser.parse_args()
-
+def run_inei_pipeline():
+    """Ejecuta pipeline INEI"""
     print("\n" + "="*70)
     print("🔧 WORKFORCE SHIFT - INEI DATA PIPELINE")
     print("="*70)
 
-    # Descargar/actualizar archivos INEI
-    if not args.skip_download:
-        downloader = INEIDownloader()
-        if not downloader.download_all():
-            print("\n⚠️  Algunos archivos no se descargaron. Continuando con archivos locales...")
-    else:
-        print("\n📂 Usando archivos locales existentes (--skip-download)...")
-
-    # Renombrar archivos si es necesario
+    # Verificar archivos raw
     dir_raw = Path('data/raw')
-    file_mappings = [
-        ('ing-cuad-5_4_1.xlsx', 'ingcuad5_4_1.xlsx'),
-        ('lima-cuad-3_5.xlsx', 'limacuad3_5.xlsx'),
-        ('ing-cuad-1_3_1.xlsx', 'ingcuad1_3_1.xlsx')
+    required_files = [
+        'ingcuad5_4_1.xlsx',
+        'limacuad3_5.xlsx',
+        'ingcuad1_3_1.xlsx'
     ]
 
-    for old_name, new_name in file_mappings:
-        old_path = dir_raw / old_name
-        new_path = dir_raw / new_name
-        if old_path.exists() and not new_path.exists():
-            old_path.rename(new_path)
-            print(f"   📝 Renombrado: {old_name} → {new_name}")
+    print("\n📂 Verificando archivos de entrada...")
+    missing = []
+    for file in required_files:
+        filepath = dir_raw / file
+        if filepath.exists():
+            print(f"   ✓ {file}")
+        else:
+            print(f"   ✗ {file} (no encontrado)")
+            missing.append(file)
 
-    # Ejecutar pipeline
-    print("\n🚀 Iniciando extracción...")
+    if missing:
+        print(f"\n❌ Faltan {len(missing)} archivo(s). Descárgalos primero desde:")
+        print("   https://m.inei.gob.pe/media/MenuRecursivo/indices_tematicos/")
+        return False
+
+    # Ejecutar pipeline INEI
+    print("\n🚀 Iniciando extracción INEI...")
     pipeline = INEIPipeline()
 
     files_map = {
@@ -67,11 +56,11 @@ def main():
     try:
         pipeline.ejecutar(files_map)
     except Exception as e:
-        print(f"\n❌ Error durante la ejecución: {str(e)}")
-        return 1
+        print(f"\n❌ Error durante la ejecución INEI: {str(e)}")
+        return False
 
-    # Resumen
-    print("\n📊 RESUMEN DE DATOS EXTRAÍDOS")
+    # Resumen INEI
+    print("\n📊 RESUMEN - INEI")
     print("="*70)
 
     import json
@@ -79,18 +68,116 @@ def main():
     dir_processed = Path('data/processed')
     total_registros = 0
 
-    for file in dir_processed.glob('*.json'):
-        if file.name == 'inei_consolidado.json':
-            continue
-        with open(file, encoding='utf-8') as f:
+    for file in dir_processed.glob('inei_*.json'):
+        with open(file) as f:
             data = json.load(f)
             total_registros += len(data)
             print(f"   📄 {file.name}: {len(data)} registros")
 
-    print(f"\n   ✅ Total: {total_registros} registros extraídos")
+    print(f"\n   ✅ Total INEI: {total_registros} registros")
     print(f"   📁 Guardados en: {dir_processed.absolute()}")
 
-    return 0
+    return True
+
+
+def run_future_of_work_pipeline():
+    """Ejecuta pipeline Future of Work"""
+    print("\n" + "="*70)
+    print("🚀 WORKFORCE SHIFT - FUTURE OF WORK PIPELINE (Kaggle LinkedIn)")
+    print("="*70)
+
+    # Verificar archivos Kaggle
+    dir_raw = Path('data/raw')
+    required_kaggle = ['job_postings.csv', 'job_skills.csv']
+
+    print("\n📂 Verificando archivos Kaggle...")
+    missing = []
+    for file in required_kaggle:
+        filepath = dir_raw / file
+        if filepath.exists():
+            print(f"   ✓ {file}")
+        else:
+            print(f"   ⚠️  {file} (opcional)")
+            missing.append(file)
+
+    if len(missing) == len(required_kaggle):
+        print(f"\n❌ No se encontraron datos de Kaggle.")
+        print("   Descarga desde: https://www.kaggle.com/datasets/...")
+        return False
+
+    # Ejecutar extractor Future of Work
+    print("\n🚀 Iniciando extracción Future of Work...")
+    extractor = FutureOfWorkExtractor(raw_dir='data/raw', output_dir='data/processed')
+
+    try:
+        success = extractor.ejecutar()
+        return success
+    except Exception as e:
+        print(f"\n❌ Error durante la ejecución Future of Work: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='Pipeline maestro para extracción de datos Workforce Shift'
+    )
+    parser.add_argument(
+        '--all',
+        action='store_true',
+        help='Ejecutar INEI + Future of Work'
+    )
+    parser.add_argument(
+        '--future-of-work',
+        action='store_true',
+        help='Solo ejecutar Future of Work (Kaggle LinkedIn)'
+    )
+    parser.add_argument(
+        '--inei',
+        action='store_true',
+        help='Solo ejecutar INEI (default si no especifica nada)'
+    )
+
+    args = parser.parse_args()
+
+    # Lógica de decisión
+    run_inei = not args.future_of_work  # Default: run INEI unless --future-of-work specified
+    run_future = args.future_of_work or args.all
+
+    if args.all:
+        run_inei = True
+        run_future = True
+
+    if args.inei:
+        run_inei = True
+        run_future = False
+
+    # Ejecutar
+    results = {}
+
+    if run_inei:
+        results['inei'] = run_inei_pipeline()
+
+    if run_future:
+        results['future_of_work'] = run_future_of_work_pipeline()
+
+    # Resumen final
+    print("\n" + "="*70)
+    print("📊 RESUMEN FINAL")
+    print("="*70)
+
+    for pipeline, success in results.items():
+        status = "✅ OK" if success else "❌ FAILED"
+        print(f"   {pipeline:20} {status}")
+
+    all_success = all(results.values())
+    if all_success:
+        print("\n🎉 Todos los pipelines completados exitosamente!")
+        return 0
+    else:
+        print("\n⚠️  Algunos pipelines tuvieron errores.")
+        return 1
 
 
 if __name__ == '__main__':

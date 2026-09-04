@@ -1,0 +1,209 @@
+{
+  "by_occupation": {
+    "Other": {
+      "position_count": 5243,
+      "growth_indicator": "high",
+      "remote_adoption_rate": 0.097,
+      "salary_premium_senior_to_entry": 603.2,
+      "top_required_skills": [
+        "MGMT",
+        "MNFC",
+        "IT",
+        "OTHR",
+        "HCPR"
+      ],
+      "seniority_distribution": {
+        "Mid-Level": 4494,
+        "Entry-Level": 580,
+        "Senior": 169
+      }
+    },
+    "Management & Leadership": {
+      "position_count": 3760,
+      "growth_indicator": "high",
+      "remote_adoption_rate": 0.164,
+      "salary_premium_senior_to_entry": 739.8,
+      "top_required_skills": [
+        "SALE",
+        "BD",
+        "IT",
+        "MGMT",
+        "PRJM"
+      ],
+      "seniority_distribution": {
+        "Senior": 3502,
+        "Entry-Level": 151,
+        "Mid-Level": 107
+      }
+    },
+    "Finance & Accounting": {
+      "position_count": 353,
+      "growth_indicator": "medium",
+      "remote_adoption_rate": 0.11,
+      "salary_premium_senior_to_entry": null,
+      "top_required_skills": [
+        "ACCT",
+        "FIN",
+        "IT",
+        "ANLS",
+        "SALE"
+      ],
+      "seniority_distribution": {
+        "Mid-Level": 223,
+        "Senior": 85,
+        "Entry-Level": 45
+      }
+    },
+    "Administrative & Clerical": {
+      "position_count": 1113,
+      "growth_indicator": "high",
+      "remote_adoption_rate": 0.084,
+      "salary_premium_senior_to_entry": null,
+      "top_required_skills": [
+        "ADM",
+        "IT",
+        "HCPR",
+        "OTHR",
+        "MGMT"
+      ],
+      "seniority_distribution": {
+        "Mid-Level": 754,
+        "Entry-Level": 341,
+        "Senior": 18
+      }
+    },
+    "Engineering & Development": {
+      "position_count": 2234,
+      "growth_indicator": "high",
+      "remote_adoption_rate": 0.242,
+      "salary_premium_senior_to_entry": 868656.8,
+      "top_required_skills": [
+        "IT",
+        "ENG",
+        "MNFC",
+        "MGMT",
+        "DSGN"
+      ],
+      "seniority_distribution": {
+        "Mid-Level": 1590,
+        "Senior": 548,
+        "Entry-Level": 96
+      }
+    },
+    "Healthcare": {
+      "position_count": 593,
+      "growth_indicator": "high",
+      "remote_adoption_rate": 0.079,
+      "salary_premium_senior_to_entry": null,
+      "top_required_skills": [
+        "HCPR",
+        "OTHR",
+        "MGMT",
+        "MNFC",
+        "IT"
+      ],
+      "seniority_distribution": {
+        "Mid-Level": 572,
+        "Entry-Level": 14,
+        "Senior": 7
+      }
+    },
+    "Sales": {
+      "position_count": 1086,
+      "growth_indicator": "high",
+      "remote_adoption_rate": 0.199,
+      "salary_premium_senior_to_entry": null,
+      "top_required_skills": [
+        "SALE",
+        "BD",
+        "OTHR",
+        "CUST",
+        "IT"
+      ],
+      "seniority_distribution": {
+        "Mid-Level": 785,
+        "Entry-Level": 286,
+        "Senior": 15
+      }
+    },
+    "Data & Analytics": {
+      "position_count": 913,
+      "growth_indicator": "high",
+      "remote_adoption_rate": 0.231,
+      "salary_premium_senior_to_entry": null,
+      "top_required_skills": [
+        "IT",
+        "ANLS",
+        "FIN",
+        "RSCH",
+        "SALE"
+      ],
+      "seniority_distribution": {
+        "Entry-Level": 737,
+        "Mid-Level": 151,
+        "Senior": 25
+      }
+    },
+    "Human Resources": {
+      "position_count": 235,
+      "growth_indicator": "medium",
+      "remote_adoption_rate": 0.111,
+      "salary_premium_senior_to_entry": 171.7,
+      "top_required_skills": [
+        "HR",
+        "HCPR",
+        "SALE",
+        "IT",
+        "GENB"
+      ],
+      "seniority_distribution": {
+        "Mid-Level": 193,
+        "Entry-Level": 29,
+        "Senior": 13
+      }
+    },
+    "Marketing & Communications": {
+      "position_count": 168,
+      "growth_indicator": "low",
+      "remote_adoption_rate": 0.232,
+      "salary_premium_senior_to_entry": null,
+      "top_required_skills": [
+        "MRKT",
+        "WRT",
+        "PR",
+        "SALE",
+        "BD"
+      ],
+      "seniority_distribution": {
+        "Mid-Level": 134,
+        "Entry-Level": 29,
+        "Senior": 5
+      }
+    },
+    "Retail & Customer Service": {
+      "position_count": 188,
+      "growth_indicator": "low",
+      "remote_adoption_rate": 0.027,
+      "salary_premium_senior_to_entry": null,
+      "top_required_skills": [
+        "SALE",
+        "BD",
+        "OTHR",
+        "MGMT",
+        "CUST"
+      ],
+      "seniority_distribution": {
+        "Mid-Level": 146,
+        "Entry-Level": 42
+      }
+    }
+  },
+  "metadata": {
+    "total_positions": 15886,
+    "total_occupations": 11,
+    "data_quality": {
+      "salary_coverage": "6.2%",
+      "remote_allowed_coverage": "14.7%"
+    }
+  }
+}

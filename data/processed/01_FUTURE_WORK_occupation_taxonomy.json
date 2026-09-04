@@ -1,0 +1,243 @@
+{
+  "Other": {
+    "job_count": 5243,
+    "avg_salary": 12573.899733924613,
+    "seniority_distribution": {
+      "Mid-Level": 4494,
+      "Entry-Level": 580,
+      "Senior": 169
+    },
+    "remote_friendly": 0.09650963189013924,
+    "top_titles": {
+      "Call Center Support Rep": 38,
+      "Block Advisor - Remote Tax Professional": 29,
+      "General Superintendent, Mission Critical - Traveling": 29,
+      "Maintenance Technician": 27,
+      "Warehouse Associate": 21
+    },
+    "sample_positions": [
+      "Licensed Insurance Agent",
+      "Office Associate",
+      "Company Owner"
+    ]
+  },
+  "Management & Leadership": {
+    "job_count": 3760,
+    "avg_salary": 110749.25357142856,
+    "seniority_distribution": {
+      "Senior": 3502,
+      "Entry-Level": 151,
+      "Mid-Level": 107
+    },
+    "remote_friendly": 0.16382978723404254,
+    "top_titles": {
+      "Sales Director [Owner/Operator]": 83,
+      "Sales Director {Owner/Operator}": 54,
+      "Project Manager": 40,
+      "Sales Manager": 34,
+      "Sales Director {Owner/Operator} ": 24
+    },
+    "sample_positions": [
+      "Sales Manager",
+      "Business Manager",
+      "Education Manager"
+    ]
+  },
+  "Finance & Accounting": {
+    "job_count": 353,
+    "avg_salary": 52904.28,
+    "seniority_distribution": {
+      "Mid-Level": 223,
+      "Senior": 85,
+      "Entry-Level": 45
+    },
+    "remote_friendly": 0.11048158640226628,
+    "top_titles": {
+      "Staff Accountant": 40,
+      "Senior Accountant": 37,
+      "Controller": 29,
+      "Accountant": 13,
+      "Financial Controller": 7
+    },
+    "sample_positions": [
+      "Model Risk Auditor",
+      "Accountant",
+      "Chief Finance Officer"
+    ]
+  },
+  "Administrative & Clerical": {
+    "job_count": 1113,
+    "avg_salary": 22948.765058823534,
+    "seniority_distribution": {
+      "Mid-Level": 754,
+      "Entry-Level": 341,
+      "Senior": 18
+    },
+    "remote_friendly": 0.08445642407906559,
+    "top_titles": {
+      "Administrative Assistant": 40,
+      "Executive Assistant": 37,
+      "IT Operations ServiceNow Admin": 19,
+      "Medical Assistant": 16,
+      "System Administrator": 14
+    },
+    "sample_positions": [
+      "NY Studio Assistant",
+      "Administrative Assistant",
+      "Locum Critical Care Physician Assistant job in Atlanta, GA - Make $110/hr - $125/hr"
+    ]
+  },
+  "Engineering & Development": {
+    "job_count": 2234,
+    "avg_salary": 134671.22222222222,
+    "seniority_distribution": {
+      "Mid-Level": 1590,
+      "Senior": 548,
+      "Entry-Level": 96
+    },
+    "remote_friendly": 0.2421665174574754,
+    "top_titles": {
+      "Software Engineer": 28,
+      "Sr. Engineering Manager - Opportunity for Working Remotely": 20,
+      "Electrical Engineer": 17,
+      "Project Engineer": 15,
+      "Senior Data Engineer": 15
+    },
+    "sample_positions": [
+      "Civil Engineer",
+      "Lead Software Engineer",
+      "Senior Programmer/Analyst"
+    ]
+  },
+  "Healthcare": {
+    "job_count": 593,
+    "avg_salary": 15257.765454545455,
+    "seniority_distribution": {
+      "Mid-Level": 572,
+      "Entry-Level": 14,
+      "Senior": 7
+    },
+    "remote_friendly": 0.07925801011804384,
+    "top_titles": {
+      "Physical Therapist": 16,
+      "Registered Nurse": 14,
+      "Mental Health Therapist": 11,
+      "Nurse Practitioner": 7,
+      "Mental Health Professional": 6
+    },
+    "sample_positions": [
+      "Registered Nurse (RN) Vaccinator",
+      "Mental Health Professional",
+      "Remote Licensed Health Insurance Agent"
+    ]
+  },
+  "Sales": {
+    "job_count": 1086,
+    "avg_salary": 34524.33101265823,
+    "seniority_distribution": {
+      "Mid-Level": 785,
+      "Entry-Level": 286,
+      "Senior": 15
+    },
+    "remote_friendly": 0.19889502762430938,
+    "top_titles": {
+      "Sales Associate": 64,
+      "Retail Sales Associate": 60,
+      "Customer Service Representative": 39,
+      "Account Executive": 34,
+      "Customer Service Representative-Farmers Direct Services P&C Licensed (Kansas/Missouri)": 23
+    },
+    "sample_positions": [
+      "REMOTE STEEL BUILDING SALES MAKE $1,000 TO $3000 TO $10,000 PER ORDER!",
+      "Health Information Representative II",
+      "Flooring Sales Associate"
+    ]
+  },
+  "Data & Analytics": {
+    "job_count": 913,
+    "avg_salary": 51175.1208888889,
+    "seniority_distribution": {
+      "Entry-Level": 737,
+      "Mid-Level": 151,
+      "Senior": 25
+    },
+    "remote_friendly": 0.23110624315443593,
+    "top_titles": {
+      "Business Analyst": 23,
+      "Search Engine Analyst": 17,
+      "Senior Financial Analyst": 16,
+      "Senior Compensation Analyst": 16,
+      "Senior Data Scientist": 14
+    },
+    "sample_positions": [
+      "Tax Analyst",
+      "Quality Analyst",
+      "Staff Scientist (Cancer Biology)"
+    ]
+  },
+  "Human Resources": {
+    "job_count": 235,
+    "avg_salary": 7082.75,
+    "seniority_distribution": {
+      "Mid-Level": 193,
+      "Entry-Level": 29,
+      "Senior": 13
+    },
+    "remote_friendly": 0.11063829787234042,
+    "top_titles": {
+      "Recruiter": 14,
+      "Human Resources Generalist": 11,
+      "HR Generalist": 8,
+      "Human Resources Business Partner": 7,
+      "Healthcare Recruiter": 6
+    },
+    "sample_positions": [
+      "Contract Bilingual Recruiter",
+      "Human Resources Intern (Paid)",
+      "Human Resources Generalist"
+    ]
+  },
+  "Marketing & Communications": {
+    "job_count": 168,
+    "avg_salary": 27331.91888888889,
+    "seniority_distribution": {
+      "Mid-Level": 134,
+      "Entry-Level": 29,
+      "Senior": 5
+    },
+    "remote_friendly": 0.23214285714285715,
+    "top_titles": {
+      "Scoring Content Specialist": 36,
+      "Social Media Marketing Intern": 5,
+      "Digital Marketing Specialist": 5,
+      "Brand Ambassador": 4,
+      "Marketing Specialist": 4
+    },
+    "sample_positions": [
+      "Brand Ambassador",
+      "Wedding Content Creator",
+      "Senior Communications Strategist"
+    ]
+  },
+  "Retail & Customer Service": {
+    "job_count": 188,
+    "avg_salary": 15.040624999999999,
+    "seniority_distribution": {
+      "Mid-Level": 146,
+      "Entry-Level": 42
+    },
+    "remote_friendly": 0.026595744680851064,
+    "top_titles": {
+      "Store Hourly": 18,
+      "Cashier": 11,
+      "Part-time Nabisco Retail Merchandiser/Stocker": 9,
+      "Cashier - Service Associate PT": 8,
+      "Store Employee": 8
+    },
+    "sample_positions": [
+      "Customer Service Support Specialist",
+      "Retail Makeup Artist-Rochester",
+      "GC Retail Lessons Associate Store 119"
+    ]
+  }
+}

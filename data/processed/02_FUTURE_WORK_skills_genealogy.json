@@ -1,0 +1,174 @@
+{
+  "total_unique_skills": 35,
+  "skill_frequencies": {
+    "IT": 3841,
+    "SALE": 2904,
+    "MGMT": 2467,
+    "MNFC": 2195,
+    "BD": 1993,
+    "ENG": 1974,
+    "OTHR": 1574,
+    "HCPR": 1346,
+    "FIN": 1227,
+    "ACCT": 813,
+    "MRKT": 802,
+    "PRJM": 630,
+    "ADM": 589,
+    "ANLS": 479,
+    "RSCH": 430,
+    "HR": 421,
+    "CUST": 393,
+    "DSGN": 358,
+    "EDU": 331,
+    "ART": 310,
+    "LGL": 286,
+    "CNSL": 284,
+    "GENB": 245,
+    "PR": 237,
+    "WRT": 233
+  },
+  "skill_dependencies": {
+    "MGMT": {
+      "MNFC": 1958,
+      "SALE": 117,
+      "IT": 93,
+      "OTHR": 83,
+      "PRJM": 46
+    },
+    "PRJM": {
+      "IT": 342,
+      "ENG": 79,
+      "MGMT": 46,
+      "STRA": 45,
+      "CNSL": 30
+    },
+    "IT": {
+      "ENG": 1327,
+      "PRJM": 342,
+      "ANLS": 338,
+      "RSCH": 296,
+      "ART": 247
+    },
+    "CUST": {
+      "SALE": 130,
+      "ADM": 47,
+      "GENB": 45,
+      "BD": 45,
+      "OTHR": 33
+    },
+    "SALE": {
+      "BD": 1685,
+      "FIN": 403,
+      "MRKT": 294,
+      "ADVR": 180,
+      "CUST": 130
+    },
+    "ANLS": {
+      "IT": 338,
+      "RSCH": 305,
+      "FIN": 45,
+      "STRA": 32,
+      "ACCT": 25
+    },
+    "ADM": {
+      "CUST": 47,
+      "MGMT": 36,
+      "HCPR": 35,
+      "ACCT": 29,
+      "GENB": 27
+    },
+    "BD": {
+      "SALE": 1685,
+      "ADVR": 176,
+      "ENG": 118,
+      "IT": 116,
+      "EDU": 86
+    },
+    "ENG": {
+      "IT": 1327,
+      "BD": 118,
+      "MNFC": 88,
+      "CNSL": 84,
+      "PRJM": 79
+    },
+    "OTHR": {
+      "IT": 129,
+      "MGMT": 83,
+      "GENB": 34,
+      "HCPR": 34,
+      "CUST": 33
+    },
+    "STRA": {
+      "PRJM": 45,
+      "GENB": 33,
+      "CNSL": 32,
+      "ANLS": 32,
+      "MGMT": 28
+    },
+    "MRKT": {
+      "SALE": 294,
+      "PR": 214,
+      "WRT": 197,
+      "PRDM": 92,
+      "BD": 78
+    },
+    "MNFC": {
+      "MGMT": 1958,
+      "ENG": 88,
+      "PROD": 39,
+      "OTHR": 25,
+      "SUPL": 21
+    },
+    "GENB": {
+      "SALE": 57,
+      "CUST": 45,
+      "MGMT": 40,
+      "OTHR": 34,
+      "STRA": 33
+    },
+    "SUPL": {
+      "PRCH": 78,
+      "DIST": 32,
+      "MGMT": 25,
+      "MNFC": 21,
+      "ENG": 13
+    },
+    "RSCH": {
+      "ANLS": 305,
+      "IT": 296,
+      "SCI": 42,
+      "ENG": 36,
+      "EDU": 26
+    },
+    "CNSL": {
+      "IT": 97,
+      "ENG": 84,
+      "SALE": 65,
+      "STRA": 32,
+      "PRJM": 30
+    },
+    "LGL": {
+      "ADM": 15,
+      "CNSL": 11,
+      "STRA": 9,
+      "ACCT": 8,
+      "GENB": 7
+    },
+    "HR": {
+      "BD": 63,
+      "EDU": 56,
+      "ADM": 26,
+      "IT": 13,
+      "CUST": 12
+    },
+    "ACCT": {
+      "FIN": 637,
+      "ADM": 29,
+      "ANLS": 25,
+      "MGMT": 17,
+      "CUST": 11
+    }
+  },
+  "jobs_with_multiple_skills": 9631,
+  "avg_skills_per_job": 1.78
+}

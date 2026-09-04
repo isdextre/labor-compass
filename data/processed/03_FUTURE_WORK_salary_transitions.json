@@ -1,0 +1,216 @@
+{
+  "Human Resources": {
+    "current_avg_salary": 7082.75,
+    "salary_range": {
+      "min": NaN,
+      "median": 17.3,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 17.3,
+        "count": 2
+      },
+      "Mid-Level": {
+        "avg_salary": 8594.653571428571,
+        "count": 14
+      },
+      "Senior": {
+        "avg_salary": 47.0,
+        "count": 1
+      }
+    }
+  },
+  "Other": {
+    "current_avg_salary": 12573.899733924613,
+    "salary_range": {
+      "min": NaN,
+      "median": 21.58,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 7109.879482758621,
+        "count": 58
+      },
+      "Mid-Level": {
+        "avg_salary": 13286.876964285713,
+        "count": 392
+      },
+      "Senior": {
+        "avg_salary": 50000.0,
+        "count": 1
+      }
+    }
+  },
+  "Sales": {
+    "current_avg_salary": 34524.33101265823,
+    "salary_range": {
+      "min": NaN,
+      "median": 30.0,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 812.875,
+        "count": 6
+      },
+      "Mid-Level": {
+        "avg_salary": 37295.13561643835,
+        "count": 73
+      }
+    }
+  },
+  "Administrative & Clerical": {
+    "current_avg_salary": 22948.765058823534,
+    "salary_range": {
+      "min": NaN,
+      "median": 22.75,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 12914.5108,
+        "count": 25
+      },
+      "Mid-Level": {
+        "avg_salary": 27129.704333333335,
+        "count": 60
+      }
+    }
+  },
+  "Data & Analytics": {
+    "current_avg_salary": 51175.1208888889,
+    "salary_range": {
+      "min": NaN,
+      "median": 50.0,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 53724.15097560975,
+        "count": 41
+      },
+      "Mid-Level": {
+        "avg_salary": 25047.5625,
+        "count": 4
+      }
+    }
+  },
+  "Engineering & Development": {
+    "current_avg_salary": 134671.22222222222,
+    "salary_range": {
+      "min": NaN,
+      "median": 89300.0,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 18.5,
+        "count": 1
+      },
+      "Mid-Level": {
+        "avg_salary": 134818.18333333332,
+        "count": 30
+      },
+      "Senior": {
+        "avg_salary": 160720.0,
+        "count": 5
+      }
+    }
+  },
+  "Management & Leadership": {
+    "current_avg_salary": 110749.25357142856,
+    "salary_range": {
+      "min": NaN,
+      "median": 65239.2,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 14204.761666666667,
+        "count": 6
+      },
+      "Mid-Level": {
+        "avg_salary": 38918.74153846154,
+        "count": 13
+      },
+      "Senior": {
+        "avg_salary": 119297.63553672317,
+        "count": 177
+      }
+    }
+  },
+  "Healthcare": {
+    "current_avg_salary": 15257.765454545455,
+    "salary_range": {
+      "min": NaN,
+      "median": 48.5,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 70000.0,
+        "count": 1
+      },
+      "Mid-Level": {
+        "avg_salary": 12650.992380952383,
+        "count": 21
+      }
+    }
+  },
+  "Marketing & Communications": {
+    "current_avg_salary": 27331.91888888889,
+    "salary_range": {
+      "min": NaN,
+      "median": 22.27,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 21.0,
+        "count": 2
+      },
+      "Mid-Level": {
+        "avg_salary": 35135.03857142857,
+        "count": 7
+      }
+    }
+  },
+  "Retail & Customer Service": {
+    "current_avg_salary": 15.040624999999999,
+    "salary_range": {
+      "min": NaN,
+      "median": 15.5,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 15.3,
+        "count": 10
+      },
+      "Mid-Level": {
+        "avg_salary": 14.922727272727274,
+        "count": 22
+      }
+    }
+  },
+  "Finance & Accounting": {
+    "current_avg_salary": 52904.28,
+    "salary_range": {
+      "min": NaN,
+      "median": 45000.0,
+      "max": NaN
+    },
+    "by_seniority": {
+      "Entry-Level": {
+        "avg_salary": 24021.78,
+        "count": 5
+      },
+      "Mid-Level": {
+        "avg_salary": 89007.405,
+        "count": 4
+      }
+    }
+  }
+}

@@ -1,0 +1,371 @@
+{
+  "Other": {
+    "occupation": "Other",
+    "total_positions": 5243,
+    "seniority_distribution": {
+      "Mid-Level": 4494,
+      "Entry-Level": 580,
+      "Senior": 169
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 58,
+        "avg_salary": 7109.879482758621,
+        "example_titles": [
+          "Fall Undergraduate Intern, Insights",
+          "MBA Fall Intern, Insights",
+          "Family Law Associate - Remote"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 392,
+        "avg_salary": 13286.876964285713,
+        "example_titles": [
+          "After School Academic Tutor",
+          "oracle SCM TECHNO CLOUD FUNCTIONAL",
+          "Estimator"
+        ]
+      },
+      {
+        "level": "Senior",
+        "position_count": 1,
+        "avg_salary": 50000.0,
+        "example_titles": [
+          "Senior Media Buyer"
+        ]
+      }
+    ]
+  },
+  "Management & Leadership": {
+    "occupation": "Management & Leadership",
+    "total_positions": 3760,
+    "seniority_distribution": {
+      "Senior": 3502,
+      "Entry-Level": 151,
+      "Mid-Level": 107
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 6,
+        "avg_salary": 14204.761666666667,
+        "example_titles": [
+          "Virtual Sales Associate Account Manager, Women's Health",
+          "Supply Chain Managers (FORMER INTERN/CO-0P\u2019s- TO FULLTIME)",
+          "DGA Associate Director - perdiem"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 13,
+        "avg_salary": 38918.74153846154,
+        "example_titles": [
+          "Seasonal Tractor Trailer Driver",
+          "Warehouse Order Selector",
+          "Metal Additive Manufacturing - Postdoctoral Researcher"
+        ]
+      },
+      {
+        "level": "Senior",
+        "position_count": 177,
+        "avg_salary": 119297.63553672317,
+        "example_titles": [
+          "Project Manager - Pepco",
+          "Case Manager",
+          "Community Association Manager"
+        ]
+      }
+    ]
+  },
+  "Finance & Accounting": {
+    "occupation": "Finance & Accounting",
+    "total_positions": 353,
+    "seniority_distribution": {
+      "Mid-Level": 223,
+      "Senior": 85,
+      "Entry-Level": 45
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 5,
+        "avg_salary": 24021.78,
+        "example_titles": [
+          "Associate, Digital Finance",
+          "Audit Intern - Winter 2025",
+          "Audit Intern - Winter 2024"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 4,
+        "avg_salary": 89007.405,
+        "example_titles": [
+          "Staff Accountant",
+          "Controller",
+          "Corporate Audit Services (Finance Audit) Management Trainee 2024"
+        ]
+      }
+    ]
+  },
+  "Administrative & Clerical": {
+    "occupation": "Administrative & Clerical",
+    "total_positions": 1113,
+    "seniority_distribution": {
+      "Mid-Level": 754,
+      "Entry-Level": 341,
+      "Senior": 18
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 25,
+        "avg_salary": 12914.5108,
+        "example_titles": [
+          "Agent Services Coordinator",
+          "Tax Preparer/VITA Site Coordinator - Rockaway",
+          "Administrative Assistant - recruitment coordinator"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 60,
+        "avg_salary": 27129.704333333335,
+        "example_titles": [
+          "Executive Assistant - Global Programs - Non-profit - US Eastern Time Zone Candidates Only",
+          "Executive Assistant to Chief Executive Officer",
+          "Nurse Practitioner/Physician Assistant - Hospitalist"
+        ]
+      }
+    ]
+  },
+  "Engineering & Development": {
+    "occupation": "Engineering & Development",
+    "total_positions": 2234,
+    "seniority_distribution": {
+      "Mid-Level": 1590,
+      "Senior": 548,
+      "Entry-Level": 96
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 1,
+        "avg_salary": 18.5,
+        "example_titles": [
+          "Entry Level General Maintenance Engineer (Part-Time) - Royal Palms Resort "
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 30,
+        "avg_salary": 134818.18333333332,
+        "example_titles": [
+          "Application Engineer",
+          "AEM Developer",
+          "IAM Solution Architect"
+        ]
+      },
+      {
+        "level": "Senior",
+        "position_count": 5,
+        "avg_salary": 160720.0,
+        "example_titles": [
+          "Senior Security Engineer",
+          "Senior Equipment Engineer",
+          "Director of Engineering"
+        ]
+      }
+    ]
+  },
+  "Healthcare": {
+    "occupation": "Healthcare",
+    "total_positions": 593,
+    "seniority_distribution": {
+      "Mid-Level": 572,
+      "Entry-Level": 14,
+      "Senior": 7
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 1,
+        "avg_salary": 70000.0,
+        "example_titles": [
+          "2024 Life & Health Facultative Underwriting Associate"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 21,
+        "avg_salary": 12650.992380952383,
+        "example_titles": [
+          "Mental Health: Outpatient Clinical Therapist (MSW or LPC)",
+          "Telemedicine Physician - Ohio",
+          "Registered Nurse (RN) Per Diem - Med Surg Tele**"
+        ]
+      }
+    ]
+  },
+  "Sales": {
+    "occupation": "Sales",
+    "total_positions": 1086,
+    "seniority_distribution": {
+      "Mid-Level": 785,
+      "Entry-Level": 286,
+      "Senior": 15
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 6,
+        "avg_salary": 812.875,
+        "example_titles": [
+          "Part Time Sales Associate, Maidenform, Camarillo, California",
+          "Sales Associate (SmileGuide)-King Of Prussia",
+          "Part Time Retail Store Sales Associate- Day Shift"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 73,
+        "avg_salary": 37295.13561643835,
+        "example_titles": [
+          "Sales Specialist",
+          "Customer Service Representative",
+          "Customer Service Representative (Banking/Mortgage/Brokerage OR Insurance)"
+        ]
+      }
+    ]
+  },
+  "Data & Analytics": {
+    "occupation": "Data & Analytics",
+    "total_positions": 913,
+    "seniority_distribution": {
+      "Entry-Level": 737,
+      "Mid-Level": 151,
+      "Senior": 25
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 41,
+        "avg_salary": 53724.15097560975,
+        "example_titles": [
+          "Investment Analyst",
+          "Wholesale Business Analyst - Montvale, NJ (Hybrid)",
+          "EDI Business Analyst"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 4,
+        "avg_salary": 25047.5625,
+        "example_titles": [
+          "Research Scientist",
+          "Data Modeler",
+          "Natural Language Processing (NLP) Data Scientist."
+        ]
+      }
+    ]
+  },
+  "Human Resources": {
+    "occupation": "Human Resources",
+    "total_positions": 235,
+    "seniority_distribution": {
+      "Mid-Level": 193,
+      "Entry-Level": 29,
+      "Senior": 13
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 2,
+        "avg_salary": 17.3,
+        "example_titles": [
+          "Warehouse Associate (17.30$/hr)"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 14,
+        "avg_salary": 8594.653571428571,
+        "example_titles": [
+          "Contract Bilingual Recruiter",
+          "Clinical Nurse - OP Wound Care (Relief) (10HR) Day",
+          "Sorter - 1st Shift - $17.56/hr - Recycling Plant"
+        ]
+      },
+      {
+        "level": "Senior",
+        "position_count": 1,
+        "avg_salary": 47.0,
+        "example_titles": [
+          "HR Senior Professional - Compensation"
+        ]
+      }
+    ]
+  },
+  "Marketing & Communications": {
+    "occupation": "Marketing & Communications",
+    "total_positions": 168,
+    "seniority_distribution": {
+      "Mid-Level": 134,
+      "Entry-Level": 29,
+      "Senior": 5
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 2,
+        "avg_salary": 21.0,
+        "example_titles": [
+          "Product Marketing Intern",
+          "Digital Marketing Intern $22/HOUR"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 7,
+        "avg_salary": 35135.03857142857,
+        "example_titles": [
+          "Email Marketing Specialist",
+          "Brand Ambassador",
+          "Communications Specialists"
+        ]
+      }
+    ]
+  },
+  "Retail & Customer Service": {
+    "occupation": "Retail & Customer Service",
+    "total_positions": 188,
+    "seniority_distribution": {
+      "Mid-Level": 146,
+      "Entry-Level": 42
+    },
+    "career_path": [
+      {
+        "level": "Entry-Level",
+        "position_count": 10,
+        "avg_salary": 15.3,
+        "example_titles": [
+          "Store Delivery Associate - Day Shift",
+          "Store Associate - Shortage Control",
+          "Store Operation Associate"
+        ]
+      },
+      {
+        "level": "Mid-Level",
+        "position_count": 22,
+        "avg_salary": 14.922727272727274,
+        "example_titles": [
+          "Full-time Store Supervisor - Plaza Bonita 0753",
+          "Full-Time Customer Service Supervisor",
+          "Delivery Station Customer Service Assoc - FT (40 Hours) - DDF1 - Lewisville, TX"
+        ]
+      }
+    ]
+  }
+}
