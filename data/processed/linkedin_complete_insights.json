@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "total_job_postings": 15886,
+    "data_sources": [
+      "job_postings",
+      "job_skills",
+      "companies",
+      "job_industries",
+      "employee_counts"
+    ]
+  },
+  "jobs": {},
+  "skills": {},
+  "companies": {},
+  "industries": {},
+  "gap_analysis": {}
+}
