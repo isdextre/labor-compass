@@ -1,7 +1,6 @@
 """
 PRÓXIMO (antes "Transition Radar") - Backend Flask
-====================================================
-
+=============================================
 Sistema de inteligencia laboral que integra:
 - Parsing de CV simulado (datos de ejemplo)
 - Matching semántico de ocupaciones basado en skills (Transition Radar)
@@ -36,6 +35,11 @@ from datetime import datetime
 from models.predictor import obtener_tendencia, cargar_datos_json
 from cv_parser import parsear_cv
 import enrichment
+from applier import orchestrator
+from applier import worker as postular_worker
+
+# Las capturas de cada envío se guardan aquí (servidas como estáticos por Flask)
+CAPTURAS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'capturas')
 
 try:
     from sklearn.feature_extraction.text import TfidfVectorizer
@@ -48,10 +52,8 @@ app = Flask(__name__)
 CORS(app)
 
 
-# ============================================================================
-# CARGAR DATOS AL INICIAR
-# ============================================================================
-
+# =====================================================================# CARGAR DATOS AL INICIAR
+# =====================================================================
 # Ruta absoluta a data/ (independiente del directorio desde el que se ejecute
 # `python app.py` — antes dependía de que el cwd fuera la raíz del repo).
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
@@ -97,10 +99,8 @@ print(f"✓ Opcionales: {len(WELLNESS_LIB)} respuestas bienestar, {len(COHORTS_D
 print(f"✓ Nuevos: {len(CANDIDATOS_DB)} candidatos demo, {len(REGIONES_DB)} regiones territoriales")
 
 
-# ============================================================================
-# PÁGINAS (Jinja) — el "arquitectura de información" del producto
-# ============================================================================
-
+# =====================================================================# PÁGINAS (Jinja) — el "arquitectura de información" del producto
+# =====================================================================
 @app.route('/')
 def pagina_landing():
     return render_template('landing.html')
@@ -171,10 +171,192 @@ def agente_postular():
 def mis_postulaciones():
     user_id = request.json.get('user_id')
     return jsonify(obtener_postulaciones(user_id))
-# ============================================================================
-# ENDPOINT 1: Parse CV (simula extracción de datos)
-# ============================================================================
+@app.route('/postular')
+def pagina_postular():
+    return render_template('postular.html')
 
+
+# =====================================================================# AGENTE DE POSTULACIÓN (Greenhouse)
+# =====================================================================
+@app.route('/api/postular/perfil', methods=['GET', 'POST'])
+def postular_perfil():
+    """Perfil de postulación: se llena UNA vez y sirve para todas las ofertas.
+    Es lo que convierte cada postulación en un clic (o en cero)."""
+    if request.method == 'POST':
+        datos = request.json or {}
+        user_id = datos.pop('user_id', None)
+        if not user_id:
+            return jsonify({'error': "Falta 'user_id'."}), 400
+        return jsonify(orchestrator.guardar_perfil(user_id, datos)), 200
+
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({'error': "Falta 'user_id'."}), 400
+
+    perfil_guardado = orchestrator.cargar_perfil(user_id)
+    if perfil_guardado is None:
+        return jsonify({'existe': False, 'perfil': orchestrator.PERFIL_VACIO}), 200
+
+    completo, faltan = orchestrator.perfil_completo(perfil_guardado)
+    return jsonify({
+        'existe': True,
+        'perfil': perfil_guardado,
+        'completo': completo,
+        'campos_faltantes': faltan,
+    }), 200
+
+
+@app.route('/api/postular/cv', methods=['POST'])
+def postular_cv():
+    """Sube el CV (PDF/DOCX/TXT), lo estructura y lo fusiona en el perfil.
+    Reemplaza tener que pegar el texto del CV a mano."""
+    user_id = request.form.get('user_id')
+    if not user_id:
+        return jsonify({'error': "Falta 'user_id'."}), 400
+    if 'cv_file' not in request.files or request.files['cv_file'].filename == '':
+        return jsonify({'error': "Adjunta tu CV en el campo 'cv_file'."}), 400
+
+    archivo = request.files['cv_file']
+    try:
+        perfil_actualizado = orchestrator.importar_cv(user_id, archivo, archivo.filename)
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except Exception as e:
+        return jsonify({'error': f'No se pudo procesar el CV: {e}'}), 500
+
+    return jsonify(perfil_actualizado), 200
+
+
+@app.route('/api/postular/importar-analisis', methods=['POST'])
+def postular_importar_analisis():
+    """Reusa el análisis de CV hecho en /analizar (el front lo tiene en
+    localStorage) para poblar el perfil sin volver a subir nada."""
+    datos = request.json or {}
+    user_id = datos.get('user_id')
+    cv_analisis = datos.get('cv')
+    if not user_id or not cv_analisis:
+        return jsonify({'error': "Faltan 'user_id' o 'cv'."}), 400
+    return jsonify(orchestrator.perfil_desde_analisis(user_id, cv_analisis)), 200
+
+
+@app.route('/api/postular/ofertas', methods=['GET'])
+def postular_ofertas():
+    """Ofertas de los boards de Greenhouse configurados, ordenadas por
+    afinidad con el CV del usuario."""
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({'error': "Falta 'user_id'."}), 400
+
+    perfil_guardado = orchestrator.cargar_perfil(user_id)
+    if perfil_guardado is None:
+        return jsonify({'error': 'Todavía no guardaste tu perfil de postulación.'}), 404
+
+    resultado = orchestrator.buscar_ofertas(perfil_guardado, limite=15)
+    return jsonify(resultado), 200
+
+
+@app.route('/api/postular/preparar', methods=['POST'])
+def postular_preparar():
+    """Resuelve el formulario completo de UNA oferta contra el perfil y
+    devuelve el borrador con su semáforo (auto / revisar / bloqueado)."""
+    datos = request.json or {}
+    user_id = datos.get('user_id')
+    board_token = datos.get('board_token')
+    job_id = datos.get('job_id')
+
+    if not all([user_id, board_token, job_id]):
+        return jsonify({'error': "Faltan 'user_id', 'board_token' o 'job_id'."}), 400
+
+    perfil_guardado = orchestrator.cargar_perfil(user_id)
+    if perfil_guardado is None:
+        return jsonify({'error': 'Todavía no guardaste tu perfil de postulación.'}), 404
+
+    try:
+        borrador = orchestrator.preparar_postulacion(perfil_guardado, board_token, job_id)
+    except Exception as e:
+        return jsonify({'error': f'No se pudo leer la oferta en Greenhouse: {e}'}), 502
+
+    return jsonify(borrador), 200
+
+
+@app.route('/api/postular/auto', methods=['POST'])
+def postular_auto():
+    """El camino más automatizado: toma las ofertas más compatibles, prepara
+    cada una y envía las que quedaron en modo 'auto' (todos los campos del
+    perfil, sin texto de IA). Las demás se llenan pero no se envían: quedan
+    para revisión. Corre en segundo plano; el avance se consulta en
+    /api/postular/estado."""
+    datos = request.json or {}
+    user_id = datos.get('user_id')
+    limite = int(datos.get('limite', 5))
+    # Por defecto solo se envían las 'auto'. Con incluir_revisar=True también
+    # salen las que llevan texto redactado por el agente.
+    incluir_revisar = bool(datos.get('incluir_revisar', False))
+    if not user_id:
+        return jsonify({'error': "Falta 'user_id'."}), 400
+
+    perfil_guardado = orchestrator.cargar_perfil(user_id)
+    if perfil_guardado is None:
+        return jsonify({'error': 'Todavía no guardaste tu perfil de postulación.'}), 404
+
+    completo, faltan = orchestrator.perfil_completo(perfil_guardado)
+    if not completo:
+        return jsonify({'error': f'Completa tu perfil primero: falta {", ".join(faltan)}.'}), 400
+
+    ofertas = orchestrator.buscar_ofertas(perfil_guardado, limite=limite).get('ofertas', [])
+    tareas = [{'board_token': o['board_token'], 'job_id': o['id']} for o in ofertas]
+    if not tareas:
+        return jsonify({'error': 'No hay ofertas compatibles para postular.'}), 404
+
+    estado = postular_worker.encolar_lote(
+        user_id, perfil_guardado, tareas, modo='enviar',
+        screenshot_dir=CAPTURAS_DIR, permitir_revisar=incluir_revisar,
+    )
+    return jsonify(estado), 202
+
+
+@app.route('/api/postular/enviar', methods=['POST'])
+def postular_enviar():
+    """Envía UNA oferta que el usuario ya revisó campo por campo en la UI.
+    A diferencia de /auto, aquí sí se envían borradores en modo 'revisar'
+    (el humano ya los leyó). Con modo='dry_run' solo llena y saca captura."""
+    datos = request.json or {}
+    user_id = datos.get('user_id')
+    board_token = datos.get('board_token')
+    job_id = datos.get('job_id')
+    modo = datos.get('modo', 'enviar')   # 'enviar' | 'dry_run'
+    if not all([user_id, board_token, job_id]):
+        return jsonify({'error': "Faltan 'user_id', 'board_token' o 'job_id'."}), 400
+
+    perfil_guardado = orchestrator.cargar_perfil(user_id)
+    if perfil_guardado is None:
+        return jsonify({'error': 'Todavía no guardaste tu perfil de postulación.'}), 404
+
+    estado = postular_worker.encolar_lote(
+        user_id, perfil_guardado, [{'board_token': board_token, 'job_id': job_id}],
+        modo='dry_run' if modo == 'dry_run' else 'enviar',
+        screenshot_dir=CAPTURAS_DIR, permitir_revisar=True,
+    )
+    return jsonify(estado), 202
+
+
+@app.route('/api/postular/estado', methods=['GET'])
+def postular_estado():
+    """Avance del lote de envíos del usuario. El front hace polling de esto."""
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({'error': "Falta 'user_id'."}), 400
+
+    estado = postular_worker.estado(user_id)
+    # Las capturas se guardan como estáticos; devolvemos su URL pública.
+    for res in estado.get('resultados', []):
+        captura = res.get('captura')
+        if captura:
+            res['captura_url'] = '/static/capturas/' + os.path.basename(captura)
+    return jsonify(estado), 200
+
+# =====================================================================# ENDPOINT 1: Parse CV (simula extracción de datos)
+# =====================================================================
 
 @app.route('/api/parse-cv', methods=['POST'])
 def parse_cv():
@@ -222,10 +404,8 @@ def parse_cv():
     }), 200
 
 
-# ============================================================================
-# ENDPOINT 2: Matching - Ocupaciones objetivo + Cursos (+ señal de mercado real)
-# ============================================================================
-
+# =====================================================================# ENDPOINT 2: Matching - Ocupaciones objetivo + Cursos (+ señal de mercado real)
+# =====================================================================
 @app.route('/api/matching', methods=['POST'])
 def matching():
     """
@@ -313,10 +493,8 @@ def matching():
     }), 200
 
 
-# ============================================================================
-# ENDPOINT 3: Wellness - Apoyo emocional + Cohorts
-# ============================================================================
-
+# =====================================================================# ENDPOINT 3: Wellness - Apoyo emocional + Cohorts
+# =====================================================================
 @app.route('/api/wellness', methods=['POST'])
 def wellness():
     """
@@ -377,10 +555,8 @@ def wellness():
     }), 200
 
 
-# ============================================================================
-# ENDPOINT 4: Cursos - Catálogo completo
-# ============================================================================
-
+# =====================================================================# ENDPOINT 4: Cursos - Catálogo completo
+# =====================================================================
 @app.route('/api/cursos', methods=['GET'])
 def get_cursos():
     """Devuelve catálogo completo de cursos, con filtros opcionales."""
@@ -406,10 +582,8 @@ def get_cursos():
     }), 200
 
 
-# ============================================================================
-# ENDPOINT 5: Ocupaciones disponibles
-# ============================================================================
-
+# =====================================================================# ENDPOINT 5: Ocupaciones disponibles
+# =====================================================================
 @app.route('/api/ocupaciones', methods=['GET'])
 def get_ocupaciones():
     """Devuelve lista de ocupaciones disponibles."""
@@ -428,10 +602,8 @@ def get_ocupaciones():
     }), 200
 
 
-# ============================================================================
-# ENDPOINT 6: Cohorts disponibles
-# ============================================================================
-
+# =====================================================================# ENDPOINT 6: Cohorts disponibles
+# =====================================================================
 @app.route('/api/cohorts', methods=['GET'])
 def get_cohorts():
     """Devuelve lista de cohorts de peer support."""
@@ -448,10 +620,8 @@ def get_cohorts():
     }), 200
 
 
-# ============================================================================
-# ENDPOINT 7 (NUEVO): Reclutador - matching semántico por texto (TF-IDF)
-# ============================================================================
-
+# =====================================================================# ENDPOINT 7 (NUEVO): Reclutador - matching semántico por texto (TF-IDF)
+# =====================================================================
 @app.route('/api/recruiter/match', methods=['POST'])
 def recruiter_match():
     """
@@ -518,10 +688,8 @@ def recruiter_match():
     }), 200
 
 
-# ============================================================================
-# ENDPOINT 8 (NUEVO): Explorador territorial
-# ============================================================================
-
+# =====================================================================# ENDPOINT 8 (NUEVO): Explorador territorial
+# =====================================================================
 @app.route('/api/territorio', methods=['GET'])
 def get_territorio():
     """
@@ -537,10 +705,8 @@ def get_territorio():
     }), 200
 
 
-# ============================================================================
-# HEALTH CHECK
-# ============================================================================
-
+# =====================================================================# HEALTH CHECK
+# =====================================================================
 @app.route('/health', methods=['GET'])
 def health():
     """Verifica que el servidor está activo y datos están cargados"""
@@ -559,10 +725,8 @@ def health():
     }), 200
 
 
-# ============================================================================
-# ERROR HANDLERS
-# ============================================================================
-
+# =====================================================================# ERROR HANDLERS
+# =====================================================================
 @app.errorhandler(404)
 def not_found(error):
     return jsonify({'error': 'Endpoint no encontrado'}), 404
@@ -629,10 +793,8 @@ def parse_cv_upload():
     except Exception as e:
         return jsonify({'error': f'Error inesperado: {str(e)}'}), 500
       
-# ============================================================================
-# MAIN
-# ============================================================================
-
+# =====================================================================# MAIN
+# =====================================================================
 if __name__ == '__main__':
     print("\n" + "="*60)
     print("🚀 PRÓXIMO Backend iniciando...")

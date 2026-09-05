@@ -1,0 +1,404 @@
+{% extends "base.html" %}
+{% block title %}Postular automáticamente — PRÓXIMO{% endblock %}
+
+{% block extra_head %}
+<style>
+  .semaforo { display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+  .semaforo.auto      { background:#dcfce7; color:#166534; }
+  .semaforo.revisar   { background:#fef9c3; color:#854d0e; }
+  .semaforo.bloqueado { background:#fee2e2; color:#991b1b; }
+  .origen { font-size:11px; text-transform:uppercase; letter-spacing:.04em; font-weight:700; }
+  .origen.perfil { color:#166534; }
+  .origen.ia     { color:#854d0e; }
+  .origen.falta  { color:#991b1b; }
+  .oferta-row { display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid var(--color-border); }
+  .oferta-row .crece { flex:1; min-width:0; }
+  .campo-box { padding:12px 0; border-bottom:1px solid var(--color-border); }
+  .campo-box textarea, .campo-box input { width:100%; }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="container section-tight" style="max-width:900px;">
+  <div class="section-head">
+    <p class="section-eyebrow">Agente de postulación</p>
+    <h1 class="section-title">Postula sin llenar formularios</h1>
+    <p class="section-desc">
+      Completas tu perfil una sola vez. El agente busca ofertas en portales
+      Greenhouse, resuelve el formulario de cada una con tus datos y te dice
+      exactamente cuáles puede completar solo y cuáles necesitan que leas algo.
+    </p>
+  </div>
+
+  <!-- PASO 1: perfil -->
+  <div class="card" style="padding:24px; margin-bottom:24px;">
+    <h2 style="margin-bottom:4px;">1. Tu perfil de postulación</h2>
+    <p class="text-sm text-muted" style="margin-bottom:20px;">
+      Esto es lo que se rellena solo en cada oferta. Se guarda una vez.
+    </p>
+
+    <!-- Reusar el análisis de CV ya hecho en /analizar -->
+    <div id="banner-analisis" class="card" style="display:none; padding:14px 16px; margin-bottom:16px; background:#eff6ff; border-color:#bfdbfe;">
+      <p class="text-sm" style="margin-bottom:8px;">
+        Ya analizaste un CV en <strong>Analizar mi CV</strong>. Podemos usar esos datos
+        para llenar tu perfil.
+      </p>
+      <button class="btn btn-secondary btn-sm" id="btn-usar-analisis">Usar datos de mi análisis</button>
+    </div>
+
+    <!-- Subir el CV (reemplaza pegar el texto a mano) -->
+    <div class="field" style="margin-bottom:20px;">
+      <label>Tu CV</label>
+      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <input type="file" id="p-cv-file" accept=".pdf,.docx,.txt"
+               style="flex:1; min-width:220px;" />
+        <button class="btn btn-secondary btn-sm" id="btn-subir-cv">Subir y leer CV</button>
+      </div>
+      <p id="cv-estado" class="text-sm text-muted" style="margin-top:8px;"></p>
+      <p class="text-sm text-muted" style="margin-top:4px;">
+        PDF, DOCX o TXT. Lo usamos para autocompletar tu perfil y para redactar
+        las respuestas abiertas de cada oferta.
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div class="field"><label for="p-first">Nombre</label><input id="p-first" class="select" /></div>
+      <div class="field"><label for="p-last">Apellido</label><input id="p-last" class="select" /></div>
+      <div class="field"><label for="p-email">Email</label><input id="p-email" type="email" class="select" /></div>
+      <div class="field"><label for="p-phone">Teléfono</label><input id="p-phone" class="select" placeholder="+51 999 999 999" /></div>
+      <div class="field"><label for="p-ubicacion">Ubicación</label><input id="p-ubicacion" class="select" placeholder="Lima, Perú" /></div>
+      <div class="field"><label for="p-linkedin">LinkedIn</label><input id="p-linkedin" class="select" placeholder="https://linkedin.com/in/..." /></div>
+      <div class="field"><label for="p-portfolio">Portafolio / GitHub</label><input id="p-portfolio" class="select" /></div>
+      <div class="field"><label for="p-salario">Pretensión salarial (USD/mes)</label><input id="p-salario" type="number" class="select" /></div>
+      <div class="field"><label for="p-ocupacion">Ocupación actual</label><input id="p-ocupacion" class="select" placeholder="Data Analyst" /></div>
+      <div class="field"><label for="p-experiencia">Años de experiencia</label><input id="p-experiencia" type="number" class="select" /></div>
+      <div class="field"><label for="p-disponibilidad">Disponibilidad</label><input id="p-disponibilidad" class="select" placeholder="Inmediata" /></div>
+      <div class="field">
+        <label for="p-autorizado">¿Autorizado a trabajar donde postulas?</label>
+        <select id="p-autorizado" class="select"><option value="true">Sí</option><option value="false">No</option></select>
+      </div>
+      <div class="field">
+        <label for="p-sponsorship">¿Necesitas sponsorship de visa?</label>
+        <select id="p-sponsorship" class="select"><option value="false">No</option><option value="true">Sí</option></select>
+      </div>
+      <div class="field"><label for="p-skills">Skills (separadas por coma)</label><input id="p-skills" class="select" placeholder="SQL, Python, Excel" /></div>
+    </div>
+
+    <button class="btn btn-primary" id="btn-guardar-perfil" style="margin-top:20px;">Guardar perfil</button>
+    <span id="msg-perfil" class="text-sm text-muted" style="margin-left:12px;"></span>
+  </div>
+
+  <!-- PASO 2: ofertas -->
+  <div class="card" style="padding:24px; margin-bottom:24px;">
+    <h2 style="margin-bottom:4px;">2. Ofertas compatibles</h2>
+    <p class="text-sm text-muted" style="margin-bottom:16px;">
+      Se leen en vivo desde la API pública de Greenhouse y se ordenan por
+      afinidad con tu CV.
+    </p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn btn-secondary" id="btn-buscar">Buscar ofertas</button>
+      <button class="btn btn-primary" id="btn-auto">⚡ Postular automáticamente</button>
+    </div>
+    <label style="display:flex; gap:8px; align-items:flex-start; margin-top:12px; cursor:pointer;">
+      <input type="checkbox" id="chk-incluir-revisar" style="margin-top:3px;" />
+      <span class="text-sm">
+        Enviar también las que llevan texto redactado por el agente
+        <span class="text-muted">(sin que las leas antes)</span>
+      </span>
+    </label>
+    <p class="text-sm text-muted" style="margin-top:10px;">
+      Sin marcar, solo se envían las de modo <strong>auto</strong> (todo salió de tu
+      perfil). Las <strong>bloqueadas</strong> nunca se envían: les faltan campos
+      obligatorios y Greenhouse las rechazaría — se llenan y te decimos qué falta.
+    </p>
+    <p id="msg-ofertas" class="text-sm text-muted" style="margin-top:12px;"></p>
+    <div id="lista-ofertas" style="margin-top:8px;"></div>
+  </div>
+
+  <!-- Progreso del lote automático -->
+  <div class="card" id="card-lote" style="padding:24px; margin-bottom:24px; display:none;">
+    <h2 style="margin-bottom:4px;">Envíos en curso</h2>
+    <p id="lote-progreso" class="text-sm text-muted" style="margin-bottom:12px;"></p>
+    <div id="lote-resultados"></div>
+  </div>
+
+  <!-- PASO 3: borrador -->
+  <div class="card" id="card-borrador" style="padding:24px; display:none;">
+    <h2 style="margin-bottom:4px;">3. Postulación preparada</h2>
+    <div id="borrador"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+const USER_ID = obtenerUserId();
+const $ = (id) => document.getElementById(id);
+
+// ---------- Perfil ----------
+const CAMPOS = {
+  first_name: 'p-first', last_name: 'p-last', email: 'p-email', phone: 'p-phone',
+  ubicacion: 'p-ubicacion', linkedin: 'p-linkedin', portfolio: 'p-portfolio',
+  ocupacion_actual: 'p-ocupacion', disponibilidad: 'p-disponibilidad',
+};
+
+function pintarPerfil(p) {
+  p = p || {};
+  for (const [clave, id] of Object.entries(CAMPOS)) $(id).value = p[clave] || '';
+  $('p-salario').value = p.salario_esperado_usd ?? '';
+  $('p-experiencia').value = p['experiencia_años'] ?? '';
+  $('p-skills').value = (p.skills || []).join(', ');
+  $('p-autorizado').value = String(p.autorizado_trabajar ?? true);
+  $('p-sponsorship').value = String(p.requiere_sponsorship ?? false);
+
+  const chars = (p.cv_texto || '').length;
+  $('cv-estado').textContent = chars
+    ? `✓ CV cargado (${chars.toLocaleString()} caracteres de contexto para el agente)`
+    : 'Sin CV cargado — súbelo para mejores respuestas.';
+}
+
+async function cargarPerfil() {
+  const res = await apiGet(`/api/postular/perfil?user_id=${USER_ID}`);
+  pintarPerfil(res.perfil);
+  if (res.existe) $('msg-perfil').textContent = 'Perfil cargado.';
+
+  // Si NO hay perfil todavía pero el usuario ya analizó un CV en /analizar,
+  // ofrecemos reusar esos datos en vez de pedirle que llene todo otra vez.
+  if (!res.existe && leerAnalisisPrevio()) {
+    $('banner-analisis').style.display = 'block';
+  }
+}
+
+function leerAnalisisPrevio() {
+  try {
+    const raw = localStorage.getItem(ANALYSIS_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed && parsed.cv ? parsed.cv : null;
+  } catch { return null; }
+}
+
+$('btn-usar-analisis').addEventListener('click', async () => {
+  const cv = leerAnalisisPrevio();
+  if (!cv) return;
+  try {
+    const perfil = await apiPost('/api/postular/importar-analisis', { user_id: USER_ID, cv });
+    pintarPerfil(perfil);
+    $('banner-analisis').style.display = 'none';
+    $('msg-perfil').textContent = '✓ Datos traídos de tu análisis. Revisa y completa email/teléfono.';
+  } catch (e) {
+    $('msg-perfil').textContent = '✗ ' + e.message;
+  }
+});
+
+$('btn-subir-cv').addEventListener('click', async () => {
+  const archivo = $('p-cv-file').files[0];
+  if (!archivo) { $('cv-estado').textContent = 'Elige un archivo primero.'; return; }
+
+  $('cv-estado').textContent = 'Leyendo el CV…';
+  try {
+    const fd = new FormData();
+    fd.append('user_id', USER_ID);
+    fd.append('cv_file', archivo);
+    const res = await fetch('/api/postular/cv', { method: 'POST', body: fd });
+    const perfil = await res.json();
+    if (!res.ok) throw new Error(perfil.error || 'No se pudo leer el CV');
+    pintarPerfil(perfil);
+    $('banner-analisis').style.display = 'none';
+    $('msg-perfil').textContent = '✓ CV leído y perfil actualizado. Revisa los campos y guarda.';
+  } catch (e) {
+    $('cv-estado').textContent = '✗ ' + e.message;
+  }
+});
+
+$('btn-guardar-perfil').addEventListener('click', async () => {
+  const datos = { user_id: USER_ID };
+  for (const [clave, id] of Object.entries(CAMPOS)) datos[clave] = $(id).value.trim();
+  datos.salario_esperado_usd = $('p-salario').value ? Number($('p-salario').value) : null;
+  datos['experiencia_años'] = Number($('p-experiencia').value || 0);
+  datos.skills = $('p-skills').value.split(',').map(s => s.trim()).filter(Boolean);
+  datos.autorizado_trabajar = $('p-autorizado').value === 'true';
+  datos.requiere_sponsorship = $('p-sponsorship').value === 'true';
+
+  try {
+    await apiPost('/api/postular/perfil', datos);
+    $('msg-perfil').textContent = '✓ Guardado.';
+  } catch (e) {
+    $('msg-perfil').textContent = '✗ ' + e.message;
+  }
+});
+
+// ---------- Ofertas ----------
+$('btn-buscar').addEventListener('click', async () => {
+  $('msg-ofertas').textContent = 'Buscando en los boards configurados…';
+  $('lista-ofertas').innerHTML = '';
+  try {
+    const res = await apiGet(`/api/postular/ofertas?user_id=${USER_ID}`);
+    $('msg-ofertas').textContent =
+      `${res.total_revisadas} ofertas revisadas · ranking: ${res.metodo}`;
+    $('lista-ofertas').innerHTML = res.ofertas.map(o => `
+      <div class="oferta-row">
+        <div class="crece">
+          <p style="font-weight:600;">${o.titulo}</p>
+          <p class="text-sm text-muted">${o.empresa} · ${o.ubicacion || 'Sin ubicación'}</p>
+        </div>
+        <span class="text-sm text-muted">${o.afinidad_pct ?? '—'}%</span>
+        <button class="btn btn-secondary btn-sm"
+                onclick="preparar('${o.board_token}', '${o.id}')">Preparar</button>
+      </div>`).join('');
+  } catch (e) {
+    $('msg-ofertas').textContent = '✗ ' + e.message;
+  }
+});
+
+// ---------- Borrador ----------
+const ETIQUETA_MODO = {
+  auto: 'Se puede enviar sin intervención',
+  revisar: 'Requiere que leas los textos generados',
+  bloqueado: 'Falta completar tu perfil',
+};
+
+async function preparar(boardToken, jobId) {
+  $('card-borrador').style.display = 'block';
+  $('borrador').innerHTML = '<p class="text-muted">Resolviendo el formulario…</p>';
+  $('card-borrador').scrollIntoView({ behavior: 'smooth' });
+
+  let b;
+  try {
+    b = await apiPost('/api/postular/preparar',
+      { user_id: USER_ID, board_token: boardToken, job_id: jobId });
+  } catch (e) {
+    $('borrador').innerHTML = `<p class="text-muted">✗ ${e.message}</p>`;
+    return;
+  }
+
+  const r = b.resumen;
+  const campos = b.campos.map(c => {
+    const editable = c.tipo === 'textarea'
+      ? `<textarea class="select" rows="4">${c.valor ?? ''}</textarea>`
+      : `<input class="select" value="${c.valor ?? ''}" />`;
+    return `
+      <div class="campo-box">
+        <div style="display:flex; justify-content:space-between; gap:12px; margin-bottom:6px;">
+          <label style="font-weight:600;">${c.label}${c.requerido ? ' *' : ''}</label>
+          <span class="origen ${c.origen}">${
+            c.origen === 'perfil' ? 'de tu perfil'
+            : c.origen === 'ia' ? 'generado — revisa'
+            : 'sin resolver'}</span>
+        </div>
+        ${c.opciones.length
+          ? `<select class="select">${c.opciones.map(o =>
+              `<option ${String(o.value) === String(c.valor) ? 'selected' : ''}>${o.label}</option>`
+            ).join('')}</select>`
+          : editable}
+      </div>`;
+  }).join('');
+
+  $('borrador').innerHTML = `
+    <div style="margin-bottom:16px;">
+      <span class="semaforo ${b.modo}">${b.modo.toUpperCase()}</span>
+      <span class="text-sm text-muted" style="margin-left:8px;">${ETIQUETA_MODO[b.modo]}</span>
+      <span class="text-sm text-muted" style="margin-left:8px;">· resuelto por ${b.resuelto_por}</span>
+    </div>
+    <p style="font-weight:600;">${b.oferta.titulo}</p>
+    <p class="text-sm text-muted" style="margin-bottom:16px;">
+      ${b.oferta.empresa} · ${b.oferta.ubicacion || 'Sin ubicación'}
+    </p>
+    <p class="text-sm text-muted" style="margin-bottom:16px;">
+      ${r.total} campos · <strong>${r.del_perfil}</strong> resueltos con tu perfil ·
+      <strong>${r.generados_ia}</strong> generados ·
+      <strong>${r.sin_resolver}</strong> sin resolver
+      ${b.motivo_bloqueo.length ? `<br>Falta: ${b.motivo_bloqueo.join(', ')}` : ''}
+    </p>
+    ${campos}
+    <div style="margin-top:20px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+      <button class="btn btn-primary" id="btn-enviar-uno"
+              onclick="enviarUno('${b.oferta.board_token}','${b.oferta.id}','enviar')">
+        Enviar esta postulación
+      </button>
+      <button class="btn btn-secondary"
+              onclick="enviarUno('${b.oferta.board_token}','${b.oferta.id}','dry_run')">
+        Simular (llenar sin enviar)
+      </button>
+      <a href="${b.oferta.url}" target="_blank" rel="noopener" class="btn btn-tertiary">
+        Abrir en Greenhouse
+      </a>
+    </div>
+    <p class="text-sm text-muted" style="margin-top:10px;">
+      El agente llena el formulario real de Greenhouse en un navegador. Si la
+      empresa usa su propio sitio de carreras o salta un reCAPTCHA, te lo dice
+      y tendrás que terminar tú.
+    </p>`;
+}
+
+// ---------- Envío ----------
+const ETIQUETA_ESTADO = {
+  enviado: '✅ Enviada',
+  simulado: '🔎 Simulada (no enviada)',
+  bloqueado_captcha: '🤖 Bloqueada por reCAPTCHA',
+  bloqueado_verificacion_email: '📧 Falta verificar tu correo',
+  rechazado_por_formulario: '⚠️ Greenhouse marcó campos inválidos',
+  no_soportado: '🚫 La empresa usa su propio sitio',
+  error: '✗ Error',
+};
+
+async function enviarUno(boardToken, jobId, modo) {
+  $('card-lote').style.display = 'block';
+  $('lote-resultados').innerHTML = '';
+  $('lote-progreso').textContent = modo === 'enviar' ? 'Enviando…' : 'Simulando…';
+  $('card-lote').scrollIntoView({ behavior: 'smooth' });
+  try {
+    await apiPost('/api/postular/enviar',
+      { user_id: USER_ID, board_token: boardToken, job_id: jobId, modo });
+    seguirLote();
+  } catch (e) {
+    $('lote-progreso').textContent = '✗ ' + e.message;
+  }
+}
+
+$('btn-auto').addEventListener('click', async () => {
+  $('card-lote').style.display = 'block';
+  $('lote-resultados').innerHTML = '';
+  $('lote-progreso').textContent = 'Preparando el lote…';
+  $('card-lote').scrollIntoView({ behavior: 'smooth' });
+  try {
+    await apiPost('/api/postular/auto', {
+      user_id: USER_ID, limite: 5,
+      incluir_revisar: $('chk-incluir-revisar').checked,
+    });
+    seguirLote();
+  } catch (e) {
+    $('lote-progreso').textContent = '✗ ' + e.message;
+  }
+});
+
+let timerLote = null;
+function seguirLote() {
+  clearInterval(timerLote);
+  timerLote = setInterval(async () => {
+    let s;
+    try { s = await apiGet(`/api/postular/estado?user_id=${USER_ID}`); }
+    catch { return; }
+
+    $('lote-progreso').textContent =
+      `${s.procesadas}/${s.total} procesadas` +
+      (s.en_curso ? ` · en curso: ${s.en_curso}` : '') +
+      (s.estado === 'terminado' ? ' · terminado' : '');
+
+    $('lote-resultados').innerHTML = (s.resultados || []).map(r => `
+      <div class="oferta-row">
+        <div class="crece">
+          <p style="font-weight:600;">${r.oferta.titulo || r.oferta.board_token + '/' + r.oferta.id}</p>
+          <p class="text-sm text-muted">${r.detalle || ''}</p>
+        </div>
+        <span class="text-sm">${ETIQUETA_ESTADO[r.estado] || r.estado}</span>
+        ${r.captura_url ? `<a href="${r.captura_url}" target="_blank" class="text-sm">captura</a>` : ''}
+      </div>`).join('');
+
+    if (s.estado === 'terminado' || s.estado === 'sin_lote') clearInterval(timerLote);
+  }, 2000);
+}
+
+cargarPerfil();
+</script>
+{% endblock %}
