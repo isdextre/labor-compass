@@ -1,26 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 modelo_tendencias.py
-PRÓXIMO — Machine Learning Engineer
-
-Modelo de tendencias de industrias. Es la evolución directa del script original
-del equipo: se conserva la misma idea (`cargar_datos_json` + `obtener_tendencia`
-+ auto_arima), pero generalizada para funcionar con la estructura REAL de los
-datos de INEI (que no venían como {region: {industria: [lista]}}, sino como una
-lista de registros con distintas formas según la fuente).
-
-Cambios de fondo respecto a la versión original:
-  1. Los datos de INEI son ANUALES (2007-2023), no mensuales. Antes se pedía
-     `n_periods=6` pensando en 6 meses; ahora `n_periods` son AÑOS y por
-     defecto se proyectan 3.
-  2. `modelo.predict()` de pmdarima devuelve un numpy.ndarray (no un
-     pandas.Series), así que ya no se usa `.iloc[-1]` sino indexación normal.
-  3. Si `pmdarima` no está instalado (o el ajuste de ARIMA falla, algo típico
-     con series cortas de 12-17 puntos), se cae a una tendencia lineal simple
-     en vez de tirar abajo toda la API. Queda registrado en el campo "metodo"
-     de la respuesta para que nunca se confunda un resultado con otro.
-  4. Se agregan utilidades de más alto nivel (`ranking_industrias`,
-     `industria_siguiente`) que son las que en realidad va a usar la API.
 """
 from __future__ import annotations
 
