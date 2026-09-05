@@ -134,7 +134,9 @@ def pagina_mapa():
 @app.route('/perfil')
 def perfil():
     return render_template('perfil.html')
-
+@app.route('/planes')
+def planes():
+    return render_template('planes.html')
 
 # ============================================================================
 # ENDPOINT 1: Parse CV (simula extracción de datos)
