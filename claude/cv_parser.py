@@ -61,7 +61,7 @@ def estructurar_con_gemini(texto_cv: str) -> dict:
     if not GEMINI_API_KEY:
         raise RuntimeError("GEMINI_API_KEY no configurada en el entorno.")
 
-    modelo = genai.GenerativeModel("gemini-1.5-flash")
+    modelo = genai.GenerativeModel("gemini-flash-latest")
     respuesta = modelo.generate_content(PROMPT_ESTRUCTURA.format(texto_cv=texto_cv[:8000]))
 
     texto_respuesta = respuesta.text.strip()
