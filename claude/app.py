@@ -24,7 +24,9 @@ viven en localStorage en el navegador, como pide la sección de
 "Persistencia ligera" del spec, porque esto es una demo de hackathon sin
 sistema de cuentas ni pagos reales.
 """
-
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from models.predictor import obtener_tendencia, cargar_datos_json
