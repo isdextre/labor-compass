@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Planes — PRÓXIMO{% endblock %}
+
+{% block content %}
+<section class="container section-tight">
+  <div class="section-head">
+    <p class="section-eyebrow">Planes</p>
+    <h1 class="section-title" id="titulo-planes">Elige tu plan</h1>
+    <p class="section-desc">Empieza gratis, mejora cuando lo necesites.</p>
+  </div>
+
+  <div class="planes-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto;">
+
+    <!-- PLAN GRATIS -->
+    <div class="card" style="padding: 32px;">
+      <h3 style="margin-bottom:8px;">Gratis</h3>
+      <p style="font-size: 2rem; font-weight:700; margin-bottom:24px;">S/ 0<span style="font-size:1rem; font-weight:400;">/mes</span></p>
+      <ul id="lista-gratis" style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;"></ul>
+      <button class="btn btn-tertiary btn-block" disabled>Tu plan actual</button>
+    </div>
+
+    <!-- PLAN PREMIUM -->
+    <div class="card" style="padding: 32px; border: 2px solid var(--color-primary);">
+      <p style="font-size:0.8rem; font-weight:700; color: var(--color-primary); margin-bottom:8px;">RECOMENDADO</p>
+      <h3 style="margin-bottom:8px;">Premium</h3>
+      <p style="font-size: 2rem; font-weight:700; margin-bottom:24px;">S/ 5<span style="font-size:1rem; font-weight:400;">/mes</span></p>
+      <ul id="lista-premium" style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;"></ul>
+      <button class="btn btn-primary btn-block" onclick="window.location.href='/paywall'">Suscribirme</button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const FEATURES = {
+  empleado: {
+    gratis: [
+      "Análisis básico de tu CV",
+      "Predicción de industrias en crecimiento",
+      "Ruta de aprendizaje sugerida"
+    ],
+    premium: [
+      "Todo lo del plan gratis",
+      "Recomendaciones personalizadas de CV",
+      "Mentoría con expertos del sector",
+      "Mensajes directos con reclutadores de empresas",
+      "Análisis ilimitados"
+    ]
+  },
+  reclutador: {
+    gratis: [
+      "Búsqueda básica de candidatos",
+      "Hasta 5 resultados por búsqueda",
+      "Ver perfil resumido de candidatos"
+    ],
+    premium: [
+      "Todo lo del plan gratis",
+      "Resultados ilimitados por búsqueda",
+      "Contacto directo con candidatos",
+      "Filtros avanzados por skills y ubicación",
+      "Reportes de talento disponible en tu sector"
+    ]
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const perfil = obtenerPerfilActual();
+  const rol = perfil.rol === 'reclutador' ? 'reclutador' : 'empleado'; // default: empleado
+
+  document.getElementById('titulo-planes').textContent =
+    rol === 'reclutador' ? 'Planes para reclutadores' : 'Planes para tu búsqueda';
+
+  const listaGratis = document.getElementById('lista-gratis');
+  const listaPremium = document.getElementById('lista-premium');
+
+  FEATURES[rol].gratis.forEach(f => {
+    listaGratis.innerHTML += `<li>✓ ${f}</li>`;
+  });
+  FEATURES[rol].premium.forEach(f => {
+    listaPremium.innerHTML += `<li>✓ ${f}</li>`;
+  });
+});
+</script>
+{% endblock %}
