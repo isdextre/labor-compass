@@ -9,76 +9,83 @@
     <p class="section-desc">Empieza gratis, mejora cuando lo necesites.</p>
   </div>
 
-  <div class="planes-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto;">
+  <!-- ---------- PLANES PARA EMPLEADOS ---------- -->
+  <div id="planes-empleado" class="planes-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto;">
 
-    <!-- PLAN GRATIS -->
     <div class="card" style="padding: 32px;">
-      <h3 style="margin-bottom:8px;">Gratis</h3>
-      <p style="font-size: 2rem; font-weight:700; margin-bottom:24px;">S/ 0<span style="font-size:1rem; font-weight:400;">/mes</span></p>
-      <ul id="lista-gratis" style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;"></ul>
+      <h3 style="margin-bottom:8px;">Gratuito</h3>
+      <p style="font-size: 2rem; font-weight:700; margin-bottom:24px;">$0</p>
+      <ul style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;">
+        <li>✓ Analiza tu CV</li>
+        <li>✓ Mapa de empleos en Perú</li>
+        <li>✓ Descubre qué carrera aprender</li>
+      </ul>
       <button class="btn btn-tertiary btn-block" disabled>Tu plan actual</button>
     </div>
 
-    <!-- PLAN PREMIUM -->
     <div class="card" style="padding: 32px; border: 2px solid var(--color-primary);">
       <p style="font-size:0.8rem; font-weight:700; color: var(--color-primary); margin-bottom:8px;">RECOMENDADO</p>
-      <h3 style="margin-bottom:8px;">Premium</h3>
-      <p style="font-size: 2rem; font-weight:700; margin-bottom:24px;">S/ 5<span style="font-size:1rem; font-weight:400;">/mes</span></p>
-      <ul id="lista-premium" style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;"></ul>
+      <h3 style="margin-bottom:8px;">Premium Plus</h3>
+      <p style="font-size: 1.6rem; font-weight:700; margin-bottom:4px;">$9.99<span style="font-size:1rem; font-weight:400;">/mes</span></p>
+      <p class="text-sm text-muted" style="margin-bottom:24px;">o $99/año (¡ahorra $20!)</p>
+      <ul style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;">
+        <li>✓ Todo lo del plan gratuito, más:</li>
+        <li>✓ IA que te ayuda a mejorar tu CV</li>
+        <li>✓ Carta de recomendación generada</li>
+        <li>✓ Alertas de empleos nuevos en tu zona</li>
+        <li>✓ Probabilidad de éxito por carrera</li>
+        <li>✓ Reporte PDF descargable</li>
+        <li>✓ 2 sesiones de mentoría al mes (o sé mentor)</li>
+        <li>✓ Sin publicidad</li>
+      </ul>
       <button class="btn btn-primary btn-block" onclick="window.location.href='/paywall'">Suscribirme</button>
     </div>
 
   </div>
+
+  <!-- ---------- PLANES PARA EMPRESAS / INSTITUTOS ---------- -->
+  <div id="planes-empresa" class="planes-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto;">
+
+    <div class="card" style="padding: 32px;">
+      <h3 style="margin-bottom:8px;">Empresa</h3>
+      <p style="font-size: 1.3rem; font-weight:700; margin-bottom:4px;">Gratis</p>
+      <p class="text-sm text-muted" style="margin-bottom:24px;">+ 18% comisión por colocación</p>
+      <ul style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;">
+        <li>✓ Publica empleos ilimitados</li>
+        <li>✓ Ve candidatos recomendados por IA</li>
+        <li>✓ Agente automático postula candidatos por ti</li>
+        <li>✓ Solo pagas si alguien se coloca: 15% del salario del primer mes</li>
+      </ul>
+      <button class="btn btn-primary btn-block" onclick="window.location.href='/paywall'">Empezar gratis</button>
+    </div>
+
+    <div class="card" style="padding: 32px;">
+      <h3 style="margin-bottom:8px;">B2B / B2G — Institutos</h3>
+      <p style="font-size: 1.3rem; font-weight:700; margin-bottom:4px;">15% comisión</p>
+      <p class="text-sm text-muted" style="margin-bottom:24px;">por estudiante inscrito</p>
+      <ul style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;">
+        <li>✓ Tu instituto aparece en las recomendaciones de PRÓXIMO</li>
+        <li>✓ El usuario Premium ve tu curso como sugerencia directa</li>
+        <li>✓ Solo pagas cuando alguien se inscribe con tu curso</li>
+        <li class="text-xs text-muted">Ej: curso de $300 × 15% = $45 para PRÓXIMO</li>
+      </ul>
+      <button class="btn btn-primary btn-block" onclick="window.location.href='/paywall'">Quiero ser partner</button>
+    </div>
+
+  </div>
+
 </section>
 
 <script>
-const FEATURES = {
-  empleado: {
-    gratis: [
-      "Análisis básico de tu CV",
-      "Predicción de industrias en crecimiento",
-      "Ruta de aprendizaje sugerida"
-    ],
-    premium: [
-      "Todo lo del plan gratis",
-      "Recomendaciones personalizadas de CV",
-      "Mentoría con expertos del sector",
-      "Mensajes directos con reclutadores de empresas",
-      "Análisis ilimitados"
-    ]
-  },
-  reclutador: {
-    gratis: [
-      "Búsqueda básica de candidatos",
-      "Hasta 5 resultados por búsqueda",
-      "Ver perfil resumido de candidatos"
-    ],
-    premium: [
-      "Todo lo del plan gratis",
-      "Resultados ilimitados por búsqueda",
-      "Contacto directo con candidatos",
-      "Filtros avanzados por skills y ubicación",
-      "Reportes de talento disponible en tu sector"
-    ]
-  }
-};
-
 document.addEventListener('DOMContentLoaded', () => {
   const perfil = obtenerPerfilActual();
-  const rol = perfil.rol === 'reclutador' ? 'reclutador' : 'empleado'; // default: empleado
+  const esReclutador = perfil.rol === 'reclutador';
 
   document.getElementById('titulo-planes').textContent =
-    rol === 'reclutador' ? 'Planes para reclutadores' : 'Planes para tu búsqueda';
+    esReclutador ? 'Planes para empresas e institutos' : 'Planes para tu búsqueda';
 
-  const listaGratis = document.getElementById('lista-gratis');
-  const listaPremium = document.getElementById('lista-premium');
-
-  FEATURES[rol].gratis.forEach(f => {
-    listaGratis.innerHTML += `<li>✓ ${f}</li>`;
-  });
-  FEATURES[rol].premium.forEach(f => {
-    listaPremium.innerHTML += `<li>✓ ${f}</li>`;
-  });
+  document.getElementById('planes-empleado').style.display = esReclutador ? 'none' : 'grid';
+  document.getElementById('planes-empresa').style.display = esReclutador ? 'grid' : 'none';
 });
 </script>
 {% endblock %}
