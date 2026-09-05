@@ -27,6 +27,8 @@ sistema de cuentas ni pagos reales.
 
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
+from models.predictor import obtener_tendencia, cargar_datos_json
+
 import json
 from datetime import datetime
 import os
@@ -50,7 +52,7 @@ CORS(app)
 # Ruta absoluta a data/ (independiente del directorio desde el que se ejecute
 # `python app.py` — antes dependía de que el cwd fuera la raíz del repo).
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
-
+RUTA_HISTORICO = "data/processed/datos_historicos.json"
 def cargar_json(filename):
     """Carga un archivo JSON desde la carpeta data/"""
     try:
@@ -524,6 +526,16 @@ def not_found(error):
 @app.errorhandler(500)
 def server_error(error):
     return jsonify({'error': 'Error interno del servidor'}), 500
+
+@app.route("/tendencia", methods=["GET"])
+def tendencia():
+    region = request.args.get("region")
+    industria = request.args.get("industria")
+    if not region or not industria:
+        return jsonify({"error": "Faltan parámetros 'region' e 'industria'"}), 400
+    datos = cargar_datos_json(RUTA_HISTORICO)
+    resultado = obtener_tendencia(region, industria, datos)
+    return jsonify(resultado)
 
 
 # ============================================================================
