@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Crea tu perfil — PRÓXIMO{% endblock %}
+
+{% block content %}
+<section class="container section-tight" style="max-width: 600px;">
+  <div class="section-head">
+    <p class="section-eyebrow">Bienvenido</p>
+    <h1 class="section-title">¿Quién eres?</h1>
+    <p class="section-desc">Así te mostramos la experiencia correcta.</p>
+  </div>
+
+  <div class="field" style="margin-bottom:24px;">
+    <label for="input-nombre">Tu nombre</label>
+    <input type="text" id="input-nombre" class="select" placeholder="Ej. María García" />
+  </div>
+
+  <div class="rol-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:32px;">
+    <button class="card rol-btn" data-rol="empleado" style="padding:24px; text-align:center; cursor:pointer; border: 2px solid var(--color-border);">
+      <p style="font-weight:700; margin-bottom:8px;">🧑‍💼 Busco trabajo</p>
+      <p class="text-sm text-muted">Quiero analizar mi CV y encontrar oportunidades</p>
+    </button>
+    <button class="card rol-btn" data-rol="reclutador" style="padding:24px; text-align:center; cursor:pointer; border: 2px solid var(--color-border);">
+      <p style="font-weight:700; margin-bottom:8px;">🏢 Soy reclutador</p>
+      <p class="text-sm text-muted">Busco candidatos para mi empresa</p>
+    </button>
+  </div>
+
+  <button class="btn btn-primary btn-block" id="btn-continuar" disabled>Continuar</button>
+</section>
+
+<script>
+let rolSeleccionado = null;
+
+document.querySelectorAll('.rol-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.rol-btn').forEach(b => b.style.borderColor = 'var(--color-border)');
+    btn.style.borderColor = 'var(--color-primary)';
+    rolSeleccionado = btn.dataset.rol;
+    document.getElementById('btn-continuar').disabled = false;
+  });
+});
+
+document.getElementById('btn-continuar').addEventListener('click', () => {
+  const nombre = document.getElementById('input-nombre').value.trim();
+  if (!nombre) {
+    alert('Escribe tu nombre primero.');
+    return;
+  }
+
+  const userId = obtenerUserId();
+  localStorage.setItem('proximo_nombre', nombre);
+  localStorage.setItem('proximo_rol', rolSeleccionado);
+
+  if (rolSeleccionado === 'reclutador') {
+    window.location.href = '/reclutador';
+  } else {
+    window.location.href = '/analizar';
+  }
+});
+</script>
+{% endblock %}
