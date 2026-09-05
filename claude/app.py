@@ -26,15 +26,13 @@ sistema de cuentas ni pagos reales.
 """
 import sys
 import os
+import json
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from models.predictor import obtener_tendencia, cargar_datos_json
 from billing import tiene_acceso, marcar_como_premium
-
-import json
 from datetime import datetime
-import os
 
 import enrichment
 
