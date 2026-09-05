@@ -34,6 +34,7 @@ from flask_cors import CORS
 from billing import tiene_acceso, marcar_como_premium
 from datetime import datetime
 from models.predictor import obtener_tendencia, cargar_datos_json
+from cv_parser import parsear_cv
 import enrichment
 
 try:
@@ -571,6 +572,35 @@ def match_semantico():
         return jsonify({"error": "Faltan 'puesto_texto' o 'candidatos'"}), 400
     resultados = matching_semantico(puesto_texto, candidatos)
     return jsonify(resultados)
+
+@app.route('/api/parse-cv-upload', methods=['POST'])
+def parse_cv_upload():
+    """
+    Recibe un archivo real de CV (PDF, DOCX o TXT) vía form-data,
+    extrae el texto y lo estructura con Gemini.
+
+    INPUT: form-data con un campo "cv_file" (el archivo)
+    OUTPUT: mismo formato que /api/parse-cv (simulado), pero con datos reales.
+    """
+    if 'cv_file' not in request.files:
+        return jsonify({'error': "Falta el archivo. Envía un form-data con el campo 'cv_file'."}), 400
+
+    archivo = request.files['cv_file']
+    if archivo.filename == '':
+        return jsonify({'error': 'No se seleccionó ningún archivo.'}), 400
+
+    try:
+        datos = parsear_cv(archivo, archivo.filename)
+        return jsonify(datos), 200
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except RuntimeError as e:
+        return jsonify({'error': str(e)}), 500
+    except json.JSONDecodeError:
+        return jsonify({'error': 'Gemini no devolvió un JSON válido. Intenta de nuevo.'}), 502
+    except Exception as e:
+        return jsonify({'error': f'Error inesperado: {str(e)}'}), 500
+      
 # ============================================================================
 # MAIN
 # ============================================================================
