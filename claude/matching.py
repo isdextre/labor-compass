@@ -16,7 +16,11 @@ from typing import List, Dict, Set, Tuple
 import json
 
 import os
-GEMINI_API_KEY = os.environ.get("AQ.Ab8RN6IfDFoI0qY8Ly3ORCTEZdudDhAbqAd7TwS3eQ_r4z1M8A")
+import google.generativeai as genai
+
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
 
 class SkillMatcher:
     """
@@ -259,20 +263,47 @@ class SkillMatcher:
 # FUNCIONES AUXILIARES (preparadas para Gemini API en el futuro)
 # ============================================================================
 
-def generar_embedding_placeholder(texto: str) -> List[float]:
+def generar_embedding(texto: str) -> List[float]:
     """
-    Placeholder para generar embeddings con Gemini.
-
-    FUTURO: Será reemplazado con:
-        import google.generativeai as genai
-        model = genai.GenerativeModel('embedding-001')
-        embedding = model.embed_content(texto)
-
-    Por ahora, devuelve un vector dummy.
+    Genera un embedding real con la API de Gemini (text-embedding-004).
+    Si no hay API key configurada, cae a un vector dummy (para no romper
+    el resto del pipeline en desarrollo local sin key).
     """
-    # Vector dummy (en producción sería embedding real de Gemini)
-    return [0.0] * 768  # Dimensión estándar
+    if not GEMINI_API_KEY:
+        print("[matching] GEMINI_API_KEY no configurada, usando embedding dummy.")
+        return [0.0] * 768
 
+    try:
+        resultado = genai.embed_content(
+            model="models/text-embedding-004",
+            content=texto,
+            task_type="semantic_similarity"
+        )
+        return resultado["embedding"]
+    except Exception as e:
+        print(f"[matching] Error generando embedding con Gemini: {e}")
+        return [0.0] * 768
+
+
+def matching_semantico(puesto_texto: str, candidatos: List[Dict], top_n: int = 5) -> List[Dict]:
+    """
+    Dado el texto libre de un puesto y una lista de candidatos (cada uno con
+    su texto de perfil/CV), rankea los más similares usando embeddings de Gemini.
+
+    candidatos: [{"candidato_id": ..., "texto_perfil": "..."}, ...]
+    """
+    embedding_puesto = generar_embedding(puesto_texto)
+
+    resultados = []
+    for candidato in candidatos:
+        embedding_candidato = generar_embedding(candidato["texto_perfil"])
+        score = similaridad_coseno(embedding_puesto, embedding_candidato)
+        resultados.append({
+            "candidato_id": candidato["candidato_id"],
+            "similitud": round(score, 4)
+        })
+
+    return sorted(resultados, key=lambda r: r["similitud"], reverse=True)[:top_n]
 
 def similaridad_coseno(vec1: List[float], vec2: List[float]) -> float:
     """
