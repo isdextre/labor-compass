@@ -3,6 +3,12 @@
 Extracción y procesamiento de datos de ocupación y salarios del Perú desde el INEI para hackathon Software Week DTHN.
 
 ## Datos incluidos
+### 0. LINK DEL PROYECTO DESPLEGADO:
+"https://xdxdxd.onrender.com/analizar"
+### 0.1 LINK DEL CANVA:
+"https://www.canva.com/design/DAHUVwN7uJg/mD1BuzSPNQABCalet667ug/edit"
+
+
 
 ### 1. Salarios por rama de actividad (2009-2021)
 **Archivo:** `ingcuad5_4_1.xlsx`
