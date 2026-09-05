@@ -136,7 +136,7 @@ def perfil():
 @app.route('/planes')
 def planes():
     return render_template('planes.html')
-from agente_postulacion import ejecutar_agente, obtener_postulaciones
+from agentedepostulacion import ejecutar_agente, obtener_postulaciones
 
 # Vacantes demo (puedes cargar esto de un JSON nuevo si prefieres)
 VACANTES_DEMO = [

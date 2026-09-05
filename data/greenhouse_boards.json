@@ -1,0 +1,14 @@
+{
+  "_nota": "Empresas cuyo portal de empleo corre sobre Greenhouse. El 'token' es el identificador del board en la API pública (https://boards-api.greenhouse.io/v1/boards/{token}/jobs). Agregar una empresa nueva es agregar una línea aquí: no hace falta código.",
+  "boards": [
+    { "token": "stripe",     "empresa": "Stripe" },
+    { "token": "figma",      "empresa": "Figma" },
+    { "token": "anthropic",  "empresa": "Anthropic" },
+    { "token": "databricks", "empresa": "Databricks" },
+    { "token": "gitlab",     "empresa": "GitLab" },
+    { "token": "reddit",     "empresa": "Reddit" },
+    { "token": "duolingo",   "empresa": "Duolingo" },
+    { "token": "webflow",    "empresa": "Webflow" },
+    { "token": "airtable",   "empresa": "Airtable" }
+  ]
+}
