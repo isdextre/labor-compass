@@ -27,10 +27,8 @@
           <a href="/reclutador" class="{{ 'active' if request.path == '/reclutador' }}">Para empresas</a>
         </div>
         <div class="nav-actions">
-          <button class="btn btn-secondary btn-sm" type="button"
-            onclick="showInfoModal({title:'Inicio de sesión', body:'Esta es una demo de hackathon: no hay sistema de cuentas real todavía. Usa &quot;Analizar mi CV&quot; para explorar el producto con un perfil de demostración.'})">
-            Iniciar sesión
-          </button>
+          <span id="nav-usuario" class="text-sm text-muted" style="margin-right: 8px;"></span>
+          <a href="/perfil" id="btn-login" class="btn btn-secondary btn-sm">Iniciar sesión</a>
           <a href="/analizar" class="btn btn-primary btn-sm">Analizar mi CV</a>
         </div>
         <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
@@ -45,10 +43,7 @@
       <a href="/mentores">Mentorías</a>
       <a href="/reclutador">Para empresas</a>
       <div class="nav-actions">
-        <button class="btn btn-secondary" type="button"
-          onclick="showInfoModal({title:'Inicio de sesión', body:'Demo de hackathon sin sistema de cuentas real. Usa Analizar mi CV para explorar el producto.'})">
-          Iniciar sesión
-        </button>
+        <a href="/perfil" class="btn btn-secondary">Iniciar sesión</a>
         <a href="/analizar" class="btn btn-primary">Analizar mi CV</a>
       </div>
     </div>
@@ -95,6 +90,17 @@
   <script src="{{ url_for('static', filename='js/state.js') }}"></script>
   <script src="{{ url_for('static', filename='js/api.js') }}"></script>
   <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const perfil = obtenerPerfilActual();
+      const navUsuario = document.getElementById('nav-usuario');
+      const btnLogin = document.getElementById('btn-login');
+      if (perfil.nombre && navUsuario) {
+        navUsuario.textContent = `${perfil.nombre} (${perfil.rol === 'reclutador' ? 'Reclutador' : 'Buscando trabajo'})`;
+        if (btnLogin) { btnLogin.textContent = 'Mi perfil'; }
+      }
+    });
+  </script>
   {% block extra_scripts %}{% endblock %}
 </body>
 </html>
