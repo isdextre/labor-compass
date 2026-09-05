@@ -31,7 +31,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 import json
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from billing import tiene_acceso, marcar_como_premium
+from billing import tiene_acceso, marcar_como_premium, registrar_uso
 from datetime import datetime
 from models.predictor import obtener_tendencia, cargar_datos_json
 from cv_parser import parsear_cv
@@ -548,17 +548,10 @@ def verificar_acceso():
 
 @app.route("/api/pagar_yape", methods=["POST"])
 def pagar_yape():
-    """
-    DEMO ONLY: en producción esto sería un webhook real de Culqi/Mercado Pago
-    confirmando que el pago por Yape se completó. Para el hackathon, simulamos
-    que el usuario ingresa su número de operación de Yape y lo aceptamos.
-    """
     user_id = request.json.get("user_id")
-    numero_operacion = request.json.get("numero_operacion")  # el código que Yape genera
-
+    numero_operacion = request.json.get("numero_operacion")
     if not numero_operacion or len(numero_operacion) < 6:
         return jsonify({"error": "Número de operación inválido"}), 400
-
     marcar_como_premium(user_id)
     return jsonify({"mensaje": "Pago verificado (simulado). Acceso premium activado.", "user_id": user_id})
 
