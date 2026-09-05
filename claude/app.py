@@ -560,6 +560,17 @@ def pagar_yape():
 
     marcar_como_premium(user_id)
     return jsonify({"mensaje": "Pago verificado (simulado). Acceso premium activado.", "user_id": user_id})
+
+from matching import matching_semantico
+
+@app.route("/api/recruiter/match_semantico", methods=["POST"])
+def match_semantico():
+    puesto_texto = request.json.get("puesto_texto")
+    candidatos = request.json.get("candidatos")
+    if not puesto_texto or not candidatos:
+        return jsonify({"error": "Faltan 'puesto_texto' o 'candidatos'"}), 400
+    resultados = matching_semantico(puesto_texto, candidatos)
+    return jsonify(resultados)
 # ============================================================================
 # MAIN
 # ============================================================================
