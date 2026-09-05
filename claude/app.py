@@ -31,9 +31,10 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 import json
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from billing import tiene_acceso, marcar_como_premium, registrar_uso
+from billing import tiene_acceso, marcar_como_premium
 from datetime import datetime
 from models.predictor import obtener_tendencia, cargar_datos_json
+from billing import tiene_acceso, registrar_uso
 from cv_parser import parsear_cv
 import enrichment
 
@@ -131,9 +132,12 @@ def pagina_mapa():
     return render_template('mapa.html')
 
 
+
+
 # ============================================================================
 # ENDPOINT 1: Parse CV (simula extracción de datos)
 # ============================================================================
+
 
 @app.route('/api/parse-cv', methods=['POST'])
 def parse_cv():
@@ -541,6 +545,8 @@ def tendencia():
     return jsonify(resultado)
 
 @app.route("/api/verificar_acceso", methods=["POST"])
+
+@app.route("/api/verificar_acceso", methods=["POST"])
 def verificar_acceso():
     user_id = request.json.get("user_id")
     resultado = tiene_acceso(user_id)
@@ -554,7 +560,6 @@ def pagar_yape():
         return jsonify({"error": "Número de operación inválido"}), 400
     marcar_como_premium(user_id)
     return jsonify({"mensaje": "Pago verificado (simulado). Acceso premium activado.", "user_id": user_id})
-
 from matching import matching_semantico
 
 @app.route("/api/recruiter/match_semantico", methods=["POST"])
@@ -568,13 +573,6 @@ def match_semantico():
 
 @app.route('/api/parse-cv-upload', methods=['POST'])
 def parse_cv_upload():
-    """
-    Recibe un archivo real de CV (PDF, DOCX o TXT) vía form-data,
-    extrae el texto y lo estructura con Gemini.
-
-    INPUT: form-data con un campo "cv_file" (el archivo)
-    OUTPUT: mismo formato que /api/parse-cv (simulado), pero con datos reales.
-    """
     if 'cv_file' not in request.files:
         return jsonify({'error': "Falta el archivo. Envía un form-data con el campo 'cv_file'."}), 400
 
