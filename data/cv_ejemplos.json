@@ -59,6 +59,18 @@
       "certificaciones": ["Google Analytics Certified"],
       "educacion": "Bachelor in Statistics",
       "fecha_parsing": "2026-09-04"
+    },
+    {
+      "user_id": "USER_006",
+      "nombre": "Juan Quispe Huamán",
+      "ocupacion_actual": "Mining Maintenance Technician",
+      "experiencia_años": 8,
+      "salario_actual_usd": 620,
+      "ubicacion": "Arequipa",
+      "skills_identificadas": ["Industrial Safety", "Preventive Maintenance", "Field Work", "Problem Solving", "Basic Electrical Skills", "Tool Handling", "Operational Discipline"],
+      "certificaciones": ["Seguridad Industrial Nivel II"],
+      "educacion": "Técnico en Mantenimiento Industrial (SENATI)",
+      "fecha_parsing": "2026-09-04"
     }
   ]
 }

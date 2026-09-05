@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+{% block title %}PRÓXIMO — Tu próximo trabajo, predicho inteligentemente{% endblock %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="container hero">
+  <div>
+    <h1 class="hero-title">Descubre tu próxima oportunidad antes que los demás</h1>
+    <p class="hero-desc">Analizamos tu experiencia, las tendencias del mercado y la demanda laboral para recomendarte una ruta profesional alcanzable.</p>
+    <div class="hero-actions">
+      <a href="/analizar" class="btn btn-primary">Analizar mi CV</a>
+      <a href="/mapa" class="btn btn-secondary">Explorar oportunidades</a>
+    </div>
+    <p class="hero-note">Análisis inicial gratuito · Resultados en menos de 2 minutos</p>
+  </div>
+
+  <div class="card" aria-label="Demostración del panel de resultados de PRÓXIMO">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:16px;">
+      <div>
+        <p class="text-xs text-muted">Perfil analizado</p>
+        <p style="font-weight:700;">Técnico de mantenimiento · Arequipa</p>
+      </div>
+      <span class="badge badge-demo">Demostración</span>
+    </div>
+
+    <div class="summary-hero" style="grid-template-columns: minmax(0,1fr) 140px; padding: 20px; gap: 20px;">
+      <div>
+        <p class="text-xs text-muted">Sector actual</p>
+        <p style="font-weight:700; margin-bottom:10px;">Minería</p>
+        <p class="text-xs text-muted">Próximo rol recomendado</p>
+        <p style="font-weight:700; color: var(--color-primary);">Técnico en energía solar</p>
+      </div>
+      <div class="summary-compat">
+        <span class="summary-compat-value" style="font-size:2rem;">87%</span>
+        <span class="text-xs text-muted">compatibilidad</span>
+      </div>
+    </div>
+
+    <div class="metric-row" style="grid-template-columns: repeat(3,1fr); margin-block: 16px; padding-block:16px;">
+      <div class="metric-item">
+        <dt>Minería (12 meses)</dt>
+        <dd style="color:var(--color-danger);">−35%</dd>
+      </div>
+      <div class="metric-item">
+        <dt>Energía solar (12 meses)</dt>
+        <dd style="color:var(--color-success);">+34%</dd>
+      </div>
+      <div class="metric-item">
+        <dt>Tiempo estimado</dt>
+        <dd>5 meses</dd>
+      </div>
+    </div>
+
+    <div class="chip-list" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;">
+      <span class="chip chip-common">Trabajo en campo</span>
+      <span class="chip chip-common">Mantenimiento preventivo</span>
+      <span class="chip chip-common">Seguridad industrial</span>
+    </div>
+
+    <a href="/analizar" class="btn btn-primary btn-block">Ver mi ruta de 5 meses</a>
+  </div>
+</section>
+
+<!-- ============ EVIDENCIA DEL PROBLEMA ============ -->
+<section class="section section-alt">
+  <div class="container" style="max-width: 900px;">
+    <p class="section-eyebrow">El contexto</p>
+    <p style="font-size: var(--text-xl); line-height:1.5;">
+      El <strong>22%</strong> de los empleos cambiará en los próximos cinco años. Se podrían crear
+      <strong>170 millones</strong> de nuevos roles a nivel global. El problema no es la falta de empleos:
+      es la velocidad con la que una persona puede reconvertirse hacia ellos.
+    </p>
+    <p class="text-muted" style="margin-top:16px;">Fuente: World Economic Forum, Future of Jobs Report. Ver metodología completa más abajo.</p>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section class="section" id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">Cómo funciona</p>
+      <h2 class="section-title">De tu CV a una ruta concreta, en cuatro pasos</h2>
+    </div>
+    <div class="grid grid-4">
+      <div class="card">
+        <p class="text-xs text-muted" style="margin-bottom:8px;">01</p>
+        <h3 style="font-size:var(--text-base); margin-bottom:6px;">Sube tu CV o completa tu perfil</h3>
+        <p class="text-sm text-muted">En PDF, o llenando un formulario corto.</p>
+      </div>
+      <div class="card">
+        <p class="text-xs text-muted" style="margin-bottom:8px;">02</p>
+        <h3 style="font-size:var(--text-base); margin-bottom:6px;">Analizamos tu experiencia y sector</h3>
+        <p class="text-sm text-muted">Identificamos tus habilidades y hacia dónde va tu industria.</p>
+      </div>
+      <div class="card">
+        <p class="text-xs text-muted" style="margin-bottom:8px;">03</p>
+        <h3 style="font-size:var(--text-base); margin-bottom:6px;">Comparamos tu perfil con la demanda</h3>
+        <p class="text-sm text-muted">Cruzamos tus skills con lo que piden empleadores reales.</p>
+      </div>
+      <div class="card">
+        <p class="text-xs text-muted" style="margin-bottom:8px;">04</p>
+        <h3 style="font-size:var(--text-base); margin-bottom:6px;">Recibes una ruta de aprendizaje y empleo</h3>
+        <p class="text-sm text-muted">Cursos, hacks de perfil y mentores, todo en un solo lugar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPLORADOR TERRITORIAL (preview) ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">Explorador territorial</p>
+      <h2 class="section-title">Oportunidades por región del Perú</h2>
+      <p class="section-desc">Selecciona una región para ver industrias en crecimiento, habilidades demandadas y vacantes aproximadas. <span class="badge badge-demo">Datos demostrativos para el prototipo</span></p>
+    </div>
+    <div id="map-canvas" data-mode="compact"></div>
+    <div style="margin-top:16px;">
+      <a href="/mapa" class="btn btn-secondary">Abrir explorador completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RUTAS DE RECONVERSIÓN ============ -->
+<section class="section" id="rutas">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">Ejemplos reales de transición</p>
+      <h2 class="section-title">Rutas de reconversión</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="route-card">
+        <div class="route-head">
+          <h3>Minería → Energía solar</h3>
+          <span class="route-compat">87%</span>
+        </div>
+        <p class="text-sm text-muted">Dificultad media · 5 meses estimados</p>
+        <div class="route-meta">
+          <span>Demanda: alta</span>
+          <span>Salario: S/ 2,500–4,500</span>
+        </div>
+        <a href="/analizar" class="btn btn-tertiary" style="align-self:flex-start;">Ver ruta →</a>
+      </div>
+      <div class="route-card">
+        <div class="route-head">
+          <h3>Manufactura → Automatización industrial</h3>
+          <span class="route-compat">74%</span>
+        </div>
+        <p class="text-sm text-muted">Dificultad media · 7 meses estimados</p>
+        <div class="route-meta">
+          <span>Demanda: alta</span>
+          <span>Salario: S/ 2,800–5,000</span>
+        </div>
+        <a href="/analizar" class="btn btn-tertiary" style="align-self:flex-start;">Ver ruta →</a>
+      </div>
+      <div class="route-card">
+        <div class="route-head">
+          <h3>Telemarketing → Soporte digital y ventas tecnológicas</h3>
+          <span class="route-compat">81%</span>
+        </div>
+        <p class="text-sm text-muted">Dificultad baja · 3 meses estimados</p>
+        <div class="route-meta">
+          <span>Demanda: media</span>
+          <span>Salario: S/ 2,000–3,600</span>
+        </div>
+        <a href="/analizar" class="btn btn-tertiary" style="align-self:flex-start;">Ver ruta →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO SE CONSTRUYE LA RECOMENDACIÓN ============ -->
+<section class="section section-alt">
+  <div class="container" style="max-width: 760px;">
+    <p class="section-eyebrow">Cómo se construye tu recomendación</p>
+    <h2 class="section-title" style="margin-bottom: 20px;">Seis fuentes convergiendo en una sola ruta</h2>
+    <div class="grid grid-3" style="gap: 16px;">
+      <div class="text-sm"><strong>Experiencia</strong><br><span class="text-muted">lo que ya sabes hacer</span></div>
+      <div class="text-sm"><strong>Educación</strong><br><span class="text-muted">tu formación de base</span></div>
+      <div class="text-sm"><strong>Ubicación</strong><br><span class="text-muted">dónde hay demanda cerca de ti</span></div>
+      <div class="text-sm"><strong>Tendencias</strong><br><span class="text-muted">hacia dónde va tu sector</span></div>
+      <div class="text-sm"><strong>Vacantes</strong><br><span class="text-muted">qué se pide hoy en el mercado</span></div>
+      <div class="text-sm"><strong>Cursos</strong><br><span class="text-muted">dónde cerrar la brecha</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMPRESAS E INSTITUCIONES ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">Para organizaciones</p>
+      <h2 class="section-title">Empresas e instituciones educativas</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 style="margin-bottom:12px;">Para empresas</h3>
+        <ul style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
+          <li class="text-sm">Identifica talento en transición, no solo desempleados activos.</li>
+          <li class="text-sm">Ranking de candidatos por compatibilidad semántica con el puesto.</li>
+          <li class="text-sm">Reduce el tiempo de contratación.</li>
+          <li class="text-sm">Entiende la oferta de talento por región.</li>
+        </ul>
+        <a href="/reclutador" class="btn btn-primary">Encontrar talento</a>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:12px;">Para instituciones educativas</h3>
+        <ul style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
+          <li class="text-sm">Detecta habilidades emergentes antes que se saturen.</li>
+          <li class="text-sm">Alinea tus programas con demanda real, no solo intuición.</li>
+          <li class="text-sm">Conecta con estudiantes potenciales por región.</li>
+          <li class="text-sm">Datos regionales para diseñar nuevos programas.</li>
+        </ul>
+        <button class="btn btn-secondary" type="button"
+          onclick="showInfoModal({title:'Publicar programa', body:'Este módulo para instituciones educativas está en el roadmap de PRÓXIMO. En esta demo de hackathon, el foco está en el flujo de trabajador y de reclutador.'})">
+          Publicar programa
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONFIANZA Y TRANSPARENCIA ============ -->
+<section class="section section-alt" id="confianza">
+  <div class="container" style="max-width: 800px;">
+    <div class="section-head">
+      <p class="section-eyebrow">Confianza y transparencia</p>
+      <h2 class="section-title">Cómo tratamos los datos y las predicciones</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div class="alert alert-info">
+        <div>
+          <strong>Por qué se recomienda una ruta:</strong> cada compatibilidad se calcula comparando tus habilidades
+          con las que requiere cada ocupación, y se cruza con señales reales de demanda cuando existen (ver "señal de mercado" en tus resultados).
+        </div>
+      </div>
+      <div class="alert alert-warning">
+        <div>
+          <strong>Las predicciones son orientativas, no certezas.</strong> Distinguimos siempre entre dato observado, dato calculado y dato demostrativo — nunca presentamos una estimación como garantía.
+        </div>
+      </div>
+      <div class="alert alert-info">
+        <div>
+          <strong>Fuentes:</strong> INEI (mercado laboral peruano), LinkedIn Job Postings vía Kaggle (15,886 publicaciones procesadas), y catálogos de cursos y ocupaciones construidos para esta demo.
+          Última actualización de los datos de mercado: septiembre de 2026.
+        </div>
+      </div>
+      <p class="text-sm text-muted">Puedes corregir tu perfil en cualquier momento desde la pantalla de resultados, y tu CV no se comparte con terceros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="section" style="text-align:left;">
+  <div class="container" style="max-width: 640px;">
+    <h2 class="section-title">Tu siguiente carrera ya existe. Descubre cuál es.</h2>
+    <p class="section-desc" style="margin-bottom:24px;">Obtén una evaluación inicial de tu perfil y conoce las oportunidades con mayor compatibilidad para ti.</p>
+    <a href="/analizar" class="btn btn-primary">Comenzar análisis gratuito</a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<script src="{{ url_for('static', filename='js/map.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,70 @@
+{
+  "_nota": "Datos demostrativos para el prototipo. No provienen de un pipeline en vivo; sirven para ilustrar cómo se vería el explorador territorial con datos reales de INEI/MTPE por región.",
+  "fecha_actualizacion": "2026-09-05",
+  "regiones": [
+    {
+      "id": "arequipa",
+      "nombre": "Arequipa",
+      "lat": -16.409,
+      "lon": -71.537,
+      "industrias_crecimiento": [
+        {"nombre": "Energía solar", "variacion_pct": 34.0},
+        {"nombre": "Agroexportación", "variacion_pct": 12.0},
+        {"nombre": "Minería", "variacion_pct": -9.0}
+      ],
+      "skills_demandados": ["Instalación fotovoltaica", "Mantenimiento preventivo", "Seguridad industrial"],
+      "vacantes_aproximadas": 420,
+      "salario_estimado_soles": {"min": 1800, "max": 3200},
+      "nivel_oportunidad": "alto",
+      "cursos_disponibles": 12
+    },
+    {
+      "id": "lima",
+      "nombre": "Lima",
+      "lat": -12.046,
+      "lon": -77.043,
+      "industrias_crecimiento": [
+        {"nombre": "Tecnología / Software", "variacion_pct": 22.0},
+        {"nombre": "Servicios financieros", "variacion_pct": 9.0},
+        {"nombre": "Comercio minorista", "variacion_pct": 3.0}
+      ],
+      "skills_demandados": ["SQL", "Python", "Análisis de datos", "Atención al cliente"],
+      "vacantes_aproximadas": 3150,
+      "salario_estimado_soles": {"min": 2000, "max": 5500},
+      "nivel_oportunidad": "alto",
+      "cursos_disponibles": 31
+    },
+    {
+      "id": "cusco",
+      "nombre": "Cusco",
+      "lat": -13.532,
+      "lon": -71.967,
+      "industrias_crecimiento": [
+        {"nombre": "Turismo especializado", "variacion_pct": 15.0},
+        {"nombre": "Agricultura tecnificada", "variacion_pct": 7.0},
+        {"nombre": "Textil tradicional", "variacion_pct": -18.0}
+      ],
+      "skills_demandados": ["Gestión turística", "Idiomas", "Marketing digital"],
+      "vacantes_aproximadas": 190,
+      "salario_estimado_soles": {"min": 1500, "max": 2600},
+      "nivel_oportunidad": "medio",
+      "cursos_disponibles": 8
+    },
+    {
+      "id": "piura",
+      "nombre": "Piura",
+      "lat": -5.194,
+      "lon": -80.632,
+      "industrias_crecimiento": [
+        {"nombre": "Energía eólica", "variacion_pct": 28.0},
+        {"nombre": "Agroindustria", "variacion_pct": 11.0},
+        {"nombre": "Pesca industrial", "variacion_pct": -6.0}
+      ],
+      "skills_demandados": ["Mantenimiento eléctrico", "Logística", "Control de calidad"],
+      "vacantes_aproximadas": 260,
+      "salario_estimado_soles": {"min": 1600, "max": 2900},
+      "nivel_oportunidad": "medio",
+      "cursos_disponibles": 9
+    }
+  ]
+}

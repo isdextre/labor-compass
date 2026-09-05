@@ -439,6 +439,17 @@
       "dificultad": "intermediate",
       "fuente": "Simulated - reforge",
       "certificacion": false
+    },
+    {
+      "id": "COURSE_041",
+      "nombre": "Instalación y Mantenimiento de Sistemas Fotovoltaicos",
+      "categoria": "Technical",
+      "skills": ["Photovoltaic Installation", "Basic Electrical Skills"],
+      "ocupaciones_objetivo": ["Solar Energy Technician"],
+      "duracion_horas": 60,
+      "dificultad": "intermediate",
+      "fuente": "Simulated - senati-style",
+      "certificacion": true
     }
   ]
 }

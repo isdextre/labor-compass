@@ -1,38 +1,44 @@
 """
-Transition Radar - Backend Flask
-==================================
+PRÓXIMO (antes "Transition Radar") - Backend Flask
+====================================================
 
-Sistema de recomendación de transición de carrera que integra:
+Sistema de inteligencia laboral que integra:
 - Parsing de CV simulado (datos de ejemplo)
-- Matching semántico de ocupaciones basado en skills
+- Matching semántico de ocupaciones basado en skills (Transition Radar)
+- Enriquecimiento con señales de mercado REALES (15,886 empleos de LinkedIn
+  procesados) vía enrichment.py — ver ese archivo para el detalle de qué es
+  real y qué es una aproximación.
 - Recomendación inteligente de cursos por skills faltantes
 - Apoyo emocional (wellness) basado en nivel de estrés/confianza
 - Conexión a comunidades de peer support (cohorts)
 - Validación contra mercado laboral peruano (INEI)
+- Matching semántico reclutador -> candidatos (TF-IDF + similitud coseno)
+- Explorador territorial (datos demostrativos, claramente etiquetados)
 
-FLUJO PRINCIPAL:
-1. Usuario: ocupación actual → skills actuales
-2. Backend: busca ocupaciones objetivo con menor "difficulty"
-3. Para cada ocupación objetivo: calcula skills faltantes
-4. Busca cursos que enseñen esos skills (cursos.json)
-5. Evalúa estado emocional → mensaje de bienestar
-6. Sugiere cohort de peer support relevante
-7. Devuelve ranking de oportunidades + plan de acción
-
-DATOS UTILIZADOS:
-- skills_por_ocupacion.json: mapeo ocupación → skills (CORE)
-- cursos.json: catálogo de cursos disponibles (CORE)
-- cv_ejemplos.json: ejemplos parseados para simulación (CORE)
-- wellness_library.json: respuestas por estrés/confianza (OPCIONAL - UX)
-- cohorts.json: grupos de peer support (OPCIONAL - comunidad)
-- inei_consolidado.json: validación ocupaciones reales en Perú (OPCIONAL - contexto)
+Todas las páginas HTML (landing, analizar, resultados, mentores, reclutador,
+mapa) se sirven aquí mismo con Jinja — un solo comando (`python app.py`)
+levanta todo, sin necesidad de abrir un archivo aparte con Live Server.
+La mayor parte de las funcionalidades nuevas del brief (mentorías, estado
+premium, hacks completados, candidatos guardados) NO requieren backend:
+viven en localStorage en el navegador, como pide la sección de
+"Persistencia ligera" del spec, porque esto es una demo de hackathon sin
+sistema de cuentas ni pagos reales.
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import json
 from datetime import datetime
 import os
+
+import enrichment
+
+try:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+    SKLEARN_DISPONIBLE = True
+except ImportError:
+    SKLEARN_DISPONIBLE = False
 
 app = Flask(__name__)
 CORS(app)
@@ -41,7 +47,9 @@ CORS(app)
 # CARGAR DATOS AL INICIAR
 # ============================================================================
 
-DATA_DIR = 'data'
+# Ruta absoluta a data/ (independiente del directorio desde el que se ejecute
+# `python app.py` — antes dependía de que el cwd fuera la raíz del repo).
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
 
 def cargar_json(filename):
     """Carga un archivo JSON desde la carpeta data/"""
@@ -72,8 +80,50 @@ COHORTS_DB = cohorts_data.get('cohorts', [])
 inei_data = cargar_json('inei_consolidado.json')
 INEI_DB = inei_data if inei_data else {}
 
+# DATOS NUEVOS: reclutador y explorador territorial
+candidatos_data = cargar_json('candidatos_reclutador.json')
+CANDIDATOS_DB = candidatos_data.get('candidatos', [])
+
+territorio_data = cargar_json('territorio_demo.json')
+REGIONES_DB = territorio_data.get('regiones', [])
+
 print(f"✓ Cargados: {len(SKILLS_MAP)} ocupaciones, {len(CURSOS_DB)} cursos, {len(CV_EJEMPLOS)} CV ejemplos")
 print(f"✓ Opcionales: {len(WELLNESS_LIB)} respuestas bienestar, {len(COHORTS_DB)} cohorts")
+print(f"✓ Nuevos: {len(CANDIDATOS_DB)} candidatos demo, {len(REGIONES_DB)} regiones territoriales")
+
+
+# ============================================================================
+# PÁGINAS (Jinja) — el "arquitectura de información" del producto
+# ============================================================================
+
+@app.route('/')
+def pagina_landing():
+    return render_template('landing.html')
+
+
+@app.route('/analizar')
+def pagina_analizar():
+    return render_template('analizar.html')
+
+
+@app.route('/resultados')
+def pagina_resultados():
+    return render_template('resultados.html')
+
+
+@app.route('/mentores')
+def pagina_mentores():
+    return render_template('mentores.html')
+
+
+@app.route('/reclutador')
+def pagina_reclutador():
+    return render_template('reclutador.html')
+
+
+@app.route('/mapa')
+def pagina_mapa():
+    return render_template('mapa.html')
 
 
 # ============================================================================
@@ -127,39 +177,23 @@ def parse_cv():
 
 
 # ============================================================================
-# ENDPOINT 2: Matching - Ocupaciones objetivo + Cursos
+# ENDPOINT 2: Matching - Ocupaciones objetivo + Cursos (+ señal de mercado real)
 # ============================================================================
 
 @app.route('/api/matching', methods=['POST'])
 def matching():
     """
     Calcula ocupaciones objetivo posibles + cursos recomendados.
+    Además de lo que ya existía, cada ocupación objetivo ahora trae un bloque
+    `señal_mercado` con datos REALES calculados desde 15,886 empleos de
+    LinkedIn (ver enrichment.py). Si no hay mapeo disponible, el campo viene
+    en null — nunca se inventa un número para rellenar el hueco.
 
     INPUT:
     {
         "ocupacion_actual": "Retail Sales Associate",
         "skills_actuales": ["Communication", "Sales", ...] (opcional)
     }
-
-    OUTPUT:
-    [
-        {
-            "ocupacion_objetivo": "Sales Manager",
-            "difficulty_score": 45.5,
-            "skills_comunes": ["Communication"],
-            "skills_faltantes": ["Leadership", "Excel", ...],
-            "cursos_recomendados": [
-                {
-                    "id": "COURSE_005",
-                    "nombre": "Agile Project Management",
-                    "duracion_horas": 30,
-                    "certificacion": true,
-                    "skills_cubre": ["Leadership"]
-                }
-            ]
-        },
-        ...
-    ]
     """
 
     data = request.json
@@ -216,16 +250,17 @@ def matching():
             'skills_comunes': list(skills_comunes),
             'skills_faltantes': list(skills_faltantes),
             'num_skills_faltantes': len(skills_faltantes),
-            'cursos_recomendados': cursos_match[:5]  # Top 5 cursos
+            'cursos_recomendados': cursos_match[:5],  # Top 5 cursos
+            'señal_mercado': enrichment.señal_de_mercado(ocupacion_objetivo),
         })
 
     # Ordenar por difficulty (menor dificultad primero = transiciones más fáciles)
     resultados = sorted(resultados, key=lambda x: x['difficulty_score'])
 
-    # Devolver top 5 ocupaciones objetivo
     return jsonify({
         'ocupacion_actual': ocupacion_actual,
         'skills_actuales': list(skills_actuales),
+        'señal_mercado_actual': enrichment.señal_de_mercado(ocupacion_actual),
         'ocupaciones_objetivo': resultados[:5],
         'total_posibilidades': len(resultados),
         'timestamp': datetime.now().isoformat()
@@ -241,27 +276,6 @@ def wellness():
     """
     Proporciona apoyo emocional basado en estrés/confianza.
     También sugiere cohorts de peer support.
-
-    INPUT:
-    {
-        "stress_level": 8,              (1-10, donde 10 = muy estresado)
-        "confidence_level": 4,          (1-10, donde 10 = muy confiado)
-        "ocupacion_objetivo": "Data Analyst"  (opcional)
-    }
-
-    OUTPUT:
-    {
-        "wellness_category": "high_stress",
-        "mensaje": "It's completely normal to feel overwhelmed...",
-        "accion_sugerida": "Schedule a 15-min wellness session",
-        "cohort_recommendation": {
-            "cohort_id": "COHORT_001",
-            "nombre": "Tech Career Changers - Lima",
-            "ubicacion": "Lima",
-            "tasa_finalizacion": 0.75,
-            "proxima_fecha": "2026-09-15"
-        }
-    }
     """
 
     data = request.json
@@ -323,31 +337,7 @@ def wellness():
 
 @app.route('/api/cursos', methods=['GET'])
 def get_cursos():
-    """
-    Devuelve catálogo completo de cursos.
-
-    OPCIONAL QUERY PARAMS:
-    - skill: filtrar por skill específico
-    - categoria: filtrar por categoría
-    - dificultad: beginner, intermediate, advanced
-
-    OUTPUT:
-    {
-        "total_cursos": 40,
-        "cursos": [
-            {
-                "id": "COURSE_001",
-                "nombre": "Python Fundamentals",
-                "categoria": "Technology",
-                "skills": ["Python", "Data Analysis"],
-                "duracion_horas": 40,
-                "dificultad": "beginner",
-                "certificacion": true
-            },
-            ...
-        ]
-    }
-    """
+    """Devuelve catálogo completo de cursos, con filtros opcionales."""
 
     skill = request.args.get('skill')
     categoria = request.args.get('categoria')
@@ -376,21 +366,7 @@ def get_cursos():
 
 @app.route('/api/ocupaciones', methods=['GET'])
 def get_ocupaciones():
-    """
-    Devuelve lista de ocupaciones disponibles.
-
-    OUTPUT:
-    {
-        "total_ocupaciones": 20,
-        "ocupaciones": [
-            {
-                "nombre": "Data Analyst",
-                "skills_requeridos": ["SQL", "Python", "Excel", ...]
-            },
-            ...
-        ]
-    }
-    """
+    """Devuelve lista de ocupaciones disponibles."""
 
     ocupaciones = [
         {
@@ -412,27 +388,7 @@ def get_ocupaciones():
 
 @app.route('/api/cohorts', methods=['GET'])
 def get_cohorts():
-    """
-    Devuelve lista de cohorts de peer support.
-
-    OPCIONAL: ?ubicacion=Lima
-
-    OUTPUT:
-    {
-        "total_cohorts": 6,
-        "cohorts": [
-            {
-                "cohort_id": "COHORT_001",
-                "nombre": "Tech Career Changers - Lima",
-                "ubicacion": "Lima",
-                "ocupaciones_enfoque": ["Data Analyst", ...],
-                "tasa_finalizacion": 0.75,
-                "proxima_fecha": "2026-09-15"
-            },
-            ...
-        ]
-    }
-    """
+    """Devuelve lista de cohorts de peer support."""
 
     ubicacion = request.args.get('ubicacion')
 
@@ -443,6 +399,95 @@ def get_cohorts():
     return jsonify({
         'total_cohorts': len(cohorts_filtrados),
         'cohorts': cohorts_filtrados
+    }), 200
+
+
+# ============================================================================
+# ENDPOINT 7 (NUEVO): Reclutador - matching semántico por texto (TF-IDF)
+# ============================================================================
+
+@app.route('/api/recruiter/match', methods=['POST'])
+def recruiter_match():
+    """
+    Recibe la descripción de un puesto en texto libre y devuelve los
+    candidatos del pool demo ordenados por similitud de TEXTO (TF-IDF +
+    similitud coseno de scikit-learn), no por coincidencia literal de
+    palabras clave. Esto es real (se calcula en el momento), pero es
+    importante ser honestos sobre qué tipo de "semántica" es: TF-IDF
+    entiende qué palabras son distintivas de un texto y compara vectores,
+    no capta sinónimos como lo haría un embedding neuronal — se lo
+    decimos así al usuario en la interfaz (`metodo` en la respuesta).
+
+    INPUT:
+    {
+        "titulo_puesto": "Técnico de energía solar",
+        "descripcion": "Buscamos alguien con experiencia en mantenimiento
+                         de equipos, trabajo de campo y conocimientos
+                         eléctricos básicos, en Arequipa."
+    }
+    """
+    data = request.json or {}
+    titulo = data.get('titulo_puesto', '')
+    descripcion = data.get('descripcion', '')
+    texto_puesto = f"{titulo}. {descripcion}".strip()
+
+    if not texto_puesto or texto_puesto == '.':
+        return jsonify({'error': 'Escribe una descripción del puesto para buscar candidatos.'}), 400
+
+    if not CANDIDATOS_DB:
+        return jsonify({'error': 'No hay candidatos demo cargados.'}), 404
+
+    if not SKLEARN_DISPONIBLE:
+        return jsonify({'error': 'scikit-learn no está instalado en el entorno (pip install scikit-learn).'}), 500
+
+    corpus = [texto_puesto] + [
+        f"{c['ocupacion_actual']}. {c['resumen']}" for c in CANDIDATOS_DB
+    ]
+
+    vectorizer = TfidfVectorizer(stop_words=None)
+    matriz = vectorizer.fit_transform(corpus)
+    similitudes = cosine_similarity(matriz[0:1], matriz[1:])[0]
+
+    resultados = []
+    for candidato, similitud in zip(CANDIDATOS_DB, similitudes):
+        resultados.append({
+            'id': candidato['id'],
+            'nombre': candidato['nombre'],
+            'ocupacion_actual': candidato['ocupacion_actual'],
+            'ubicacion': candidato['ubicacion'],
+            'experiencia_años': candidato['experiencia_años'],
+            'skills': candidato['skills'],
+            'disponibilidad': candidato['disponibilidad'],
+            'compatibilidad_pct': round(float(similitud) * 100, 1),
+        })
+
+    resultados = sorted(resultados, key=lambda r: r['compatibilidad_pct'], reverse=True)
+
+    return jsonify({
+        'puesto': {'titulo': titulo, 'descripcion': descripcion},
+        'metodo': 'Similitud de texto TF-IDF + coseno (scikit-learn), calculada sobre el pool de candidatos demo.',
+        'candidatos': resultados,
+        'total_candidatos': len(resultados),
+        'timestamp': datetime.now().isoformat(),
+    }), 200
+
+
+# ============================================================================
+# ENDPOINT 8 (NUEVO): Explorador territorial
+# ============================================================================
+
+@app.route('/api/territorio', methods=['GET'])
+def get_territorio():
+    """
+    Devuelve las regiones del explorador territorial. Datos demostrativos
+    para el prototipo (no vienen de un pipeline en vivo de INEI/MTPE por
+    región) — se etiquetan como tal en la respuesta y en la interfaz.
+    """
+    return jsonify({
+        'regiones': REGIONES_DB,
+        'es_demostrativo': True,
+        'nota': territorio_data.get('_nota', ''),
+        'fecha_actualizacion': territorio_data.get('fecha_actualizacion'),
     }), 200
 
 
@@ -460,8 +505,11 @@ def health():
             'cursos': len(CURSOS_DB),
             'cv_ejemplos': len(CV_EJEMPLOS),
             'wellness_responses': len(WELLNESS_LIB),
-            'cohorts': len(COHORTS_DB)
-        }
+            'cohorts': len(COHORTS_DB),
+            'candidatos_reclutador': len(CANDIDATOS_DB),
+            'regiones_territorio': len(REGIONES_DB),
+        },
+        'sklearn_disponible': SKLEARN_DISPONIBLE,
     }), 200
 
 
@@ -484,18 +532,21 @@ def server_error(error):
 
 if __name__ == '__main__':
     print("\n" + "="*60)
-    print("🚀 Transition Radar Backend iniciando...")
+    print("🚀 PRÓXIMO Backend iniciando...")
     print("="*60)
     print(f"📊 Datos cargados: {len(SKILLS_MAP)} ocupaciones, {len(CURSOS_DB)} cursos")
-    print(f"🎯 Endpoints disponibles:")
+    print(f"🎯 Páginas: /  /analizar  /resultados  /mentores  /reclutador  /mapa")
+    print(f"🔌 Endpoints API:")
     print(f"   - POST /api/parse-cv")
     print(f"   - POST /api/matching")
     print(f"   - POST /api/wellness")
     print(f"   - GET  /api/cursos")
     print(f"   - GET  /api/ocupaciones")
     print(f"   - GET  /api/cohorts")
+    print(f"   - POST /api/recruiter/match")
+    print(f"   - GET  /api/territorio")
     print(f"   - GET  /health")
-    print(f"\n🔗 http://localhost:5000")
+    print(f"\n🔗 http://127.0.0.1:5000")
     print("="*60 + "\n")
 
     app.run(debug=True, port=5000, host='127.0.0.1', use_reloader=False)

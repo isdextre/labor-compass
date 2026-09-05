@@ -19,6 +19,8 @@
     "Quality Assurance Specialist": ["Attention to Detail", "Testing", "Documentation", "Excel", "Communication", "Problem Solving"],
     "Supply Chain Analyst": ["Excel", "Supply Chain", "Data Analysis", "Communication", "Planning", "Problem Solving"],
     "UX/UI Designer": ["Design Thinking", "Prototyping", "Communication", "Creativity", "User Research", "Problem Solving"],
-    "Business Analyst": ["Business Analysis", "Excel", "SQL", "Communication", "Problem Solving", "Documentation"]
+    "Business Analyst": ["Business Analysis", "Excel", "SQL", "Communication", "Problem Solving", "Documentation"],
+    "Mining Maintenance Technician": ["Industrial Safety", "Preventive Maintenance", "Field Work", "Problem Solving", "Basic Electrical Skills", "Tool Handling", "Operational Discipline"],
+    "Solar Energy Technician": ["Industrial Safety", "Preventive Maintenance", "Field Work", "Problem Solving", "Basic Electrical Skills", "Tool Handling", "Operational Discipline", "Photovoltaic Installation"]
   }
 }

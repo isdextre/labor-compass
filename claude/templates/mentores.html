@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}Mentorías — PRÓXIMO{% endblock %}
+
+{% block content %}
+<section class="container section-tight">
+  <div class="section-head">
+    <p class="section-eyebrow">Mentorías</p>
+    <h1 class="section-title">Sesiones cortas con alguien que ya pasó por ahí</h1>
+    <p class="section-desc">No necesitas hablar con un "experto certificado" — a veces la orientación más útil viene de alguien un par de pasos adelante tuyo. Módulo independiente del análisis de tu CV.</p>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab-btn" role="tab" aria-selected="true" data-mpanel="panel-buscar">Buscar mentor</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-mpanel="panel-ser-mentor">Ser mentor</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-mpanel="panel-ingresos">Mis reservas e ingresos</button>
+  </div>
+
+  <!-- ---------- BUSCAR MENTOR ---------- -->
+  <div id="panel-buscar" data-mpanel-content>
+    <div class="map-filters" style="margin-bottom:20px;">
+      <div class="field" style="min-width:160px; margin-bottom:0;">
+        <label for="mf-tema">Tema</label>
+        <select id="mf-tema" class="select"><option value="">Todos</option></select>
+      </div>
+      <div class="field" style="min-width:160px; margin-bottom:0;">
+        <label for="mf-region">Región</label>
+        <select id="mf-region" class="select"><option value="">Todas</option></select>
+      </div>
+      <div class="field" style="min-width:160px; margin-bottom:0;">
+        <label for="mf-precio">Precio máximo</label>
+        <select id="mf-precio" class="select">
+          <option value="">Sin límite</option>
+          <option value="15">Hasta S/ 15</option>
+          <option value="25">Hasta S/ 25</option>
+          <option value="50">Hasta S/ 50</option>
+        </select>
+      </div>
+    </div>
+    <div id="mentors-grid" class="grid grid-2"></div>
+  </div>
+
+  <!-- ---------- SER MENTOR ---------- -->
+  <div id="panel-ser-mentor" data-mpanel-content hidden>
+    <div class="card" style="max-width:560px;">
+      <p class="text-sm text-muted" style="margin-bottom:20px;">Ejemplo: un estudiante de Derecho de 3er año puede ofrecer 15 minutos de orientación a un escolar. No hace falta ser un experto reconocido — solo tener algo útil que compartir.</p>
+
+      <div id="mentor-form-view">
+        <div class="field">
+          <label for="mentor-nombre">Tu nombre</label>
+          <input type="text" id="mentor-nombre" class="input" placeholder="Ej. Valeria Ponce">
+        </div>
+        <div class="field">
+          <label for="mentor-etapa">En qué etapa estás</label>
+          <input type="text" id="mentor-etapa" class="input" placeholder="Ej. Estudiante de Ingeniería, 4to año">
+        </div>
+        <div class="field">
+          <label for="mentor-ayuda">En qué puedes ayudar</label>
+          <textarea id="mentor-ayuda" class="textarea" placeholder="Describe brevemente en qué puedes orientar a alguien."></textarea>
+        </div>
+        <div class="grid grid-2" style="gap:16px;">
+          <div class="field">
+            <label for="mentor-duracion">Duración de la sesión</label>
+            <select id="mentor-duracion" class="select">
+              <option value="15">15 minutos</option>
+              <option value="20">20 minutos</option>
+              <option value="30">30 minutos</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="mentor-precio">Precio (soles)</label>
+            <input type="number" id="mentor-precio" class="input" min="0" step="1" value="15">
+          </div>
+        </div>
+        <div class="field">
+          <label for="mentor-disponibilidad">Próxima disponibilidad</label>
+          <input type="text" id="mentor-disponibilidad" class="input" placeholder="Ej. Esta semana">
+        </div>
+        <button class="btn btn-primary" id="btn-publicar-mentor">Previsualizar y publicar</button>
+      </div>
+
+      <div id="mentor-published-view" hidden>
+        <div class="alert alert-info" style="margin-bottom:16px;">Tu perfil de mentor está activo en esta demostración.</div>
+        <div id="mentor-published-card"></div>
+        <button class="btn btn-danger btn-sm" style="margin-top:16px;" id="btn-desactivar-mentor">Desactivar modo mentor</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- INGRESOS ---------- -->
+  <div id="panel-ingresos" data-mpanel-content hidden>
+    <div id="ingresos-content"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/demo-data.js') }}"></script>
+<script src="{{ url_for('static', filename='js/mentors.js') }}" defer></script>
+{% endblock %}

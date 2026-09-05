@@ -1,0 +1,85 @@
+{
+  "_nota": "Pool de candidatos de demostración para el módulo de reclutador. El texto de 'resumen' es el que se vectoriza (TF-IDF) para el matching semántico por similitud de texto, no por coincidencia literal de palabras clave.",
+  "candidatos": [
+    {
+      "id": "CAND_001",
+      "nombre": "Juan Quispe Huamán",
+      "ocupacion_actual": "Técnico de mantenimiento en minería",
+      "ubicacion": "Arequipa",
+      "experiencia_años": 8,
+      "resumen": "Técnico con 8 años de experiencia en mantenimiento preventivo y correctivo de equipos industriales en operaciones mineras. Manejo de sistemas eléctricos básicos, trabajo en campo, seguridad industrial y disciplina operativa. Interesado en reconvertirse hacia energía solar.",
+      "skills": ["Industrial Safety", "Preventive Maintenance", "Field Work", "Basic Electrical Skills", "Tool Handling"],
+      "disponibilidad": "Inmediata"
+    },
+    {
+      "id": "CAND_002",
+      "nombre": "Rosa Fernández Chávez",
+      "ocupacion_actual": "Técnica electricista",
+      "ubicacion": "Arequipa",
+      "experiencia_años": 5,
+      "resumen": "Técnica electricista con experiencia en instalación y mantenimiento de sistemas eléctricos residenciales e industriales. Ha completado un curso de instalación fotovoltaica y busca especializarse en energía solar.",
+      "skills": ["Electrical Systems", "Safety Protocols", "Photovoltaic Installation", "Problem Solving"],
+      "disponibilidad": "2 semanas"
+    },
+    {
+      "id": "CAND_003",
+      "nombre": "Patricia López Gutiérrez",
+      "ocupacion_actual": "Data Analyst",
+      "ubicacion": "Lima",
+      "experiencia_años": 2,
+      "resumen": "Analista de datos con experiencia en SQL, Python y visualización de datos para reportes de negocio. Formación en estadística.",
+      "skills": ["SQL", "Python", "Data Visualization", "Statistical Analysis"],
+      "disponibilidad": "1 mes"
+    },
+    {
+      "id": "CAND_004",
+      "nombre": "Miguel Ángel Torres",
+      "ocupacion_actual": "Técnico en mantenimiento industrial",
+      "ubicacion": "Moquegua",
+      "experiencia_años": 10,
+      "resumen": "Técnico de mantenimiento industrial con más de 10 años en plantas de energía y minería. Experiencia en trabajo en campo, mantenimiento preventivo y protocolos de seguridad. Busca oportunidades en energía renovable.",
+      "skills": ["Preventive Maintenance", "Field Work", "Industrial Safety", "Tool Handling"],
+      "disponibilidad": "Inmediata"
+    },
+    {
+      "id": "CAND_005",
+      "nombre": "Carlos Rodríguez Pérez",
+      "ocupacion_actual": "Finance Administrator",
+      "ubicacion": "Lima",
+      "experiencia_años": 5,
+      "resumen": "Administrador financiero con experiencia en contabilidad, análisis financiero y manejo de Excel avanzado.",
+      "skills": ["Excel", "Accounting", "Financial Analysis"],
+      "disponibilidad": "1 mes"
+    },
+    {
+      "id": "CAND_006",
+      "nombre": "Ana Martínez Flores",
+      "ocupacion_actual": "Administrative Assistant",
+      "ubicacion": "Arequipa",
+      "experiencia_años": 4,
+      "resumen": "Asistente administrativa organizada, con experiencia en documentación, atención al cliente y manejo de Excel.",
+      "skills": ["Organization", "Communication", "Excel", "Customer Service"],
+      "disponibilidad": "2 semanas"
+    },
+    {
+      "id": "CAND_007",
+      "nombre": "Luis Alberto Ramos",
+      "ocupacion_actual": "Técnico electromecánico",
+      "ubicacion": "Piura",
+      "experiencia_años": 6,
+      "resumen": "Técnico electromecánico con experiencia en mantenimiento de maquinaria pesada, sistemas eléctricos y trabajo en campo bajo condiciones exigentes. Certificado en seguridad industrial.",
+      "skills": ["Electrical Systems", "Field Work", "Safety Protocols", "Problem Solving"],
+      "disponibilidad": "Inmediata"
+    },
+    {
+      "id": "CAND_008",
+      "nombre": "Juan Silva Morales",
+      "ocupacion_actual": "Logistics Coordinator",
+      "ubicacion": "Callao",
+      "experiencia_años": 6,
+      "resumen": "Coordinador de logística con experiencia en gestión de cadena de suministro, planificación y manejo de Excel.",
+      "skills": ["Organization", "Supply Chain Management", "Excel", "Planning"],
+      "disponibilidad": "1 mes"
+    }
+  ]
+}

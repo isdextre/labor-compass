@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Explorador territorial — PRÓXIMO{% endblock %}
+
+{% block content %}
+<section class="container section-tight">
+  <div class="section-head">
+    <p class="section-eyebrow">Explorador territorial</p>
+    <h1 class="section-title">Oportunidades por región del Perú</h1>
+    <p class="section-desc">Selecciona una región o aplica filtros para ver industrias en crecimiento, habilidades demandadas, vacantes y salarios. <span class="badge badge-demo">Datos demostrativos para el prototipo</span></p>
+  </div>
+
+  <button class="btn btn-secondary drawer-toggle" type="button" aria-controls="map-filters-panel">Filtros</button>
+
+  <div class="map-filters map-filters-panel" id="map-filters-panel">
+    <div class="field" style="min-width:160px; margin-bottom:0;">
+      <label for="filter-region">Región</label>
+      <select id="filter-region" class="select">
+        <option value="">Todas</option>
+      </select>
+    </div>
+    <div class="field" style="min-width:180px; margin-bottom:0;">
+      <label for="filter-industria">Industria</label>
+      <select id="filter-industria" class="select">
+        <option value="">Todas</option>
+      </select>
+    </div>
+    <div class="field" style="min-width:160px; margin-bottom:0;">
+      <label for="filter-experiencia">Nivel de experiencia</label>
+      <select id="filter-experiencia" class="select">
+        <option value="">Todos</option>
+        <option value="junior">Junior</option>
+        <option value="semi">Semi-senior</option>
+        <option value="senior">Senior</option>
+      </select>
+    </div>
+    <div class="field" style="min-width:160px; margin-bottom:0;">
+      <label for="filter-modalidad">Modalidad</label>
+      <select id="filter-modalidad" class="select">
+        <option value="">Todas</option>
+        <option value="presencial">Presencial</option>
+        <option value="hibrido">Híbrido</option>
+        <option value="remoto">Remoto</option>
+      </select>
+    </div>
+    <div class="field" style="min-width:160px; margin-bottom:0;">
+      <label for="filter-horizonte">Horizonte temporal</label>
+      <select id="filter-horizonte" class="select">
+        <option value="">Actual</option>
+        <option value="6">6 meses</option>
+        <option value="12">12 meses</option>
+        <option value="24">24 meses</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="map-layout">
+    <div id="map-canvas" data-mode="full"></div>
+    <div id="map-detail"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<script src="{{ url_for('static', filename='js/map.js') }}" defer></script>
+{% endblock %}

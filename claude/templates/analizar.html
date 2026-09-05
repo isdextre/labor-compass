@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Analizar mi CV — PRÓXIMO{% endblock %}
+
+{% block content %}
+<section class="container section-tight" style="max-width: 720px;">
+  <div class="section-head">
+    <p class="section-eyebrow">Paso 1 de 2</p>
+    <h1 class="section-title">Cuéntanos quién eres</h1>
+    <p class="section-desc">Sube tu CV en PDF o elige un perfil de demostración para ver cómo funciona el análisis.</p>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="Forma de ingresar tu perfil">
+    <button class="tab-btn" role="tab" aria-selected="true" id="tab-upload" data-panel="panel-upload">Subir mi CV (PDF)</button>
+    <button class="tab-btn" role="tab" aria-selected="false" id="tab-manual" data-panel="panel-manual">Completar perfil manualmente</button>
+  </div>
+
+  <!-- ---------- PANEL: subir PDF ---------- -->
+  <div id="panel-upload" role="tabpanel" aria-labelledby="tab-upload">
+    <div class="card" id="dropzone" tabindex="0" role="button" aria-label="Arrastra tu CV en PDF o haz clic para seleccionarlo"
+         style="border: 2px dashed var(--color-border); text-align:center; padding: var(--space-12) var(--space-6); cursor:pointer;">
+      <p id="dropzone-text" style="font-weight:600; margin-bottom:6px;">Arrastra tu CV aquí, o haz clic para seleccionarlo</p>
+      <p class="text-sm text-muted">Solo PDF · máximo 8 MB</p>
+      <input type="file" id="file-input" accept="application/pdf" class="sr-only">
+    </div>
+
+    <div id="file-loaded" class="card" hidden style="margin-top:16px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <div>
+        <p style="font-weight:600;" id="file-name">archivo.pdf</p>
+        <p class="text-xs text-muted" id="file-size">0 KB</p>
+      </div>
+      <button class="btn btn-tertiary" id="btn-remove-file">Quitar</button>
+    </div>
+
+    <div id="file-error" class="alert alert-danger" hidden style="margin-top:16px;"></div>
+
+    <p class="text-xs text-muted" style="margin-top:16px;">
+      Nota de transparencia: en esta demo, el contenido del PDF se valida (tipo y tamaño) pero el análisis se
+      ejecuta sobre un perfil de demostración representativo — la extracción real de texto de PDF es un
+      siguiente paso fuera del alcance del hackathon.
+    </p>
+
+    <button class="btn btn-primary btn-block" id="btn-analizar" style="margin-top:20px;" disabled>Analizar mi perfil</button>
+  </div>
+
+  <!-- ---------- PANEL: manual ---------- -->
+  <div id="panel-manual" role="tabpanel" aria-labelledby="tab-manual" hidden>
+    <div class="field">
+      <label for="perfil-demo">Elige un perfil de demostración</label>
+      <select id="perfil-demo" class="select">
+        <option value="USER_006">Juan Quispe — Técnico de mantenimiento en minería, Arequipa</option>
+        <option value="USER_001">María García — Retail Sales Associate, Lima</option>
+        <option value="USER_002">Carlos Rodríguez — Finance Administrator, Lima</option>
+        <option value="USER_003">Ana Martínez — Administrative Assistant, Arequipa</option>
+        <option value="USER_004">Juan Silva — Logistics Coordinator, Callao</option>
+        <option value="USER_005">Patricia López — Data Analyst, Lima</option>
+      </select>
+      <p class="field-hint">Cada perfil trae experiencia, ubicación y habilidades ya definidas para la demostración.</p>
+    </div>
+    <button class="btn btn-primary btn-block" id="btn-analizar-manual">Analizar este perfil</button>
+  </div>
+
+  <!-- ---------- PROCESANDO ---------- -->
+  <div id="processing-state" class="card" hidden style="margin-top:24px;">
+    <p style="font-weight:700; margin-bottom:16px;">Analizando tu perfil…</p>
+    <ul id="processing-steps" style="display:flex; flex-direction:column; gap:12px;">
+      <li data-step="1" class="text-sm text-muted">Extrayendo experiencia y habilidades</li>
+      <li data-step="2" class="text-sm text-muted">Analizando el sector actual</li>
+      <li data-step="3" class="text-sm text-muted">Comparando industrias compatibles</li>
+      <li data-step="4" class="text-sm text-muted">Buscando habilidades demandadas</li>
+      <li data-step="5" class="text-sm text-muted">Construyendo la ruta recomendada</li>
+    </ul>
+  </div>
+
+  <div id="processing-error" class="alert alert-danger" hidden style="margin-top:16px;"></div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/upload.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transition Radar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <h1>Transition Radar</h1>
+      </div>
+      <p class="tagline">Encuentra a qué ocupación puedes saltar más rápido — y qué te falta aprender.</p>
+      <div id="status" class="status status-checking">Conectando con el backend…</div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- PASO 1: CV -->
+    <section class="card step" id="step-cv">
+      <div class="step-head">
+        <span class="step-num">1</span>
+        <h2>Tu perfil</h2>
+      </div>
+      <p class="muted">Carga un CV de ejemplo para simular el análisis (el parsing real de PDF es un próximo paso).</p>
+      <button id="btn-load-cv" class="btn btn-primary">Cargar CV de ejemplo</button>
+
+      <div id="cv-result" class="result hidden">
+        <div class="profile-grid">
+          <div><span class="label">Nombre</span><span id="cv-nombre" class="value"></span></div>
+          <div><span class="label">Ocupación actual</span><span id="cv-ocupacion" class="value"></span></div>
+          <div><span class="label">Experiencia</span><span id="cv-experiencia" class="value"></span></div>
+          <div><span class="label">Salario actual</span><span id="cv-salario" class="value"></span></div>
+          <div><span class="label">Ubicación</span><span id="cv-ubicacion" class="value"></span></div>
+        </div>
+        <div class="skills-row">
+          <span class="label">Skills identificadas</span>
+          <div id="cv-skills" class="chip-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASO 2: MATCHING -->
+    <section class="card step" id="step-matching">
+      <div class="step-head">
+        <span class="step-num">2</span>
+        <h2>Tus opciones de transición</h2>
+      </div>
+      <p class="muted">Calcula las ocupaciones a las que podrías moverte con menos esfuerzo, y qué cursos te faltan.</p>
+      <button id="btn-matching" class="btn btn-primary" disabled>Ver mis opciones</button>
+
+      <div id="matching-result" class="matching-grid"></div>
+    </section>
+
+    <!-- PASO 3: WELLNESS -->
+    <section class="card step" id="step-wellness">
+      <div class="step-head">
+        <span class="step-num">3</span>
+        <h2>¿Cómo te sientes con este cambio?</h2>
+      </div>
+
+      <div class="sliders">
+        <div class="slider-group">
+          <label for="stress">Nivel de estrés: <span id="stress-val">5</span>/10</label>
+          <input type="range" id="stress" min="1" max="10" value="5">
+        </div>
+        <div class="slider-group">
+          <label for="confidence">Nivel de confianza: <span id="confidence-val">5</span>/10</label>
+          <input type="range" id="confidence" min="1" max="10" value="5">
+        </div>
+      </div>
+      <button id="btn-wellness" class="btn btn-primary">Obtener apoyo</button>
+
+      <div id="wellness-result" class="result hidden"></div>
+    </section>
+
+    <!-- EXPLORAR: cursos y ocupaciones -->
+    <section class="card step" id="step-explore">
+      <div class="step-head">
+        <span class="step-num">+</span>
+        <h2>Explorar catálogo</h2>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="cursos">Cursos</button>
+        <button class="tab-btn" data-tab="ocupaciones">Ocupaciones</button>
+        <button class="tab-btn" data-tab="cohorts">Cohorts</button>
+      </div>
+      <div id="tab-cursos" class="tab-panel"></div>
+      <div id="tab-ocupaciones" class="tab-panel hidden"></div>
+      <div id="tab-cohorts" class="tab-panel hidden"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    Transition Radar · Software Week DTHN · Backend Flask en <code>127.0.0.1:5000</code>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

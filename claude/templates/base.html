@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}PRÓXIMO — Tu próximo trabajo, predicho inteligentemente{% endblock %}</title>
+  <meta name="description" content="PRÓXIMO analiza tu experiencia y las tendencias del mercado laboral para recomendarte una ruta profesional alcanzable.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">PRÓXIMO<span>.</span></a>
+
+      <nav class="nav-primary" aria-label="Navegación principal">
+        <div class="nav-links">
+          <a href="/#como-funciona" class="{{ 'active' if request.path == '/' }}">Cómo funciona</a>
+          <a href="/mapa" class="{{ 'active' if request.path == '/mapa' }}">Oportunidades</a>
+          <a href="/mentores" class="{{ 'active' if request.path == '/mentores' }}">Mentorías</a>
+          <a href="/reclutador" class="{{ 'active' if request.path == '/reclutador' }}">Para empresas</a>
+        </div>
+        <div class="nav-actions">
+          <button class="btn btn-secondary btn-sm" type="button"
+            onclick="showInfoModal({title:'Inicio de sesión', body:'Esta es una demo de hackathon: no hay sistema de cuentas real todavía. Usa &quot;Analizar mi CV&quot; para explorar el producto con un perfil de demostración.'})">
+            Iniciar sesión
+          </button>
+          <a href="/analizar" class="btn btn-primary btn-sm">Analizar mi CV</a>
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </nav>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="/#como-funciona">Cómo funciona</a>
+      <a href="/mapa">Oportunidades</a>
+      <a href="/mentores">Mentorías</a>
+      <a href="/reclutador">Para empresas</a>
+      <div class="nav-actions">
+        <button class="btn btn-secondary" type="button"
+          onclick="showInfoModal({title:'Inicio de sesión', body:'Demo de hackathon sin sistema de cuentas real. Usa Analizar mi CV para explorar el producto.'})">
+          Iniciar sesión
+        </button>
+        <a href="/analizar" class="btn btn-primary">Analizar mi CV</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo">PRÓXIMO<span>.</span></div>
+          <p class="text-muted text-sm" style="margin-top: 12px;">Infraestructura de inteligencia laboral para la velocidad de reconversión.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Producto</h4>
+          <a href="/analizar">Analizar mi CV</a>
+          <a href="/mapa">Explorador territorial</a>
+          <a href="/#rutas">Rutas de reconversión</a>
+        </div>
+        <div class="footer-col">
+          <h4>Para ti</h4>
+          <a href="/mentores">Mentorías</a>
+          <a href="/reclutador">Para empresas</a>
+          <a href="/#confianza">Metodología</a>
+        </div>
+        <div class="footer-col">
+          <h4>Datos</h4>
+          <a href="/#confianza">Fuentes de datos</a>
+          <a href="#" onclick="event.preventDefault(); showInfoModal({title:'Privacidad', body:'Tu CV y tus datos de perfil no se comparten con terceros. En esta versión de demo, todo el estado se guarda únicamente en tu navegador.'})">Privacidad</a>
+          <a href="#" onclick="event.preventDefault(); showInfoModal({title:'Términos', body:'PRÓXIMO es un prototipo construido para un hackathon. No constituye asesoría legal, financiera ni una garantía de resultados laborales.'})">Términos</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="#" onclick="event.preventDefault(); showInfoModal({title:'Contacto', body:'hola@proximo.pe (demo) — equipo Software Week DTHN.'})">Escríbenos</a>
+        </div>
+      </div>
+      <p class="footer-legal">PRÓXIMO ofrece estimaciones orientativas basadas en datos; no garantiza contrataciones ni resultados laborales.</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/state.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

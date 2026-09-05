@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Para empresas — PRÓXIMO{% endblock %}
+
+{% block content %}
+<section class="container section-tight">
+  <div class="section-head">
+    <p class="section-eyebrow">Para empresas</p>
+    <h1 class="section-title">Encuentra talento en transición</h1>
+    <p class="section-desc">Describe el puesto en tus propias palabras. El ranking se calcula por similitud de texto (TF-IDF + similitud coseno), no por coincidencia literal de palabras clave — sobre un pool de candidatos de demostración.</p>
+  </div>
+
+  <div class="card" style="max-width:640px; margin-bottom:32px;">
+    <div class="field">
+      <label for="rec-titulo">Nombre del puesto</label>
+      <input type="text" id="rec-titulo" class="input" placeholder="Ej. Técnico de energía solar">
+    </div>
+    <div class="field">
+      <label for="rec-descripcion">Descripción del puesto</label>
+      <textarea id="rec-descripcion" class="textarea" placeholder="Ej. Buscamos alguien con experiencia en mantenimiento de equipos, trabajo de campo y conocimientos eléctricos básicos, en Arequipa."></textarea>
+    </div>
+    <div class="grid grid-2" style="gap:16px;">
+      <div class="field">
+        <label for="rec-region">Región</label>
+        <select id="rec-region" class="select">
+          <option value="">Cualquiera</option>
+          <option>Arequipa</option>
+          <option>Lima</option>
+          <option>Piura</option>
+          <option>Moquegua</option>
+          <option>Callao</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="rec-modalidad">Modalidad</label>
+        <select id="rec-modalidad" class="select">
+          <option value="">Cualquiera</option>
+          <option>Presencial</option>
+          <option>Híbrido</option>
+          <option>Remoto</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-block" id="btn-buscar-candidatos">Ejecutar matching semántico</button>
+  </div>
+
+  <div id="rec-processing" class="alert alert-info" hidden>Procesando descripción y comparando contra el pool de candidatos…</div>
+  <div id="rec-error" class="alert alert-danger" hidden></div>
+  <div id="rec-method-note" class="text-xs text-muted" hidden style="margin-bottom:16px;"></div>
+  <div id="rec-results"></div>
+
+  <div style="margin-top:40px;">
+    <h2 class="section-title" style="font-size:var(--text-lg); margin-bottom:12px;">Candidatos guardados</h2>
+    <div id="rec-saved"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/recruiter.js') }}" defer></script>
+{% endblock %}

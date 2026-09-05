@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Tus resultados — PRÓXIMO{% endblock %}
+
+{% block content %}
+<section class="container">
+  <div id="premium-strip-target" style="margin-block: 16px 0;"></div>
+
+  <dl class="context-bar" id="context-bar" style="margin-top:16px;">
+    <span class="skeleton" style="width:220px; height:18px; display:inline-block;"></span>
+  </dl>
+
+  <div class="app-shell">
+    <nav class="app-sidebar" aria-label="Secciones del análisis">
+      <button class="side-link active" data-section="resumen">Resumen</button>
+      <button class="side-link" data-section="panorama">Panorama del sector</button>
+      <button class="side-link" data-section="transiciones">Transiciones recomendadas</button>
+      <button class="side-link" data-section="brecha">Brecha de habilidades</button>
+      <button class="side-link" data-section="cursos">Cursos</button>
+      <button class="side-link" data-section="hacks">Hacks para tu perfil</button>
+      <button class="side-link" data-section="futuro">Demanda futura</button>
+      <button class="side-link" data-section="empleadores">Qué buscan los empleadores</button>
+    </nav>
+
+    <div class="app-main">
+
+      <!-- 1. RESUMEN -->
+      <section id="section-resumen" class="result-section">
+        <div id="resumen-content"><div class="skeleton" style="height:200px;"></div></div>
+      </section>
+
+      <!-- 2. PANORAMA DEL SECTOR -->
+      <section id="section-panorama" class="result-section" hidden>
+        <h2 class="section-title" style="margin-bottom:16px;">Panorama de tu sector</h2>
+        <div id="panorama-content"><div class="skeleton" style="height:160px;"></div></div>
+      </section>
+
+      <!-- 3. TRANSITION RADAR -->
+      <section id="section-transiciones" class="result-section" hidden>
+        <h2 class="section-title" style="margin-bottom:8px;">Transiciones recomendadas</h2>
+        <p class="text-muted text-sm" style="margin-bottom:16px;">Comparadas por compatibilidad de habilidades y señales reales de mercado.</p>
+        <div class="btn-group" id="radar-filters" style="margin-bottom:20px;">
+          <button class="btn btn-secondary btn-sm" data-sort="compat" aria-pressed="true">Mayor compatibilidad</button>
+          <button class="btn btn-secondary btn-sm" data-sort="dificultad">Menor dificultad</button>
+          <button class="btn btn-secondary btn-sm" data-sort="crecimiento">Mayor crecimiento</button>
+          <button class="btn btn-secondary btn-sm" data-sort="tiempo">Menor tiempo</button>
+        </div>
+        <div id="radar-content" class="grid grid-2"></div>
+      </section>
+
+      <!-- 4. BRECHA DE HABILIDADES -->
+      <section id="section-brecha" class="result-section" hidden>
+        <h2 class="section-title" style="margin-bottom:16px;">Brecha de habilidades</h2>
+        <div id="brecha-content"></div>
+      </section>
+
+      <!-- 5. CURSOS -->
+      <section id="section-cursos" class="result-section" hidden>
+        <h2 class="section-title" style="margin-bottom:16px;">Cursos recomendados</h2>
+        <div id="cursos-content" class="grid grid-2"></div>
+      </section>
+
+      <!-- 6. HACKS -->
+      <section id="section-hacks" class="result-section" hidden>
+        <h2 class="section-title" style="margin-bottom:16px;">Hacks para potenciar tu perfil</h2>
+        <div class="progress-summary">
+          <span class="text-sm text-muted" id="hacks-progress-label">0 de 0 completados</span>
+          <div class="bar-track"><div class="bar-fill" id="hacks-progress-bar"></div></div>
+        </div>
+        <div id="hacks-content" style="display:flex; flex-direction:column; gap:12px;"></div>
+      </section>
+
+      <!-- 7. DEMANDA FUTURA -->
+      <section id="section-futuro" class="result-section" hidden>
+        <h2 class="section-title" style="margin-bottom:8px;">Cursos que valdrán la pena en cinco años</h2>
+        <p class="text-muted text-sm" style="margin-bottom:16px;">Priorizados por demanda creciente real, no por popularidad actual.</p>
+        <div id="futuro-content"></div>
+      </section>
+
+      <!-- 8. EMPLEADORES -->
+      <section id="section-empleadores" class="result-section" hidden>
+        <h2 class="section-title" style="margin-bottom:16px;">Qué buscan los empleadores</h2>
+        <div id="empleadores-content"></div>
+      </section>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/demo-data.js') }}"></script>
+<script src="{{ url_for('static', filename='js/results.js') }}" defer></script>
+{% endblock %}
