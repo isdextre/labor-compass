@@ -21,22 +21,7 @@ const DEFAULT_STATE = {
   bookings: [],
   savedCandidates: [],
 };
-function obtenerUserId() {
-  let userId = localStorage.getItem('proximo_user_id');
-  if (!userId) {
-    userId = 'USER_' + Math.random().toString(36).substring(2, 10);
-    localStorage.setItem('proximo_user_id', userId);
-  }
-  return userId;
-}
 
-function obtenerPerfilActual() {
-  return {
-    userId: obtenerUserId(),
-    nombre: localStorage.getItem('proximo_nombre'),
-    rol: localStorage.getItem('proximo_rol')
-  };
-}
 
 function ProximoState() {
   function read() {
@@ -68,6 +53,8 @@ function ProximoState() {
   function reset() {
     write({ ...DEFAULT_STATE });
   }
+   
+
 
  
 
@@ -75,3 +62,19 @@ function ProximoState() {
 }
 
 const proximoState = ProximoState();
+function obtenerUserId() {
+  let userId = localStorage.getItem('proximo_user_id');
+  if (!userId) {
+    userId = 'USER_' + Math.random().toString(36).substring(2, 10);
+    localStorage.setItem('proximo_user_id', userId);
+  }
+  return userId;
+}
+
+function obtenerPerfilActual() {
+  return {
+    userId: obtenerUserId(),
+    nombre: localStorage.getItem('proximo_nombre'),
+    rol: localStorage.getItem('proximo_rol')
+  };
+}
