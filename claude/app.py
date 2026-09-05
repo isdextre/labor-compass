@@ -34,7 +34,7 @@ from flask_cors import CORS
 from billing import tiene_acceso, marcar_como_premium
 from datetime import datetime
 from models.predictor import obtener_tendencia, cargar_datos_json
-from billing import tiene_acceso, registrar_uso
+from billing import tiene_acceso, marcar_como_premium
 from cv_parser import parsear_cv
 import enrichment
 
@@ -548,7 +548,7 @@ def tendencia():
     resultado = obtener_tendencia(region, industria, datos)
     return jsonify(resultado)
 
-@app.route("/api/verificar_acceso", methods=["POST"])
+
 
 @app.route("/api/verificar_acceso", methods=["POST"])
 def verificar_acceso():
