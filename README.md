@@ -2,7 +2,7 @@
 
 Extracción y procesamiento de datos de ocupación y salarios del Perú desde el INEI para hackathon Software Week DTHN.
 
-## 📊 Datos incluidos
+## Datos incluidos
 
 ### 1. Salarios por rama de actividad (2009-2021)
 **Archivo:** `ingcuad5_4_1.xlsx`
@@ -27,7 +27,7 @@ Extracción y procesamiento de datos de ocupación y salarios del Perú desde el
 - Por departamento (24 departamentos)
 - **Output:** `inei_ocupados_nacional.json` (30 registros)
 
-## 🚀 Instalación y uso
+##  Instalación y uso
 
 ### 1. Descargar archivos INEI
 
@@ -57,7 +57,7 @@ Genera archivos JSON en `data/processed/`:
 - `inei_ocupados_nacional.json` - 30 registros
 - `inei_consolidado.json` - 48 registros totales
 
-## 📁 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 workforce-shift/
@@ -81,7 +81,7 @@ workforce-shift/
         └── inei_consolidado.json
 ```
 
-## 🔍 Estructura de datos
+##  Estructura de datos
 
 ### Salarios por rama
 ```json
@@ -117,7 +117,7 @@ workforce-shift/
 }
 ```
 
-## 📈 Insights principales
+##  Insights principales
 
 1. **Variación salarial 2009-2021:**
    - Servicios: +38.0% (mayor crecimiento)
@@ -134,7 +134,7 @@ workforce-shift/
    - Costa genera ~35% de ingresos nacionales
    - Sierra y Selva con brecha salarial de 40%+
 
-## 🛠️ Próximos pasos para el hackathon
+##  Próximos pasos para el hackathon
 
 - [ ] Validación manual de estructuras de cada parser
 - [ ] Integración con datos WEF (Future of Jobs)
@@ -143,7 +143,7 @@ workforce-shift/
 - [ ] API REST para servir datos
 - [ ] Dashboard interactivo
 
-## 📝 Notas técnicas
+##  Notas técnicas
 
 - Los parsers usan estructura específica para cada archivo INEI (no son genéricos)
 - Maneja años como columnas numéricas, no como headers
@@ -151,7 +151,7 @@ workforce-shift/
 - Exporta solo datos con valores numéricos válidos
 - Mantiene variaciones porcentuales para análisis de tendencias
 
-## 🔗 Fuentes
+##  Fuentes
 
 - INEI (Instituto Nacional de Estadística e Informática): https://www.inei.gob.pe/
 - Datos públicos: https://datosabiertos.gob.pe/
