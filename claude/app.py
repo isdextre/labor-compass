@@ -35,6 +35,7 @@ from flask_cors import CORS
 from billing import tiene_acceso, marcar_como_premium
 from datetime import datetime
 from app import models
+from app.models import MyModelClass
 from models.predictor import obtener_tendencia, cargar_datos_json
 import enrichment
 
