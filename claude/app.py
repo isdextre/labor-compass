@@ -131,7 +131,9 @@ def pagina_reclutador():
 def pagina_mapa():
     return render_template('mapa.html')
 
-
+@app.route('/perfil')
+def perfil():
+    return render_template('perfil.html')
 
 
 # ============================================================================
