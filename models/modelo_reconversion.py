@@ -2,26 +2,6 @@
 """
 modelo_reconversion.py
 PRÓXIMO — Machine Learning Engineer
-
-Cubre el segundo entregable del rol:
-  - Modelo de reconversión (Random Forest con edad, industria actual,
-    destino, timeline) -> probabilidad de éxito.
-  - skills_faltantes: diferencia entre las skills que pide la ocupación
-    destino y las que ya tiene el candidato.
-  - timeline: estimación de cuántos meses toma cerrar esa brecha de skills,
-    usando la duración real de los cursos del catálogo (cursos.json).
-
-SOBRE EL RANDOM FOREST — LEE ESTO ANTES DE USARLO EN PRODUCCIÓN:
-  No existe (todavía) una base de datos con transiciones laborales reales
-  etiquetadas como "éxito" / "no éxito". Para poder entregar un modelo
-  entrenado y funcional en el plazo del hackathon, `generar_dataset_sintetico()`
-  construye ejemplos de entrenamiento a partir de una fórmula heurística
-  explícita (más abajo) en vez de datos históricos reales.
-  Esto es una decisión consciente y documentada, NO un dato real disfrazado:
-  en cuanto el equipo tenga resultados reales de usuarios (pilotos, encuestas
-  de seguimiento, etc.), basta reemplazar `generar_dataset_sintetico()` por
-  un `pd.read_csv("transiciones_reales.csv")` con las mismas columnas y
-  reentrenar — el resto del pipeline no cambia.
 """
 from __future__ import annotations
 
