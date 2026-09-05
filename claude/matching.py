@@ -15,6 +15,8 @@ Este módulo puede extenderse para usar embeddings con Gemini en el futuro.
 from typing import List, Dict, Set, Tuple
 import json
 
+import os
+GEMINI_API_KEY = os.environ.get("AQ.Ab8RN6IfDFoI0qY8Ly3ORCTEZdudDhAbqAd7TwS3eQ_r4z1M8A")
 
 class SkillMatcher:
     """
