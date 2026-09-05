@@ -1,26 +1,1187 @@
 {
   "skills_mapping": {
-    "Retail Sales Associate": ["Communication", "Sales", "Customer Service", "IT", "Cash Handling", "Product Knowledge"],
-    "Data Analyst": ["SQL", "Python", "Excel", "Data Visualization", "Statistical Analysis", "Business Analysis"],
-    "Logistics Coordinator": ["Organization", "Supply Chain Management", "Excel", "Communication", "IT", "Planning"],
-    "Finance Administrator": ["Excel", "Accounting", "Attention to Detail", "IT", "Communication", "Financial Analysis"],
-    "Administrative Assistant": ["Organization", "Communication", "Excel", "IT", "Customer Service", "Documentation"],
-    "Junior Software Engineer": ["Python", "JavaScript", "Problem Solving", "Git", "SQL", "Web Development"],
-    "Healthcare Technician": ["Patient Communication", "Medical Terminology", "Attention to Detail", "Healthcare IT", "Empathy"],
-    "Manufacturing Technician": ["Machine Operation", "Quality Control", "Safety Protocols", "Problem Solving", "Mechanical Knowledge"],
-    "Sales Manager": ["Leadership", "Sales Strategy", "Communication", "Excel", "Customer Relationship", "Negotiation"],
-    "HR Specialist": ["Recruitment", "Communication", "Excel", "HR Systems", "Employee Relations", "Compliance"],
-    "Marketing Coordinator": ["Digital Marketing", "Social Media", "Content Creation", "Excel", "Communication", "Creativity"],
-    "Accountant": ["Accounting", "Excel", "Financial Analysis", "Attention to Detail", "Taxation Knowledge", "Compliance"],
-    "Database Administrator": ["SQL", "System Administration", "Security", "Problem Solving", "IT Infrastructure", "Python"],
-    "Customer Service Representative": ["Communication", "Empathy", "Problem Solving", "IT", "Product Knowledge", "Patience"],
-    "Project Manager": ["Leadership", "Planning", "Communication", "Excel", "Time Management", "Risk Management"],
-    "Electrical Technician": ["Electrical Systems", "Safety Protocols", "Problem Solving", "Technical Knowledge", "Attention to Detail"],
-    "Quality Assurance Specialist": ["Attention to Detail", "Testing", "Documentation", "Excel", "Communication", "Problem Solving"],
-    "Supply Chain Analyst": ["Excel", "Supply Chain", "Data Analysis", "Communication", "Planning", "Problem Solving"],
-    "UX/UI Designer": ["Design Thinking", "Prototyping", "Communication", "Creativity", "User Research", "Problem Solving"],
-    "Business Analyst": ["Business Analysis", "Excel", "SQL", "Communication", "Problem Solving", "Documentation"],
-    "Mining Maintenance Technician": ["Industrial Safety", "Preventive Maintenance", "Field Work", "Problem Solving", "Basic Electrical Skills", "Tool Handling", "Operational Discipline"],
-    "Solar Energy Technician": ["Industrial Safety", "Preventive Maintenance", "Field Work", "Problem Solving", "Basic Electrical Skills", "Tool Handling", "Operational Discipline", "Photovoltaic Installation"]
+    "Junior Backend Engineer - Python": [
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "REST API",
+      "Git"
+    ],
+    "Mid Backend Engineer - Python": [
+      "Python",
+      "Django",
+      "FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "Testing"
+    ],
+    "Senior Backend Engineer - Python": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "Kubernetes",
+      "System Design",
+      "Microservices"
+    ],
+    "Junior Backend Engineer - Node.js": [
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "REST API"
+    ],
+    "Mid Backend Engineer - Node.js": [
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "PostgreSQL",
+      "Docker",
+      "Testing"
+    ],
+    "Senior Backend Engineer - Node.js": [
+      "JavaScript",
+      "Node.js",
+      "NestJS",
+      "MongoDB",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes",
+      "System Design"
+    ],
+    "Junior Backend Engineer - Java": [
+      "Java",
+      "Spring",
+      "MySQL",
+      "REST API",
+      "Maven"
+    ],
+    "Senior Backend Engineer - Java": [
+      "Java",
+      "Spring Boot",
+      "Microservices",
+      "MySQL",
+      "PostgreSQL",
+      "Kubernetes",
+      "System Design"
+    ],
+    "Backend Engineer - Go": [
+      "Go",
+      "REST API",
+      "gRPC",
+      "PostgreSQL",
+      "Docker",
+      "Microservices"
+    ],
+    "Backend Engineer - Rust": [
+      "Rust",
+      "System Design",
+      "Performance",
+      "Concurrency"
+    ],
+    "Junior Frontend Engineer - React": [
+      "JavaScript",
+      "React",
+      "HTML",
+      "CSS",
+      "REST API"
+    ],
+    "Mid Frontend Engineer - React": [
+      "JavaScript",
+      "React",
+      "TypeScript",
+      "CSS-in-JS",
+      "Testing",
+      "Redux",
+      "Next.js"
+    ],
+    "Senior Frontend Engineer - React": [
+      "JavaScript",
+      "React",
+      "TypeScript",
+      "Next.js",
+      "System Design",
+      "Testing",
+      "Performance Optimization",
+      "Webpack"
+    ],
+    "Junior Frontend Engineer - Vue": [
+      "JavaScript",
+      "Vue.js",
+      "HTML",
+      "CSS",
+      "REST API"
+    ],
+    "Mid Frontend Engineer - Vue": [
+      "JavaScript",
+      "Vue.js",
+      "TypeScript",
+      "Vuex",
+      "Testing",
+      "Nuxt"
+    ],
+    "Senior Frontend Engineer - Vue": [
+      "JavaScript",
+      "Vue.js",
+      "TypeScript",
+      "Nuxt",
+      "System Design",
+      "Testing"
+    ],
+    "Frontend Engineer - Angular": [
+      "TypeScript",
+      "Angular",
+      "RxJS",
+      "Testing",
+      "System Design"
+    ],
+    "Frontend Engineer - Svelte": [
+      "JavaScript",
+      "Svelte",
+      "HTML",
+      "CSS",
+      "Testing"
+    ],
+    "Junior Full Stack Engineer": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "MongoDB",
+      "HTML",
+      "CSS"
+    ],
+    "Mid Full Stack Engineer": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "PostgreSQL",
+      "Docker",
+      "Testing",
+      "System Design"
+    ],
+    "Senior Full Stack Engineer": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes",
+      "System Design",
+      "Microservices"
+    ],
+    "Full Stack Engineer - Python": [
+      "Python",
+      "Django",
+      "React",
+      "PostgreSQL",
+      "Docker",
+      "REST API"
+    ],
+    "Junior ML Engineer": [
+      "Python",
+      "Machine Learning",
+      "Pandas",
+      "Scikit-learn",
+      "Jupyter"
+    ],
+    "Mid ML Engineer": [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+      "SQL",
+      "Docker"
+    ],
+    "Senior ML Engineer": [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "MLOps",
+      "Kubernetes",
+      "System Design",
+      "Distributed Training"
+    ],
+    "Data Scientist": [
+      "Python",
+      "Statistics",
+      "Machine Learning",
+      "Pandas",
+      "SQL",
+      "Tableau",
+      "A/B Testing"
+    ],
+    "ML Engineer - NLP": [
+      "Python",
+      "NLP",
+      "Transformers",
+      "PyTorch",
+      "Hugging Face",
+      "BERT"
+    ],
+    "ML Engineer - Computer Vision": [
+      "Python",
+      "Computer Vision",
+      "OpenCV",
+      "PyTorch",
+      "TensorFlow",
+      "CUDA"
+    ],
+    "ML Engineer - Recommender Systems": [
+      "Python",
+      "Machine Learning",
+      "Collaborative Filtering",
+      "Deep Learning"
+    ],
+    "AI Specialist": [
+      "Python",
+      "Deep Learning",
+      "Machine Learning",
+      "Neural Networks",
+      "TensorFlow"
+    ],
+    "Data Analyst": [
+      "SQL",
+      "Python",
+      "Tableau",
+      "Power BI",
+      "Excel",
+      "Statistics"
+    ],
+    "Data Engineer": [
+      "Python",
+      "SQL",
+      "Apache Spark",
+      "Hadoop",
+      "Kafka",
+      "Airflow",
+      "Docker"
+    ],
+    "Senior Data Engineer": [
+      "Python",
+      "SQL",
+      "Apache Spark",
+      "Kubernetes",
+      "Airflow",
+      "System Design",
+      "Scalability"
+    ],
+    "Analytics Engineer": [
+      "SQL",
+      "Python",
+      "dbt",
+      "Data Modeling",
+      "Tableau"
+    ],
+    "Junior DevOps Engineer": [
+      "Docker",
+      "Linux",
+      "Bash",
+      "CI/CD",
+      "Git"
+    ],
+    "Mid DevOps Engineer": [
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "Terraform",
+      "CI/CD",
+      "Monitoring"
+    ],
+    "Senior DevOps Engineer": [
+      "Kubernetes",
+      "AWS",
+      "GCP",
+      "Terraform",
+      "System Design",
+      "Security",
+      "Scalability"
+    ],
+    "Cloud Architect": [
+      "AWS",
+      "GCP",
+      "Azure",
+      "Kubernetes",
+      "Terraform",
+      "Security",
+      "High Availability"
+    ],
+    "Cloud Engineer - AWS": [
+      "AWS",
+      "EC2",
+      "S3",
+      "Lambda",
+      "RDS",
+      "CloudFormation"
+    ],
+    "Cloud Engineer - GCP": [
+      "GCP",
+      "Compute Engine",
+      "Cloud Storage",
+      "BigQuery",
+      "Cloud Functions"
+    ],
+    "Cloud Engineer - Azure": [
+      "Azure",
+      "Virtual Machines",
+      "App Service",
+      "SQL Database"
+    ],
+    "Infrastructure Engineer": [
+      "Linux",
+      "Networking",
+      "System Administration",
+      "Monitoring"
+    ],
+    "Junior QA Engineer": [
+      "Selenium",
+      "Manual Testing",
+      "Test Planning",
+      "Bug Reporting"
+    ],
+    "Mid QA Engineer": [
+      "Selenium",
+      "Cypress",
+      "Pytest",
+      "Test Automation",
+      "API Testing",
+      "Performance Testing"
+    ],
+    "Senior QA Engineer": [
+      "Selenium",
+      "Cypress",
+      "Test Framework Design",
+      "CI/CD",
+      "Performance Testing",
+      "Security Testing"
+    ],
+    "QA Automation Engineer": [
+      "Selenium",
+      "Cypress",
+      "Jest",
+      "Pytest",
+      "API Testing"
+    ],
+    "Performance Test Engineer": [
+      "LoadRunner",
+      "JMeter",
+      "Performance Analysis",
+      "Optimization"
+    ],
+    "Security Engineer": [
+      "Cybersecurity",
+      "Network Security",
+      "Linux",
+      "Encryption",
+      "Vulnerability Assessment"
+    ],
+    "Application Security Engineer": [
+      "Security",
+      "Code Review",
+      "OWASP",
+      "Penetration Testing"
+    ],
+    "Security Architect": [
+      "Cybersecurity",
+      "System Design",
+      "Risk Management",
+      "Compliance"
+    ],
+    "Solutions Architect": [
+      "System Design",
+      "AWS",
+      "Kubernetes",
+      "Microservices",
+      "Technical Leadership"
+    ],
+    "Enterprise Architect": [
+      "System Design",
+      "Enterprise Solutions",
+      "Security",
+      "Scalability"
+    ],
+    "Software Architect": [
+      "System Design",
+      "Design Patterns",
+      "Microservices",
+      "Technical Leadership"
+    ],
+    "Junior iOS Developer": [
+      "Swift",
+      "iOS",
+      "Xcode",
+      "REST API"
+    ],
+    "Senior iOS Developer": [
+      "Swift",
+      "iOS",
+      "SwiftUI",
+      "Concurrency",
+      "Performance Optimization"
+    ],
+    "Junior Android Developer": [
+      "Kotlin",
+      "Java",
+      "Android",
+      "REST API"
+    ],
+    "Senior Android Developer": [
+      "Kotlin",
+      "Android",
+      "Jetpack",
+      "Performance Optimization",
+      "System Design"
+    ],
+    "React Native Developer": [
+      "JavaScript",
+      "React Native",
+      "Mobile Development",
+      "iOS",
+      "Android"
+    ],
+    "Database Administrator": [
+      "SQL",
+      "PostgreSQL",
+      "MySQL",
+      "Backup",
+      "Performance Tuning",
+      "Security"
+    ],
+    "Database Engineer": [
+      "SQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Replication",
+      "High Availability"
+    ],
+    "NoSQL Specialist": [
+      "MongoDB",
+      "Redis",
+      "Cassandra",
+      "Data Modeling"
+    ],
+    "Engineering Manager": [
+      "Leadership",
+      "Team Management",
+      "Strategic Planning",
+      "Communication"
+    ],
+    "Tech Lead": [
+      "Technical Leadership",
+      "Mentoring",
+      "Code Review",
+      "System Design"
+    ],
+    "Principal Engineer": [
+      "System Design",
+      "Strategic Planning",
+      "Technical Vision",
+      "Leadership"
+    ],
+    "CTO": [
+      "Strategic Planning",
+      "Technical Vision",
+      "Team Building",
+      "Business Acumen"
+    ],
+    "DevRel Engineer": [
+      "Technical Communication",
+      "Developer Tools",
+      "Community Building"
+    ],
+    "Technical Writer": [
+      "Documentation",
+      "API Documentation",
+      "Technical Communication"
+    ],
+    "Release Manager": [
+      "CI/CD",
+      "Deployment",
+      "Version Control",
+      "Quality Assurance"
+    ],
+    "Build Engineer": [
+      "Build Systems",
+      "CI/CD",
+      "Automation",
+      "Linux"
+    ],
+    "Blockchain Developer": [
+      "Solidity",
+      "Smart Contracts",
+      "Blockchain",
+      "Cryptography"
+    ],
+    "Game Developer": [
+      "C#",
+      "Unity",
+      "Game Design",
+      "Graphics Programming"
+    ],
+    "AR/VR Developer": [
+      "C#",
+      "Unity",
+      "3D Graphics",
+      "AR/VR Frameworks"
+    ],
+    "IoT Engineer": [
+      "Embedded C",
+      "Arduino",
+      "IoT",
+      "Microcontrollers",
+      "Sensors"
+    ],
+    "Automation Engineer": [
+      "Python",
+      "Automation",
+      "Scripting",
+      "Testing"
+    ],
+    "Site Reliability Engineer": [
+      "Kubernetes",
+      "Monitoring",
+      "Incident Response",
+      "System Design"
+    ],
+    "Ingeniero de Minas": [
+      "Mining Engineering",
+      "Safety",
+      "Operations",
+      "Geology"
+    ],
+    "Técnico en Perforación": [
+      "Drilling",
+      "Safety",
+      "Equipment Operation",
+      "Problem Solving"
+    ],
+    "Geólogo": [
+      "Geology",
+      "Rock Analysis",
+      "Mineral Identification",
+      "Technical Report"
+    ],
+    "Supervisor de Seguridad Minera": [
+      "Safety Management",
+      "Compliance",
+      "Leadership",
+      "Risk Assessment"
+    ],
+    "Profesor Universitario": [
+      "Teaching",
+      "Curriculum Design",
+      "Research",
+      "Communication"
+    ],
+    "Coordinador Académico": [
+      "Curriculum Development",
+      "Academic Planning",
+      "Leadership",
+      "Evaluation"
+    ],
+    "Director de Carrera": [
+      "Strategic Planning",
+      "Academic Leadership",
+      "Stakeholder Management"
+    ],
+    "Especialista en Diseño Instruccional": [
+      "Instructional Design",
+      "Curriculum",
+      "Assessment",
+      "Educational Technology"
+    ],
+    "Médico General": [
+      "Diagnosis",
+      "Patient Care",
+      "Medical Knowledge",
+      "Communication"
+    ],
+    "Cirujano": [
+      "Surgery",
+      "Medical Knowledge",
+      "Precision",
+      "Stress Management"
+    ],
+    "Enfermero": [
+      "Patient Care",
+      "Medical Procedures",
+      "Empathy",
+      "Attention to Detail"
+    ],
+    "Técnico en Laboratorio": [
+      "Lab Analysis",
+      "Equipment Operation",
+      "Accuracy",
+      "Reporting"
+    ],
+    "Psicólogo Clínico": [
+      "Psychology",
+      "Patient Assessment",
+      "Therapy",
+      "Counseling"
+    ],
+    "Nutricionista": [
+      "Nutrition Science",
+      "Diet Planning",
+      "Health Counseling",
+      "Communication"
+    ],
+    "Fisioterapeuta": [
+      "Physical Therapy",
+      "Rehabilitation",
+      "Patient Care",
+      "Anatomy"
+    ],
+    "Contador": [
+      "Accounting",
+      "Financial Reporting",
+      "Excel",
+      "Tax Knowledge"
+    ],
+    "Analista Financiero": [
+      "Financial Analysis",
+      "Forecasting",
+      "Excel",
+      "Reporting"
+    ],
+    "Asesor Financiero": [
+      "Financial Planning",
+      "Investment Knowledge",
+      "Communication",
+      "Sales"
+    ],
+    "Auditor": [
+      "Auditing",
+      "Compliance",
+      "Financial Analysis",
+      "Attention to Detail"
+    ],
+    "Tesorero": [
+      "Treasury Management",
+      "Cash Flow",
+      "Banking",
+      "Excel"
+    ],
+    "Coordinador de Logística": [
+      "Logistics",
+      "Supply Chain",
+      "Planning",
+      "Communication"
+    ],
+    "Especialista en Supply Chain": [
+      "Supply Chain Management",
+      "Procurement",
+      "Optimization",
+      "Forecasting"
+    ],
+    "Operador de Almacén": [
+      "Warehouse Management",
+      "Inventory Control",
+      "Organization",
+      "Safety"
+    ],
+    "Planificador de Producción": [
+      "Production Planning",
+      "Forecasting",
+      "Optimization",
+      "Systems"
+    ],
+    "Gerente de Distribución": [
+      "Distribution",
+      "Logistics",
+      "Leadership",
+      "Cost Management"
+    ],
+    "Gerente de Tienda": [
+      "Leadership",
+      "Sales",
+      "Customer Service",
+      "Operations Management"
+    ],
+    "Supervisor de Ventas": [
+      "Sales",
+      "Team Management",
+      "Customer Relations",
+      "Target Achievement"
+    ],
+    "Vendedor": [
+      "Sales",
+      "Communication",
+      "Customer Service",
+      "Product Knowledge"
+    ],
+    "Especialista en Inventario": [
+      "Inventory Management",
+      "Organization",
+      "Systems",
+      "Accuracy"
+    ],
+    "Jefe de Ventas": [
+      "Sales Leadership",
+      "Team Management",
+      "Strategy",
+      "Negotiation"
+    ],
+    "Especialista en Recursos Humanos": [
+      "Recruitment",
+      "Employee Relations",
+      "Compliance",
+      "Communication"
+    ],
+    "Reclutador": [
+      "Recruitment",
+      "Talent Sourcing",
+      "Interviewing",
+      "Communication"
+    ],
+    "Gerente de Talento": [
+      "Talent Management",
+      "Performance Management",
+      "Development",
+      "Leadership"
+    ],
+    "Especialista en Compensación": [
+      "Compensation",
+      "Benefits",
+      "Analysis",
+      "Compliance"
+    ],
+    "Gerente de Marketing": [
+      "Marketing Strategy",
+      "Brand Management",
+      "Campaigns",
+      "Leadership"
+    ],
+    "Especialista en Marketing Digital": [
+      "Digital Marketing",
+      "Social Media",
+      "Analytics",
+      "Content Creation"
+    ],
+    "Community Manager": [
+      "Community Management",
+      "Social Media",
+      "Communication",
+      "Content Creation"
+    ],
+    "Especialista en SEO/SEM": [
+      "SEO",
+      "SEM",
+      "Analytics",
+      "Keyword Research"
+    ],
+    "Asistente Administrativo": [
+      "Administration",
+      "Organization",
+      "Communication",
+      "Office Management"
+    ],
+    "Administrador de Sistemas": [
+      "Systems Administration",
+      "IT Support",
+      "Linux",
+      "Windows"
+    ],
+    "Especialista en Procesos": [
+      "Process Improvement",
+      "Optimization",
+      "Analysis",
+      "Documentation"
+    ],
+    "Ingeniero Civil": [
+      "Civil Engineering",
+      "Project Management",
+      "Construction",
+      "Technical Design"
+    ],
+    "Jefe de Obra": [
+      "Construction Management",
+      "Leadership",
+      "Safety",
+      "Quality Control"
+    ],
+    "Supervisor de Obra": [
+      "Construction",
+      "Safety",
+      "Quality",
+      "Team Management"
+    ],
+    "Ingeniero de Manufactura": [
+      "Manufacturing",
+      "Process Optimization",
+      "Quality Control",
+      "Systems"
+    ],
+    "Técnico de Manufactura": [
+      "Equipment Operation",
+      "Maintenance",
+      "Problem Solving",
+      "Safety"
+    ],
+    "Supervisor de Producción": [
+      "Production Management",
+      "Leadership",
+      "Quality",
+      "Safety"
+    ],
+    "Senior ML Engineer - Recommender Systems": [
+      "Python",
+      "Machine Learning",
+      "Collaborative Filtering",
+      "Deep Learning",
+      "Big Data"
+    ],
+    "ML Ops Engineer": [
+      "Python",
+      "Kubernetes",
+      "Docker",
+      "MLOps",
+      "Monitoring",
+      "Python"
+    ],
+    "Platform Engineer": [
+      "Kubernetes",
+      "Docker",
+      "System Design",
+      "Cloud",
+      "Infrastructure"
+    ],
+    "Embedded Systems Engineer": [
+      "C",
+      "C++",
+      "Embedded Systems",
+      "Microcontrollers",
+      "IoT"
+    ],
+    "FPGA Developer": [
+      "VHDL",
+      "Verilog",
+      "Hardware Design",
+      "Digital Logic"
+    ],
+    "Firmware Engineer": [
+      "C",
+      "Embedded Systems",
+      "Hardware",
+      "Low-level Programming"
+    ],
+    "Graphics Engineer": [
+      "C++",
+      "Graphics Programming",
+      "OpenGL",
+      "GLSL",
+      "Performance Optimization"
+    ],
+    "Game Engine Developer": [
+      "C++",
+      "Game Development",
+      "Graphics",
+      "Physics Engine"
+    ],
+    "VFX Engineer": [
+      "C++",
+      "Graphics",
+      "Animation",
+      "Performance"
+    ],
+    "3D Graphics Programmer": [
+      "C++",
+      "Graphics API",
+      "Shaders",
+      "Math"
+    ],
+    "Networking Engineer": [
+      "Network Protocols",
+      "C",
+      "Low-level Programming",
+      "System Design"
+    ],
+    "Systems Programmer": [
+      "C",
+      "C++",
+      "Linux",
+      "System Architecture",
+      "Performance"
+    ],
+    "Compiler Engineer": [
+      "C",
+      "C++",
+      "Computer Science",
+      "Language Design"
+    ],
+    "Database Systems Engineer": [
+      "C++",
+      "Database Design",
+      "Query Optimization",
+      "System Design"
+    ],
+    "Search Engine Developer": [
+      "Information Retrieval",
+      "Search Algorithms",
+      "Indexing"
+    ],
+    "Distributed Systems Engineer": [
+      "System Design",
+      "Consensus Algorithms",
+      "Distributed Computing"
+    ],
+    "Senior Software Engineer": [
+      "System Design",
+      "Leadership",
+      "Technical Mentoring",
+      "Architecture"
+    ],
+    "Staff Engineer": [
+      "System Design",
+      "Technical Vision",
+      "Strategic Planning",
+      "Innovation"
+    ],
+    "Engineering Director": [
+      "Leadership",
+      "Team Building",
+      "Strategic Vision",
+      "Communication"
+    ],
+    "Gerente de Proyectos": [
+      "Project Management",
+      "Leadership",
+      "Planning",
+      "Communication"
+    ],
+    "Coordinador de Proyectos": [
+      "Project Coordination",
+      "Planning",
+      "Organization",
+      "Communication"
+    ],
+    "Abogado": [
+      "Law",
+      "Legal Research",
+      "Contract Review",
+      "Compliance"
+    ],
+    "Notario": [
+      "Legal Procedures",
+      "Documentation",
+      "Compliance"
+    ],
+    "Contador Público": [
+      "Accounting",
+      "Audit",
+      "Tax",
+      "Reporting"
+    ],
+    "Asesor Legal": [
+      "Law",
+      "Legal Advice",
+      "Compliance",
+      "Communication"
+    ],
+    "Especialista en Tributación": [
+      "Tax Law",
+      "Compliance",
+      "Financial Knowledge"
+    ],
+    "Analista de Crédito": [
+      "Credit Analysis",
+      "Risk Assessment",
+      "Financial Analysis"
+    ],
+    "Oficial de Crédito": [
+      "Credit Approval",
+      "Customer Relations",
+      "Risk Assessment"
+    ],
+    "Especialista en Seguros": [
+      "Insurance",
+      "Sales",
+      "Risk Assessment",
+      "Communication"
+    ],
+    "Agente de Seguros": [
+      "Insurance",
+      "Sales",
+      "Customer Service"
+    ],
+    "Broker": [
+      "Financial Markets",
+      "Sales",
+      "Negotiation"
+    ],
+    "Analista Bursátil": [
+      "Financial Markets",
+      "Analysis",
+      "Trading"
+    ],
+    "Economista": [
+      "Economics",
+      "Analysis",
+      "Research",
+      "Forecasting"
+    ],
+    "Especialista en Estadística": [
+      "Statistics",
+      "Data Analysis",
+      "Excel",
+      "Research"
+    ],
+    "Consultor de Negocios": [
+      "Business Analysis",
+      "Strategy",
+      "Communication",
+      "Problem Solving"
+    ],
+    "Estratega de Negocios": [
+      "Business Strategy",
+      "Leadership",
+      "Market Analysis"
+    ],
+    "Investigador de Mercado": [
+      "Market Research",
+      "Analysis",
+      "Statistics",
+      "Communication"
+    ],
+    "Publicista": [
+      "Advertising",
+      "Creativity",
+      "Communication",
+      "Campaign Management"
+    ],
+    "Diseñador Gráfico": [
+      "Graphic Design",
+      "Creativity",
+      "Visual Communication",
+      "Design Tools"
+    ],
+    "Diseñador UX/UI": [
+      "UX Design",
+      "UI Design",
+      "User Research",
+      "Prototyping"
+    ],
+    "Fotógrafo": [
+      "Photography",
+      "Lighting",
+      "Editing",
+      "Composition"
+    ],
+    "Videógrafo": [
+      "Video Production",
+      "Editing",
+      "Cinematography",
+      "Creative Direction"
+    ],
+    "Productor de Contenido": [
+      "Content Creation",
+      "Storytelling",
+      "Video/Photography",
+      "Social Media"
+    ],
+    "Periodista": [
+      "Journalism",
+      "Writing",
+      "Research",
+      "Communication"
+    ],
+    "Editor": [
+      "Editing",
+      "Writing",
+      "Publishing",
+      "Quality Control"
+    ],
+    "Especialista en Comunicación": [
+      "Communication",
+      "Public Relations",
+      "Media Relations"
+    ],
+    "Social Media Manager": [
+      "Social Media",
+      "Content Creation",
+      "Community Management",
+      "Analytics"
+    ],
+    "Especialista en Branding": [
+      "Branding",
+      "Brand Strategy",
+      "Design",
+      "Communication"
+    ],
+    "Especialista en Eventos": [
+      "Event Planning",
+      "Coordination",
+      "Vendor Management",
+      "Communication"
+    ],
+    "Event Manager": [
+      "Event Management",
+      "Leadership",
+      "Planning",
+      "Vendor Relations"
+    ],
+    "Travel Manager": [
+      "Travel Planning",
+      "Vendor Relations",
+      "Organization",
+      "Communication"
+    ],
+    "Turism Specialist": [
+      "Tourism",
+      "Destination Knowledge",
+      "Customer Service",
+      "Itinerary Planning"
+    ],
+    "Hotel Manager": [
+      "Hotel Management",
+      "Leadership",
+      "Customer Service",
+      "Operations"
+    ],
+    "Chef": [
+      "Cooking",
+      "Food Preparation",
+      "Menu Design",
+      "Leadership"
+    ],
+    "Sous Chef": [
+      "Cooking",
+      "Food Preparation",
+      "Supervision",
+      "Quality Control"
+    ],
+    "Pastelero": [
+      "Pastry Arts",
+      "Baking",
+      "Creativity",
+      "Food Safety"
+    ],
+    "Barista": [
+      "Barista Skills",
+      "Coffee Preparation",
+      "Customer Service",
+      "Attention to Detail"
+    ],
+    "Sommelier": [
+      "Wine Knowledge",
+      "Tasting",
+      "Pairing",
+      "Communication"
+    ],
+    "Caterer": [
+      "Catering",
+      "Food Service",
+      "Planning",
+      "Organization"
+    ]
+  },
+  "metadata": {
+    "total_ocupaciones": 181,
+    "generated_at": "2026-09-05"
   }
 }
