@@ -28,6 +28,7 @@ sistema de cuentas ni pagos reales.
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from models.predictor import obtener_tendencia, cargar_datos_json
+from billing import tiene_acceso, marcar_como_premium
 
 import json
 from datetime import datetime
@@ -537,7 +538,27 @@ def tendencia():
     resultado = obtener_tendencia(region, industria, datos)
     return jsonify(resultado)
 
+@app.route("/api/verificar_acceso", methods=["POST"])
+def verificar_acceso():
+    user_id = request.json.get("user_id")
+    resultado = tiene_acceso(user_id)
+    return jsonify(resultado)
 
+@app.route("/api/pagar_yape", methods=["POST"])
+def pagar_yape():
+    """
+    DEMO ONLY: en producción esto sería un webhook real de Culqi/Mercado Pago
+    confirmando que el pago por Yape se completó. Para el hackathon, simulamos
+    que el usuario ingresa su número de operación de Yape y lo aceptamos.
+    """
+    user_id = request.json.get("user_id")
+    numero_operacion = request.json.get("numero_operacion")  # el código que Yape genera
+
+    if not numero_operacion or len(numero_operacion) < 6:
+        return jsonify({"error": "Número de operación inválido"}), 400
+
+    marcar_como_premium(user_id)
+    return jsonify({"mensaje": "Pago verificado (simulado). Acceso premium activado.", "user_id": user_id})
 # ============================================================================
 # MAIN
 # ============================================================================
@@ -559,6 +580,8 @@ if __name__ == '__main__':
     print(f"   - GET  /api/territorio")
     print(f"   - GET  /health")
     print(f"\n🔗 http://127.0.0.1:5000")
+    print(f"   - POST /api/verificar_acceso")
+    print(f"   - POST /api/pagar_yape")
     print("="*60 + "\n")
 
     app.run(debug=True, port=5000, host='127.0.0.1', use_reloader=False)
