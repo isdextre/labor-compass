@@ -1,0 +1,24 @@
+# Despliegue en Render (https://render.com)
+#
+# Con este archivo en la raiz, Render puede crear el servicio solo:
+#   New > Blueprint > conectar este repo.
+# Si el servicio ya existe y se creo a mano, basta con copiar buildCommand
+# y startCommand en su pestana Settings.
+services:
+  - type: web
+    name: proximo
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # wsgi.py vive en la raiz y carga claude/app.py; el cwd se queda en la
+    # raiz porque varios modulos resuelven sus datos relativos a ella.
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    healthCheckPath: /health
+    envVars:
+      # pmdarima todavia no publica wheels para 3.13; con 3.13 el build falla.
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      # Se carga desde el panel de Render (Environment). Sin ella, las
+      # funciones de Gemini quedan desactivadas pero la app arranca igual.
+      - key: GEMINI_API_KEY
+        sync: false

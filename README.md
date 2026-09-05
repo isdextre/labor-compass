@@ -157,6 +157,57 @@ workforce-shift/
 - Exporta solo datos con valores numéricos válidos
 - Mantiene variaciones porcentuales para análisis de tendencias
 
+##  Despliegue
+
+La app web (backend Flask + todas las paginas HTML) se despliega desde la raiz
+del repo. El punto de entrada de produccion es `wsgi.py`, que carga
+`claude/app.py`.
+
+### Render (lo que ya usa el proyecto)
+
+El archivo `render.yaml` deja el servicio configurado. Dos caminos:
+
+- **Servicio nuevo:** en Render, *New > Blueprint*, conectar este repo y
+  confirmar. Render lee `render.yaml` y crea el servicio con todo puesto.
+- **Servicio que ya existe:** en *Settings* del servicio, copiar estos dos
+  comandos y guardar.
+
+```
+Build Command:  pip install -r requirements.txt
+Start Command:  gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+```
+
+Despues, en *Environment* del servicio:
+
+- `PYTHON_VERSION` = `3.12.7` — obligatorio: `pmdarima` aun no publica wheels
+  para Python 3.13 y con 3.13 el build falla al compilar.
+- `GEMINI_API_KEY` = tu clave de Google AI Studio. Sin ella la app arranca
+  igual, pero las funciones que usan Gemini (parseo de CV con IA, cartas de
+  postulacion) quedan desactivadas.
+
+Con el repo conectado, cada `git push` a `main` dispara un despliegue nuevo.
+La salud del servicio se comprueba en `/health`.
+
+### Probar el modo produccion en local
+
+```bash
+pip install -r requirements.txt
+gunicorn wsgi:app --bind 127.0.0.1:5000
+```
+
+### Limitaciones a tener en cuenta
+
+- **El disco es efimero.** `data/perfiles/` y `data/cv/` se escriben en
+  runtime, y en el plan free de Render ese contenido se pierde en cada
+  despliegue y en cada reinicio. Para que los perfiles sobrevivan hace falta
+  un disco persistente o mover ese guardado a una base de datos.
+- **El plan free se duerme.** Tras un rato sin trafico el servicio se suspende
+  y la primera visita puede tardar bastante en responder.
+- **El envio automatico de postulaciones necesita Playwright**, que no se
+  instala en el build. `claude/applier/submitter.py` lo importa solo cuando se
+  usa, asi que la app arranca sin el; esa funcion concreta fallara en el
+  servidor hasta que se instalen los navegadores de Playwright.
+
 ##  Fuentes
 
 - INEI (Instituto Nacional de Estadística e Informática): https://www.inei.gob.pe/
