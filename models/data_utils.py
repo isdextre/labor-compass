@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 data_utils.py
-PRÓXIMO — Machine Learning Engineer
 
 Capa de carga y normalización de datos. Ningún modelo (ARIMA ni Random Forest)
 debería tener que saber cómo está estructurado cada JSON: este módulo se encarga
@@ -21,7 +20,7 @@ Fuentes que este módulo entiende:
   - skills_por_ocupacion.json     -> ocupación -> lista de skills requeridas
   - cursos.json                   -> catálogo de cursos (skills que cubre, duración, etc.)
 
-LIMITACIÓN DE DATOS IMPORTANTE (léela antes de conectar esto a producción):
+LIMITACIÓN DE DATOS IMPORTANTE :
   No existe, hoy, una sola fuente pública con (departamento x industria x año).
   - Empleo por industria: sólo para Lima.
   - Salario por industria: a nivel nacional ("Total") y por macro-región natural
