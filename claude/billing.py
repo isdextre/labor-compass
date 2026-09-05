@@ -1,30 +1,30 @@
-# claude/billing.py
+from datetime import datetime, timedelta
+
 # Simulación simple en memoria (para producción sería una tabla en la BD)
-usuarios_usos = {}  # {user_id: cantidad_de_veces_que_uso}
+usuarios_trial = {}  # {user_id: fecha_inicio_trial}
 usuarios_premium = set()  # {user_id, ...}
 
-USOS_GRATIS = 1
-PRECIO_MENSUAL = 5  # soles
-NUMERO_YAPE = "957810982"
+DIAS_TRIAL = 7
+USOS_GRATIS_MATCHING = 3  # ej: 3 búsquedas de matching gratis, luego paga
+
+def iniciar_trial(user_id: str):
+    if user_id not in usuarios_trial:
+        usuarios_trial[user_id] = datetime.now()
 
 def tiene_acceso(user_id: str) -> dict:
     if user_id in usuarios_premium:
         return {"acceso": True, "razon": "premium"}
 
-    usos = usuarios_usos.get(user_id, 0)
+    inicio = usuarios_trial.get(user_id)
+    if inicio is None:
+        iniciar_trial(user_id)
+        return {"acceso": True, "razon": "trial_iniciado"}
 
-    if usos < USOS_GRATIS:
-        return {"acceso": True, "razon": "uso_gratis", "usos_restantes": USOS_GRATIS - usos}
+    dias_restantes = DIAS_TRIAL - (datetime.now() - inicio).days
+    if dias_restantes > 0:
+        return {"acceso": True, "razon": "trial_activo", "dias_restantes": dias_restantes}
 
-    return {
-        "acceso": False,
-        "razon": "limite_alcanzado",
-        "precio_mensual": PRECIO_MENSUAL,
-        "numero_yape": NUMERO_YAPE
-    }
-
-def registrar_uso(user_id: str):
-    usuarios_usos[user_id] = usuarios_usos.get(user_id, 0) + 1
+    return {"acceso": False, "razon": "trial_vencido"}
 
 def marcar_como_premium(user_id: str):
     usuarios_premium.add(user_id)
