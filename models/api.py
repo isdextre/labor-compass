@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 api.py
-PRÓXIMO — Machine Learning Engineer
 
 API Flask que expone los 4 endpoints del rol:
   POST /api/industria_siguiente
