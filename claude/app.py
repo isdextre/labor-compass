@@ -136,7 +136,41 @@ def perfil():
 @app.route('/planes')
 def planes():
     return render_template('planes.html')
+from agente_postulacion import ejecutar_agente, obtener_postulaciones
 
+# Vacantes demo (puedes cargar esto de un JSON nuevo si prefieres)
+VACANTES_DEMO = [
+    {"puesto": "Técnico en Energía Solar", "empresa": "SolarPerú SAC", "skills_requeridas": ["Photovoltaic Installation", "Electrical Systems"]},
+    {"puesto": "Analista de Datos Junior", "empresa": "DataMinds Perú", "skills_requeridas": ["SQL", "Python", "Data Visualization"]},
+    {"puesto": "Coordinador Logístico", "empresa": "LogiPerú", "skills_requeridas": ["Supply Chain Management", "Excel"]},
+]
+
+@app.route('/api/agente/postular', methods=['POST'])
+def agente_postular():
+    """
+    Solo para usuarios Premium: el agente postula automáticamente a las
+    mejores 3 vacantes demo según el CV analizado, generando cartas
+    personalizadas con Gemini.
+    """
+    data = request.json or {}
+    user_id = data.get('user_id')
+    cv = data.get('cv')  # el JSON del CV ya analizado (de /api/parse-cv-upload)
+
+    if not user_id or not cv:
+        return jsonify({'error': "Faltan 'user_id' o 'cv'"}), 400
+
+    acceso = tiene_acceso(user_id)
+    if acceso.get('razon') != 'premium':
+        return jsonify({'error': 'Esta función es exclusiva del plan Premium.'}), 402
+
+    postulaciones = ejecutar_agente(cv, VACANTES_DEMO, top_n=3)
+    return jsonify({'postulaciones': postulaciones, 'total': len(postulaciones)}), 200
+
+
+@app.route('/api/agente/mis-postulaciones', methods=['POST'])
+def mis_postulaciones():
+    user_id = request.json.get('user_id')
+    return jsonify(obtener_postulaciones(user_id))
 # ============================================================================
 # ENDPOINT 1: Parse CV (simula extracción de datos)
 # ============================================================================
